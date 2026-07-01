@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated clicker_Generator -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="clicker_Generator.presentation.Clicker_GeneratorModelWizardID"
+            name="%_UI_Clicker_GeneratorModelWizard_label"
+            class="clicker_Generator.presentation.Clicker_GeneratorModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/Clicker_GeneratorModelFile.gif">
+         <description>%_UI_Clicker_GeneratorModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated clicker_Generator -->
+      <editor
+            id="clicker_Generator.presentation.Clicker_GeneratorEditorID"
+            name="%_UI_Clicker_GeneratorEditor_label"
+            icon="icons/full/obj16/Clicker_GeneratorModelFile.gif"
+            extensions="clicker_generator"
+            class="clicker_Generator.presentation.Clicker_GeneratorEditor"
+            contributorClass="clicker_Generator.presentation.Clicker_GeneratorActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
