@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/Clicker_Generator/src-gen" creationIcons="false"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/Clicker_Generator/src-gen" creationIcons="false"
     editDirectory="/Clicker_Generator.edit/src-gen" editorDirectory="/Clicker_Generator.editor/src-gen"
     modelPluginID="Clicker_Generator" modelName="Clicker_Generator" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="21.0"
     copyrightFields="false" operationReflection="true" importOrganizing="true">
   <foreignModel>clicker_Generator.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
-  <genPackages prefix="Clicker_Generator" disposableProviderFactory="true" ecorePackage="clicker_Generator.ecore#/"/>
+  <genPackages prefix="Clicker_Generator" disposableProviderFactory="true" ecorePackage="clicker_Generator.ecore#/">
+    <genClasses ecoreClass="clicker_Generator.ecore#//game">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//game/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//game/resources"/>
+    </genClasses>
+    <genClasses ecoreClass="clicker_Generator.ecore#//resources">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//resources/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//resources/startAmount"/>
+    </genClasses>
+  </genPackages>
 </genmodel:GenModel>
