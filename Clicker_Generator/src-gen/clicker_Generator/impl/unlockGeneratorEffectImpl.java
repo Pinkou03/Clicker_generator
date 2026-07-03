@@ -3,7 +3,7 @@
 package clicker_Generator.impl;
 
 import clicker_Generator.Clicker_GeneratorPackage;
-import clicker_Generator.effect;
+import clicker_Generator.generator;
 import clicker_Generator.unlockGeneratorEffect;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -21,33 +21,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link clicker_Generator.impl.unlockGeneratorEffectImpl#getFactor <em>Factor</em>}</li>
  *   <li>{@link clicker_Generator.impl.unlockGeneratorEffectImpl#getTarget <em>Target</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class unlockGeneratorEffectImpl extends effectImpl implements unlockGeneratorEffect {
-	/**
-	 * The default value of the '{@link #getFactor() <em>Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFactor()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double FACTOR_EDEFAULT = 0.0;
-
-	/**
-	 * The cached value of the '{@link #getFactor() <em>Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFactor()
-	 * @generated
-	 * @ordered
-	 */
-	protected double factor = FACTOR_EDEFAULT;
-
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -56,7 +35,7 @@ public class unlockGeneratorEffectImpl extends effectImpl implements unlockGener
 	 * @generated
 	 * @ordered
 	 */
-	protected effect target;
+	protected generator target;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -83,34 +62,10 @@ public class unlockGeneratorEffectImpl extends effectImpl implements unlockGener
 	 * @generated
 	 */
 	@Override
-	public double getFactor() {
-		return factor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setFactor(double newFactor) {
-		double oldFactor = factor;
-		factor = newFactor;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Clicker_GeneratorPackage.UNLOCK_GENERATOR_EFFECT__FACTOR, oldFactor, factor));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public effect getTarget() {
+	public generator getTarget() {
 		if (target != null && target.eIsProxy()) {
 			InternalEObject oldTarget = (InternalEObject) target;
-			target = (effect) eResolveProxy(oldTarget);
+			target = (generator) eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -125,7 +80,7 @@ public class unlockGeneratorEffectImpl extends effectImpl implements unlockGener
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public effect basicGetTarget() {
+	public generator basicGetTarget() {
 		return target;
 	}
 
@@ -135,8 +90,8 @@ public class unlockGeneratorEffectImpl extends effectImpl implements unlockGener
 	 * @generated
 	 */
 	@Override
-	public void setTarget(effect newTarget) {
-		effect oldTarget = target;
+	public void setTarget(generator newTarget) {
+		generator oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
@@ -151,8 +106,6 @@ public class unlockGeneratorEffectImpl extends effectImpl implements unlockGener
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case Clicker_GeneratorPackage.UNLOCK_GENERATOR_EFFECT__FACTOR:
-			return getFactor();
 		case Clicker_GeneratorPackage.UNLOCK_GENERATOR_EFFECT__TARGET:
 			if (resolve)
 				return getTarget();
@@ -169,11 +122,8 @@ public class unlockGeneratorEffectImpl extends effectImpl implements unlockGener
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case Clicker_GeneratorPackage.UNLOCK_GENERATOR_EFFECT__FACTOR:
-			setFactor((Double) newValue);
-			return;
 		case Clicker_GeneratorPackage.UNLOCK_GENERATOR_EFFECT__TARGET:
-			setTarget((effect) newValue);
+			setTarget((generator) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -187,11 +137,8 @@ public class unlockGeneratorEffectImpl extends effectImpl implements unlockGener
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case Clicker_GeneratorPackage.UNLOCK_GENERATOR_EFFECT__FACTOR:
-			setFactor(FACTOR_EDEFAULT);
-			return;
 		case Clicker_GeneratorPackage.UNLOCK_GENERATOR_EFFECT__TARGET:
-			setTarget((effect) null);
+			setTarget((generator) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -205,29 +152,10 @@ public class unlockGeneratorEffectImpl extends effectImpl implements unlockGener
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case Clicker_GeneratorPackage.UNLOCK_GENERATOR_EFFECT__FACTOR:
-			return factor != FACTOR_EDEFAULT;
 		case Clicker_GeneratorPackage.UNLOCK_GENERATOR_EFFECT__TARGET:
 			return target != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (factor: ");
-		result.append(factor);
-		result.append(')');
-		return result.toString();
 	}
 
 } //unlockGeneratorEffectImpl

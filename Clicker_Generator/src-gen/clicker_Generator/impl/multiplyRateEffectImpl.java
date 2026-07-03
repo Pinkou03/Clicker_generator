@@ -3,7 +3,7 @@
 package clicker_Generator.impl;
 
 import clicker_Generator.Clicker_GeneratorPackage;
-import clicker_Generator.effect;
+import clicker_Generator.generator;
 import clicker_Generator.multiplyRateEffect;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -56,7 +56,7 @@ public class multiplyRateEffectImpl extends effectImpl implements multiplyRateEf
 	 * @generated
 	 * @ordered
 	 */
-	protected effect target;
+	protected generator target;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -107,10 +107,10 @@ public class multiplyRateEffectImpl extends effectImpl implements multiplyRateEf
 	 * @generated
 	 */
 	@Override
-	public effect getTarget() {
+	public generator getTarget() {
 		if (target != null && target.eIsProxy()) {
 			InternalEObject oldTarget = (InternalEObject) target;
-			target = (effect) eResolveProxy(oldTarget);
+			target = (generator) eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -125,7 +125,7 @@ public class multiplyRateEffectImpl extends effectImpl implements multiplyRateEf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public effect basicGetTarget() {
+	public generator basicGetTarget() {
 		return target;
 	}
 
@@ -135,8 +135,8 @@ public class multiplyRateEffectImpl extends effectImpl implements multiplyRateEf
 	 * @generated
 	 */
 	@Override
-	public void setTarget(effect newTarget) {
-		effect oldTarget = target;
+	public void setTarget(generator newTarget) {
+		generator oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Clicker_GeneratorPackage.MULTIPLY_RATE_EFFECT__TARGET,
@@ -173,7 +173,7 @@ public class multiplyRateEffectImpl extends effectImpl implements multiplyRateEf
 			setFactor((Double) newValue);
 			return;
 		case Clicker_GeneratorPackage.MULTIPLY_RATE_EFFECT__TARGET:
-			setTarget((effect) newValue);
+			setTarget((generator) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -191,7 +191,7 @@ public class multiplyRateEffectImpl extends effectImpl implements multiplyRateEf
 			setFactor(FACTOR_EDEFAULT);
 			return;
 		case Clicker_GeneratorPackage.MULTIPLY_RATE_EFFECT__TARGET:
-			setTarget((effect) null);
+			setTarget((generator) null);
 			return;
 		}
 		super.eUnset(featureID);

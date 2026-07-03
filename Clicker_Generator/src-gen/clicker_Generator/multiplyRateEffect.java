@@ -47,12 +47,12 @@ public interface multiplyRateEffect extends effect {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
-	 * @see #setTarget(effect)
+	 * @see #setTarget(generator)
 	 * @see clicker_Generator.Clicker_GeneratorPackage#getmultiplyRateEffect_Target()
 	 * @model
 	 * @generated
 	 */
-	effect getTarget();
+	generator getTarget();
 
 	/**
 	 * Sets the value of the '{@link clicker_Generator.multiplyRateEffect#getTarget <em>Target</em>}' reference.
@@ -62,6 +62,6 @@ public interface multiplyRateEffect extends effect {
 	 * @see #getTarget()
 	 * @generated
 	 */
-	void setTarget(effect value);
+	void setTarget(generator value);
 
 } // multiplyRateEffect

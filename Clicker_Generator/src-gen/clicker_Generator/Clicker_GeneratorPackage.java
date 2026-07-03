@@ -444,22 +444,13 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	int UNLOCK_GENERATOR_EFFECT = 7;
 
 	/**
-	 * The feature id for the '<em><b>Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UNLOCK_GENERATOR_EFFECT__FACTOR = EFFECT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNLOCK_GENERATOR_EFFECT__TARGET = EFFECT_FEATURE_COUNT + 1;
+	int UNLOCK_GENERATOR_EFFECT__TARGET = EFFECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>unlock Generator Effect</em>' class.
@@ -468,7 +459,7 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNLOCK_GENERATOR_EFFECT_FEATURE_COUNT = EFFECT_FEATURE_COUNT + 2;
+	int UNLOCK_GENERATOR_EFFECT_FEATURE_COUNT = EFFECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>unlock Generator Effect</em>' class.
@@ -984,17 +975,6 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	EClass getunlockGeneratorEffect();
 
 	/**
-	 * Returns the meta object for the attribute '{@link clicker_Generator.unlockGeneratorEffect#getFactor <em>Factor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Factor</em>'.
-	 * @see clicker_Generator.unlockGeneratorEffect#getFactor()
-	 * @see #getunlockGeneratorEffect()
-	 * @generated
-	 */
-	EAttribute getunlockGeneratorEffect_Factor();
-
-	/**
 	 * Returns the meta object for the reference '{@link clicker_Generator.unlockGeneratorEffect#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1415,14 +1395,6 @@ public interface Clicker_GeneratorPackage extends EPackage {
 		 * @generated
 		 */
 		EClass UNLOCK_GENERATOR_EFFECT = eINSTANCE.getunlockGeneratorEffect();
-
-		/**
-		 * The meta object literal for the '<em><b>Factor</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute UNLOCK_GENERATOR_EFFECT__FACTOR = eINSTANCE.getunlockGeneratorEffect_Factor();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.

@@ -35,15 +35,14 @@
   <eClassifiers xsi:type="ecore:EClass" name="effect" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="multiplyRateEffect" eSuperTypes="#//effect">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="factor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//effect"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//generator"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="reduceCostEffect" eSuperTypes="#//effect">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="factor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//effect"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//generator"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="unlockGeneratorEffect" eSuperTypes="#//effect">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="factor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//effect"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//generator"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="achievement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

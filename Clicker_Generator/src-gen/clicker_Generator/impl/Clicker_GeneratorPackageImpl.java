@@ -482,18 +482,8 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 	 * @generated
 	 */
 	@Override
-	public EAttribute getunlockGeneratorEffect_Factor() {
-		return (EAttribute) unlockGeneratorEffectEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getunlockGeneratorEffect_Target() {
-		return (EReference) unlockGeneratorEffectEClass.getEStructuralFeatures().get(1);
+		return (EReference) unlockGeneratorEffectEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -701,7 +691,6 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 		createEReference(reduceCostEffectEClass, REDUCE_COST_EFFECT__TARGET);
 
 		unlockGeneratorEffectEClass = createEClass(UNLOCK_GENERATOR_EFFECT);
-		createEAttribute(unlockGeneratorEffectEClass, UNLOCK_GENERATOR_EFFECT__FACTOR);
 		createEReference(unlockGeneratorEffectEClass, UNLOCK_GENERATOR_EFFECT__TARGET);
 
 		achievementEClass = createEClass(ACHIEVEMENT);
@@ -817,7 +806,7 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 		initEAttribute(getmultiplyRateEffect_Factor(), ecorePackage.getEDouble(), "factor", null, 0, 1,
 				multiplyRateEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEReference(getmultiplyRateEffect_Target(), this.geteffect(), null, "target", null, 0, 1,
+		initEReference(getmultiplyRateEffect_Target(), this.getgenerator(), null, "target", null, 0, 1,
 				multiplyRateEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -826,16 +815,13 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 		initEAttribute(getreduceCostEffect_Factor(), ecorePackage.getEDouble(), "factor", null, 0, 1,
 				reduceCostEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEReference(getreduceCostEffect_Target(), this.geteffect(), null, "target", null, 0, 1,
+		initEReference(getreduceCostEffect_Target(), this.getgenerator(), null, "target", null, 0, 1,
 				reduceCostEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(unlockGeneratorEffectEClass, unlockGeneratorEffect.class, "unlockGeneratorEffect", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getunlockGeneratorEffect_Factor(), ecorePackage.getEDouble(), "factor", null, 0, 1,
-				unlockGeneratorEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getunlockGeneratorEffect_Target(), this.geteffect(), null, "target", null, 0, 1,
+		initEReference(getunlockGeneratorEffect_Target(), this.getgenerator(), null, "target", null, 0, 1,
 				unlockGeneratorEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
