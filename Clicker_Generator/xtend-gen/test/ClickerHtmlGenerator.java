@@ -1,3 +1,5 @@
+package test;
+
 import clicker_Generator.achievement;
 import clicker_Generator.binaryExpression;
 import clicker_Generator.comparison;
