@@ -4,7 +4,7 @@ package clicker_Generator.provider;
 
 import clicker_Generator.Clicker_GeneratorFactory;
 import clicker_Generator.Clicker_GeneratorPackage;
-import clicker_Generator.game;
+import clicker_Generator.achievement;
 
 import java.util.Collection;
 import java.util.List;
@@ -15,6 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -27,12 +28,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link clicker_Generator.game} object.
+ * This is the item provider adapter for a {@link clicker_Generator.achievement} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class gameItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class achievementItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
 		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -40,7 +41,7 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public gameItemProvider(AdapterFactory adapterFactory) {
+	public achievementItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -69,9 +70,10 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_game_name_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_game_name_feature", "_UI_game_type"),
-						Clicker_GeneratorPackage.Literals.GAME__NAME, true, false, false,
+						getResourceLocator(), getString("_UI_achievement_name_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_achievement_name_feature",
+								"_UI_achievement_type"),
+						Clicker_GeneratorPackage.Literals.ACHIEVEMENT__NAME, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -87,10 +89,7 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(Clicker_GeneratorPackage.Literals.GAME__RESOURCES);
-			childrenFeatures.add(Clicker_GeneratorPackage.Literals.GAME__GENERATORS);
-			childrenFeatures.add(Clicker_GeneratorPackage.Literals.GAME__UPGRADES);
-			childrenFeatures.add(Clicker_GeneratorPackage.Literals.GAME__ACHIEVEMENTS);
+			childrenFeatures.add(Clicker_GeneratorPackage.Literals.ACHIEVEMENT__CONDITION);
 		}
 		return childrenFeatures;
 	}
@@ -109,14 +108,14 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	}
 
 	/**
-	 * This returns game.gif.
+	 * This returns achievement.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/game"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/achievement"));
 	}
 
 	/**
@@ -137,9 +136,9 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((game) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_game_type")
-				: getString("_UI_game_type") + " " + label;
+		String label = ((achievement) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_achievement_type")
+				: getString("_UI_achievement_type") + " " + label;
 	}
 
 	/**
@@ -153,14 +152,11 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(game.class)) {
-		case Clicker_GeneratorPackage.GAME__NAME:
+		switch (notification.getFeatureID(achievement.class)) {
+		case Clicker_GeneratorPackage.ACHIEVEMENT__NAME:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case Clicker_GeneratorPackage.GAME__RESOURCES:
-		case Clicker_GeneratorPackage.GAME__GENERATORS:
-		case Clicker_GeneratorPackage.GAME__UPGRADES:
-		case Clicker_GeneratorPackage.GAME__ACHIEVEMENTS:
+		case Clicker_GeneratorPackage.ACHIEVEMENT__CONDITION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -178,17 +174,11 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.GAME__RESOURCES,
-				Clicker_GeneratorFactory.eINSTANCE.createresource()));
+		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.ACHIEVEMENT__CONDITION,
+				Clicker_GeneratorFactory.eINSTANCE.createcomparison()));
 
-		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.GAME__GENERATORS,
-				Clicker_GeneratorFactory.eINSTANCE.creategenerator()));
-
-		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.GAME__UPGRADES,
-				Clicker_GeneratorFactory.eINSTANCE.createupgrade()));
-
-		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.GAME__ACHIEVEMENTS,
-				Clicker_GeneratorFactory.eINSTANCE.createachievement()));
+		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.ACHIEVEMENT__CONDITION,
+				Clicker_GeneratorFactory.eINSTANCE.createbinaryExpression()));
 	}
 
 	/**

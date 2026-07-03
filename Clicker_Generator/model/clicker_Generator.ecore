@@ -4,11 +4,75 @@
     nsPrefix="clicker_Generator">
   <eClassifiers xsi:type="ecore:EClass" name="game">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="resources" eType="#//resources"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
+        eType="#//resource" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generators" upperBound="-1"
+        eType="#//generator" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="upgrades" upperBound="-1"
+        eType="#//upgrade" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="achievements" upperBound="-1"
+        eType="#//achievement" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="resources">
+  <eClassifiers xsi:type="ecore:EClass" name="resource">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="startAmount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="generator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="produces" eType="#//resource"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="baseRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="baseCost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="costGrowth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="upgrade">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="effects" lowerBound="1"
+        upperBound="-1" eType="#//effect" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requires" upperBound="-1"
+        eType="#//upgrade"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="effect" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="multiplyRateEffect" eSuperTypes="#//effect">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="factor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//effect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="reduceCostEffect" eSuperTypes="#//effect">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="factor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//effect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="unlockGeneratorEffect" eSuperTypes="#//effect">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="factor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//effect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="achievement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
+        eType="#//expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="expression" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="comparison" eSuperTypes="#//expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resource" lowerBound="1"
+        eType="#//resource"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//comparisonOperator"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="binaryExpression" eSuperTypes="#//expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//logicOperator"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" lowerBound="1" eType="#//expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" lowerBound="1" eType="#//expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="comparisonOperator">
+    <eLiterals name="GE"/>
+    <eLiterals name="LE" value="1"/>
+    <eLiterals name="EQ" value="2"/>
+    <eLiterals name="GT" value="3"/>
+    <eLiterals name="LT" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="logicOperator">
+    <eLiterals name="AND"/>
+    <eLiterals name="OR" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

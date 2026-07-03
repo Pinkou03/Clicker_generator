@@ -3,7 +3,7 @@
 package clicker_Generator.impl;
 
 import clicker_Generator.Clicker_GeneratorPackage;
-import clicker_Generator.resources;
+import clicker_Generator.resource;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,19 +14,19 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>resources</b></em>'.
+ * An implementation of the model object '<em><b>resource</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link clicker_Generator.impl.resourcesImpl#getName <em>Name</em>}</li>
- *   <li>{@link clicker_Generator.impl.resourcesImpl#getStartAmount <em>Start Amount</em>}</li>
+ *   <li>{@link clicker_Generator.impl.resourceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link clicker_Generator.impl.resourceImpl#getStartAmount <em>Start Amount</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class resourcesImpl extends MinimalEObjectImpl.Container implements resources {
+public class resourceImpl extends MinimalEObjectImpl.Container implements resource {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -72,7 +72,7 @@ public class resourcesImpl extends MinimalEObjectImpl.Container implements resou
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected resourcesImpl() {
+	protected resourceImpl() {
 		super();
 	}
 
@@ -83,7 +83,7 @@ public class resourcesImpl extends MinimalEObjectImpl.Container implements resou
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return Clicker_GeneratorPackage.Literals.RESOURCES;
+		return Clicker_GeneratorPackage.Literals.RESOURCE;
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class resourcesImpl extends MinimalEObjectImpl.Container implements resou
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Clicker_GeneratorPackage.RESOURCES__NAME, oldName,
+			eNotify(new ENotificationImpl(this, Notification.SET, Clicker_GeneratorPackage.RESOURCE__NAME, oldName,
 					name));
 	}
 
@@ -130,7 +130,7 @@ public class resourcesImpl extends MinimalEObjectImpl.Container implements resou
 		double oldStartAmount = startAmount;
 		startAmount = newStartAmount;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Clicker_GeneratorPackage.RESOURCES__START_AMOUNT,
+			eNotify(new ENotificationImpl(this, Notification.SET, Clicker_GeneratorPackage.RESOURCE__START_AMOUNT,
 					oldStartAmount, startAmount));
 	}
 
@@ -142,9 +142,9 @@ public class resourcesImpl extends MinimalEObjectImpl.Container implements resou
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case Clicker_GeneratorPackage.RESOURCES__NAME:
+		case Clicker_GeneratorPackage.RESOURCE__NAME:
 			return getName();
-		case Clicker_GeneratorPackage.RESOURCES__START_AMOUNT:
+		case Clicker_GeneratorPackage.RESOURCE__START_AMOUNT:
 			return getStartAmount();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -158,10 +158,10 @@ public class resourcesImpl extends MinimalEObjectImpl.Container implements resou
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case Clicker_GeneratorPackage.RESOURCES__NAME:
+		case Clicker_GeneratorPackage.RESOURCE__NAME:
 			setName((String) newValue);
 			return;
-		case Clicker_GeneratorPackage.RESOURCES__START_AMOUNT:
+		case Clicker_GeneratorPackage.RESOURCE__START_AMOUNT:
 			setStartAmount((Double) newValue);
 			return;
 		}
@@ -176,10 +176,10 @@ public class resourcesImpl extends MinimalEObjectImpl.Container implements resou
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case Clicker_GeneratorPackage.RESOURCES__NAME:
+		case Clicker_GeneratorPackage.RESOURCE__NAME:
 			setName(NAME_EDEFAULT);
 			return;
-		case Clicker_GeneratorPackage.RESOURCES__START_AMOUNT:
+		case Clicker_GeneratorPackage.RESOURCE__START_AMOUNT:
 			setStartAmount(START_AMOUNT_EDEFAULT);
 			return;
 		}
@@ -194,9 +194,9 @@ public class resourcesImpl extends MinimalEObjectImpl.Container implements resou
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case Clicker_GeneratorPackage.RESOURCES__NAME:
+		case Clicker_GeneratorPackage.RESOURCE__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case Clicker_GeneratorPackage.RESOURCES__START_AMOUNT:
+		case Clicker_GeneratorPackage.RESOURCE__START_AMOUNT:
 			return startAmount != START_AMOUNT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -221,4 +221,4 @@ public class resourcesImpl extends MinimalEObjectImpl.Container implements resou
 		return result.toString();
 	}
 
-} //resourcesImpl
+} //resourceImpl

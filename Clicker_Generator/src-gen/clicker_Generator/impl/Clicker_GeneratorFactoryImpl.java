@@ -5,6 +5,7 @@ package clicker_Generator.impl;
 import clicker_Generator.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -58,10 +59,60 @@ public class Clicker_GeneratorFactoryImpl extends EFactoryImpl implements Clicke
 		switch (eClass.getClassifierID()) {
 		case Clicker_GeneratorPackage.GAME:
 			return creategame();
-		case Clicker_GeneratorPackage.RESOURCES:
-			return createresources();
+		case Clicker_GeneratorPackage.RESOURCE:
+			return createresource();
+		case Clicker_GeneratorPackage.GENERATOR:
+			return creategenerator();
+		case Clicker_GeneratorPackage.UPGRADE:
+			return createupgrade();
+		case Clicker_GeneratorPackage.MULTIPLY_RATE_EFFECT:
+			return createmultiplyRateEffect();
+		case Clicker_GeneratorPackage.REDUCE_COST_EFFECT:
+			return createreduceCostEffect();
+		case Clicker_GeneratorPackage.UNLOCK_GENERATOR_EFFECT:
+			return createunlockGeneratorEffect();
+		case Clicker_GeneratorPackage.ACHIEVEMENT:
+			return createachievement();
+		case Clicker_GeneratorPackage.COMPARISON:
+			return createcomparison();
+		case Clicker_GeneratorPackage.BINARY_EXPRESSION:
+			return createbinaryExpression();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+		case Clicker_GeneratorPackage.COMPARISON_OPERATOR:
+			return createcomparisonOperatorFromString(eDataType, initialValue);
+		case Clicker_GeneratorPackage.LOGIC_OPERATOR:
+			return createlogicOperatorFromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+		case Clicker_GeneratorPackage.COMPARISON_OPERATOR:
+			return convertcomparisonOperatorToString(eDataType, instanceValue);
+		case Clicker_GeneratorPackage.LOGIC_OPERATOR:
+			return convertlogicOperatorToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -82,9 +133,141 @@ public class Clicker_GeneratorFactoryImpl extends EFactoryImpl implements Clicke
 	 * @generated
 	 */
 	@Override
-	public resources createresources() {
-		resourcesImpl resources = new resourcesImpl();
-		return resources;
+	public resource createresource() {
+		resourceImpl resource = new resourceImpl();
+		return resource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public generator creategenerator() {
+		generatorImpl generator = new generatorImpl();
+		return generator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public upgrade createupgrade() {
+		upgradeImpl upgrade = new upgradeImpl();
+		return upgrade;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public multiplyRateEffect createmultiplyRateEffect() {
+		multiplyRateEffectImpl multiplyRateEffect = new multiplyRateEffectImpl();
+		return multiplyRateEffect;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public reduceCostEffect createreduceCostEffect() {
+		reduceCostEffectImpl reduceCostEffect = new reduceCostEffectImpl();
+		return reduceCostEffect;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public unlockGeneratorEffect createunlockGeneratorEffect() {
+		unlockGeneratorEffectImpl unlockGeneratorEffect = new unlockGeneratorEffectImpl();
+		return unlockGeneratorEffect;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public achievement createachievement() {
+		achievementImpl achievement = new achievementImpl();
+		return achievement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public comparison createcomparison() {
+		comparisonImpl comparison = new comparisonImpl();
+		return comparison;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public binaryExpression createbinaryExpression() {
+		binaryExpressionImpl binaryExpression = new binaryExpressionImpl();
+		return binaryExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public comparisonOperator createcomparisonOperatorFromString(EDataType eDataType, String initialValue) {
+		comparisonOperator result = comparisonOperator.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertcomparisonOperatorToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public logicOperator createlogicOperatorFromString(EDataType eDataType, String initialValue) {
+		logicOperator result = logicOperator.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertlogicOperatorToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

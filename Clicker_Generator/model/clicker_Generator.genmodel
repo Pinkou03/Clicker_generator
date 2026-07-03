@@ -9,13 +9,68 @@
   <foreignModel>clicker_Generator.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Clicker_Generator" disposableProviderFactory="true" ecorePackage="clicker_Generator.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="clicker_Generator.ecore#//comparisonOperator">
+      <genEnumLiterals ecoreEnumLiteral="clicker_Generator.ecore#//comparisonOperator/GE"/>
+      <genEnumLiterals ecoreEnumLiteral="clicker_Generator.ecore#//comparisonOperator/LE"/>
+      <genEnumLiterals ecoreEnumLiteral="clicker_Generator.ecore#//comparisonOperator/EQ"/>
+      <genEnumLiterals ecoreEnumLiteral="clicker_Generator.ecore#//comparisonOperator/GT"/>
+      <genEnumLiterals ecoreEnumLiteral="clicker_Generator.ecore#//comparisonOperator/LT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="clicker_Generator.ecore#//logicOperator">
+      <genEnumLiterals ecoreEnumLiteral="clicker_Generator.ecore#//logicOperator/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="clicker_Generator.ecore#//logicOperator/OR"/>
+    </genEnums>
     <genClasses ecoreClass="clicker_Generator.ecore#//game">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//game/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//game/resources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//game/generators"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//game/upgrades"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//game/achievements"/>
     </genClasses>
-    <genClasses ecoreClass="clicker_Generator.ecore#//resources">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//resources/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//resources/startAmount"/>
+    <genClasses ecoreClass="clicker_Generator.ecore#//resource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//resource/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//resource/startAmount"/>
+    </genClasses>
+    <genClasses ecoreClass="clicker_Generator.ecore#//generator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//generator/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//generator/produces"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//generator/baseRate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//generator/baseCost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//generator/costGrowth"/>
+    </genClasses>
+    <genClasses ecoreClass="clicker_Generator.ecore#//upgrade">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//upgrade/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//upgrade/cost"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//upgrade/effects"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//upgrade/requires"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="clicker_Generator.ecore#//effect"/>
+    <genClasses ecoreClass="clicker_Generator.ecore#//multiplyRateEffect">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//multiplyRateEffect/factor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//multiplyRateEffect/target"/>
+    </genClasses>
+    <genClasses ecoreClass="clicker_Generator.ecore#//reduceCostEffect">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//reduceCostEffect/factor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//reduceCostEffect/target"/>
+    </genClasses>
+    <genClasses ecoreClass="clicker_Generator.ecore#//unlockGeneratorEffect">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//unlockGeneratorEffect/factor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//unlockGeneratorEffect/target"/>
+    </genClasses>
+    <genClasses ecoreClass="clicker_Generator.ecore#//achievement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//achievement/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//achievement/condition"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="clicker_Generator.ecore#//expression"/>
+    <genClasses ecoreClass="clicker_Generator.ecore#//comparison">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//comparison/resource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//comparison/operator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//comparison/value"/>
+    </genClasses>
+    <genClasses ecoreClass="clicker_Generator.ecore#//binaryExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//binaryExpression/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//binaryExpression/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//binaryExpression/right"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

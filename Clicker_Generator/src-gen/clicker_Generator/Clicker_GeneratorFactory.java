@@ -31,13 +31,85 @@ public interface Clicker_GeneratorFactory extends EFactory {
 	game creategame();
 
 	/**
-	 * Returns a new object of class '<em>resources</em>'.
+	 * Returns a new object of class '<em>resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>resources</em>'.
+	 * @return a new object of class '<em>resource</em>'.
 	 * @generated
 	 */
-	resources createresources();
+	resource createresource();
+
+	/**
+	 * Returns a new object of class '<em>generator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>generator</em>'.
+	 * @generated
+	 */
+	generator creategenerator();
+
+	/**
+	 * Returns a new object of class '<em>upgrade</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>upgrade</em>'.
+	 * @generated
+	 */
+	upgrade createupgrade();
+
+	/**
+	 * Returns a new object of class '<em>multiply Rate Effect</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>multiply Rate Effect</em>'.
+	 * @generated
+	 */
+	multiplyRateEffect createmultiplyRateEffect();
+
+	/**
+	 * Returns a new object of class '<em>reduce Cost Effect</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>reduce Cost Effect</em>'.
+	 * @generated
+	 */
+	reduceCostEffect createreduceCostEffect();
+
+	/**
+	 * Returns a new object of class '<em>unlock Generator Effect</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>unlock Generator Effect</em>'.
+	 * @generated
+	 */
+	unlockGeneratorEffect createunlockGeneratorEffect();
+
+	/**
+	 * Returns a new object of class '<em>achievement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>achievement</em>'.
+	 * @generated
+	 */
+	achievement createachievement();
+
+	/**
+	 * Returns a new object of class '<em>comparison</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>comparison</em>'.
+	 * @generated
+	 */
+	comparison createcomparison();
+
+	/**
+	 * Returns a new object of class '<em>binary Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>binary Expression</em>'.
+	 * @generated
+	 */
+	binaryExpression createbinaryExpression();
 
 	/**
 	 * Returns the package supported by this factory.

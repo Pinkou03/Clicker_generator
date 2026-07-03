@@ -3,17 +3,24 @@
 package clicker_Generator.impl;
 
 import clicker_Generator.Clicker_GeneratorPackage;
+import clicker_Generator.achievement;
 import clicker_Generator.game;
 
-import clicker_Generator.resources;
+import clicker_Generator.generator;
+import clicker_Generator.resource;
+import clicker_Generator.upgrade;
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,6 +32,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link clicker_Generator.impl.gameImpl#getName <em>Name</em>}</li>
  *   <li>{@link clicker_Generator.impl.gameImpl#getResources <em>Resources</em>}</li>
+ *   <li>{@link clicker_Generator.impl.gameImpl#getGenerators <em>Generators</em>}</li>
+ *   <li>{@link clicker_Generator.impl.gameImpl#getUpgrades <em>Upgrades</em>}</li>
+ *   <li>{@link clicker_Generator.impl.gameImpl#getAchievements <em>Achievements</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,14 +61,44 @@ public class gameImpl extends MinimalEObjectImpl.Container implements game {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getResources() <em>Resources</em>}' containment reference.
+	 * The cached value of the '{@link #getResources() <em>Resources</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getResources()
 	 * @generated
 	 * @ordered
 	 */
-	protected resources resources;
+	protected EList<resource> resources;
+
+	/**
+	 * The cached value of the '{@link #getGenerators() <em>Generators</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGenerators()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<generator> generators;
+
+	/**
+	 * The cached value of the '{@link #getUpgrades() <em>Upgrades</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpgrades()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<upgrade> upgrades;
+
+	/**
+	 * The cached value of the '{@link #getAchievements() <em>Achievements</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAchievements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<achievement> achievements;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -108,7 +148,11 @@ public class gameImpl extends MinimalEObjectImpl.Container implements game {
 	 * @generated
 	 */
 	@Override
-	public resources getResources() {
+	public EList<resource> getResources() {
+		if (resources == null) {
+			resources = new EObjectContainmentEList<resource>(resource.class, this,
+					Clicker_GeneratorPackage.GAME__RESOURCES);
+		}
 		return resources;
 	}
 
@@ -117,18 +161,13 @@ public class gameImpl extends MinimalEObjectImpl.Container implements game {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetResources(resources newResources, NotificationChain msgs) {
-		resources oldResources = resources;
-		resources = newResources;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					Clicker_GeneratorPackage.GAME__RESOURCES, oldResources, newResources);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+	@Override
+	public EList<generator> getGenerators() {
+		if (generators == null) {
+			generators = new EObjectContainmentEList<generator>(generator.class, this,
+					Clicker_GeneratorPackage.GAME__GENERATORS);
 		}
-		return msgs;
+		return generators;
 	}
 
 	/**
@@ -137,21 +176,26 @@ public class gameImpl extends MinimalEObjectImpl.Container implements game {
 	 * @generated
 	 */
 	@Override
-	public void setResources(resources newResources) {
-		if (newResources != resources) {
-			NotificationChain msgs = null;
-			if (resources != null)
-				msgs = ((InternalEObject) resources).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - Clicker_GeneratorPackage.GAME__RESOURCES, null, msgs);
-			if (newResources != null)
-				msgs = ((InternalEObject) newResources).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - Clicker_GeneratorPackage.GAME__RESOURCES, null, msgs);
-			msgs = basicSetResources(newResources, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Clicker_GeneratorPackage.GAME__RESOURCES,
-					newResources, newResources));
+	public EList<upgrade> getUpgrades() {
+		if (upgrades == null) {
+			upgrades = new EObjectContainmentEList<upgrade>(upgrade.class, this,
+					Clicker_GeneratorPackage.GAME__UPGRADES);
+		}
+		return upgrades;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<achievement> getAchievements() {
+		if (achievements == null) {
+			achievements = new EObjectContainmentEList<achievement>(achievement.class, this,
+					Clicker_GeneratorPackage.GAME__ACHIEVEMENTS);
+		}
+		return achievements;
 	}
 
 	/**
@@ -163,7 +207,13 @@ public class gameImpl extends MinimalEObjectImpl.Container implements game {
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Clicker_GeneratorPackage.GAME__RESOURCES:
-			return basicSetResources(null, msgs);
+			return ((InternalEList<?>) getResources()).basicRemove(otherEnd, msgs);
+		case Clicker_GeneratorPackage.GAME__GENERATORS:
+			return ((InternalEList<?>) getGenerators()).basicRemove(otherEnd, msgs);
+		case Clicker_GeneratorPackage.GAME__UPGRADES:
+			return ((InternalEList<?>) getUpgrades()).basicRemove(otherEnd, msgs);
+		case Clicker_GeneratorPackage.GAME__ACHIEVEMENTS:
+			return ((InternalEList<?>) getAchievements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -180,6 +230,12 @@ public class gameImpl extends MinimalEObjectImpl.Container implements game {
 			return getName();
 		case Clicker_GeneratorPackage.GAME__RESOURCES:
 			return getResources();
+		case Clicker_GeneratorPackage.GAME__GENERATORS:
+			return getGenerators();
+		case Clicker_GeneratorPackage.GAME__UPGRADES:
+			return getUpgrades();
+		case Clicker_GeneratorPackage.GAME__ACHIEVEMENTS:
+			return getAchievements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -189,6 +245,7 @@ public class gameImpl extends MinimalEObjectImpl.Container implements game {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -196,7 +253,20 @@ public class gameImpl extends MinimalEObjectImpl.Container implements game {
 			setName((String) newValue);
 			return;
 		case Clicker_GeneratorPackage.GAME__RESOURCES:
-			setResources((resources) newValue);
+			getResources().clear();
+			getResources().addAll((Collection<? extends resource>) newValue);
+			return;
+		case Clicker_GeneratorPackage.GAME__GENERATORS:
+			getGenerators().clear();
+			getGenerators().addAll((Collection<? extends generator>) newValue);
+			return;
+		case Clicker_GeneratorPackage.GAME__UPGRADES:
+			getUpgrades().clear();
+			getUpgrades().addAll((Collection<? extends upgrade>) newValue);
+			return;
+		case Clicker_GeneratorPackage.GAME__ACHIEVEMENTS:
+			getAchievements().clear();
+			getAchievements().addAll((Collection<? extends achievement>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -214,7 +284,16 @@ public class gameImpl extends MinimalEObjectImpl.Container implements game {
 			setName(NAME_EDEFAULT);
 			return;
 		case Clicker_GeneratorPackage.GAME__RESOURCES:
-			setResources((resources) null);
+			getResources().clear();
+			return;
+		case Clicker_GeneratorPackage.GAME__GENERATORS:
+			getGenerators().clear();
+			return;
+		case Clicker_GeneratorPackage.GAME__UPGRADES:
+			getUpgrades().clear();
+			return;
+		case Clicker_GeneratorPackage.GAME__ACHIEVEMENTS:
+			getAchievements().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -231,7 +310,13 @@ public class gameImpl extends MinimalEObjectImpl.Container implements game {
 		case Clicker_GeneratorPackage.GAME__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case Clicker_GeneratorPackage.GAME__RESOURCES:
-			return resources != null;
+			return resources != null && !resources.isEmpty();
+		case Clicker_GeneratorPackage.GAME__GENERATORS:
+			return generators != null && !generators.isEmpty();
+		case Clicker_GeneratorPackage.GAME__UPGRADES:
+			return upgrades != null && !upgrades.isEmpty();
+		case Clicker_GeneratorPackage.GAME__ACHIEVEMENTS:
+			return achievements != null && !achievements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

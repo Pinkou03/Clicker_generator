@@ -73,9 +73,89 @@ public class Clicker_GeneratorSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case Clicker_GeneratorPackage.RESOURCES: {
-			resources resources = (resources) theEObject;
-			T result = caseresources(resources);
+		case Clicker_GeneratorPackage.RESOURCE: {
+			resource resource = (resource) theEObject;
+			T result = caseresource(resource);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case Clicker_GeneratorPackage.GENERATOR: {
+			generator generator = (generator) theEObject;
+			T result = casegenerator(generator);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case Clicker_GeneratorPackage.UPGRADE: {
+			upgrade upgrade = (upgrade) theEObject;
+			T result = caseupgrade(upgrade);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case Clicker_GeneratorPackage.EFFECT: {
+			effect effect = (effect) theEObject;
+			T result = caseeffect(effect);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case Clicker_GeneratorPackage.MULTIPLY_RATE_EFFECT: {
+			multiplyRateEffect multiplyRateEffect = (multiplyRateEffect) theEObject;
+			T result = casemultiplyRateEffect(multiplyRateEffect);
+			if (result == null)
+				result = caseeffect(multiplyRateEffect);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case Clicker_GeneratorPackage.REDUCE_COST_EFFECT: {
+			reduceCostEffect reduceCostEffect = (reduceCostEffect) theEObject;
+			T result = casereduceCostEffect(reduceCostEffect);
+			if (result == null)
+				result = caseeffect(reduceCostEffect);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case Clicker_GeneratorPackage.UNLOCK_GENERATOR_EFFECT: {
+			unlockGeneratorEffect unlockGeneratorEffect = (unlockGeneratorEffect) theEObject;
+			T result = caseunlockGeneratorEffect(unlockGeneratorEffect);
+			if (result == null)
+				result = caseeffect(unlockGeneratorEffect);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case Clicker_GeneratorPackage.ACHIEVEMENT: {
+			achievement achievement = (achievement) theEObject;
+			T result = caseachievement(achievement);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case Clicker_GeneratorPackage.EXPRESSION: {
+			expression expression = (expression) theEObject;
+			T result = caseexpression(expression);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case Clicker_GeneratorPackage.COMPARISON: {
+			comparison comparison = (comparison) theEObject;
+			T result = casecomparison(comparison);
+			if (result == null)
+				result = caseexpression(comparison);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case Clicker_GeneratorPackage.BINARY_EXPRESSION: {
+			binaryExpression binaryExpression = (binaryExpression) theEObject;
+			T result = casebinaryExpression(binaryExpression);
+			if (result == null)
+				result = caseexpression(binaryExpression);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -101,17 +181,167 @@ public class Clicker_GeneratorSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>resources</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>resources</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>resource</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseresources(resources object) {
+	public T caseresource(resource object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>generator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>generator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casegenerator(generator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>upgrade</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>upgrade</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseupgrade(upgrade object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>effect</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>effect</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseeffect(effect object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>multiply Rate Effect</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>multiply Rate Effect</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casemultiplyRateEffect(multiplyRateEffect object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>reduce Cost Effect</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>reduce Cost Effect</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casereduceCostEffect(reduceCostEffect object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>unlock Generator Effect</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>unlock Generator Effect</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseunlockGeneratorEffect(unlockGeneratorEffect object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>achievement</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>achievement</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseachievement(achievement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseexpression(expression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>comparison</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>comparison</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casecomparison(comparison object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>binary Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>binary Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casebinaryExpression(binaryExpression object) {
 		return null;
 	}
 

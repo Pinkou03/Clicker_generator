@@ -2,9 +2,8 @@
  */
 package clicker_Generator.provider;
 
-import clicker_Generator.Clicker_GeneratorFactory;
 import clicker_Generator.Clicker_GeneratorPackage;
-import clicker_Generator.game;
+import clicker_Generator.resource;
 
 import java.util.Collection;
 import java.util.List;
@@ -14,7 +13,6 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -27,12 +25,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link clicker_Generator.game} object.
+ * This is the item provider adapter for a {@link clicker_Generator.resource} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class gameItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class resourceItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
 		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -40,7 +38,7 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public gameItemProvider(AdapterFactory adapterFactory) {
+	public resourceItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -56,6 +54,7 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addStartAmountPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -69,54 +68,38 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_game_name_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_game_name_feature", "_UI_game_type"),
-						Clicker_GeneratorPackage.Literals.GAME__NAME, true, false, false,
+						getResourceLocator(), getString("_UI_resource_name_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_resource_name_feature",
+								"_UI_resource_type"),
+						Clicker_GeneratorPackage.Literals.RESOURCE__NAME, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Start Amount feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(Clicker_GeneratorPackage.Literals.GAME__RESOURCES);
-			childrenFeatures.add(Clicker_GeneratorPackage.Literals.GAME__GENERATORS);
-			childrenFeatures.add(Clicker_GeneratorPackage.Literals.GAME__UPGRADES);
-			childrenFeatures.add(Clicker_GeneratorPackage.Literals.GAME__ACHIEVEMENTS);
-		}
-		return childrenFeatures;
+	protected void addStartAmountPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_resource_startAmount_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_resource_startAmount_feature",
+								"_UI_resource_type"),
+						Clicker_GeneratorPackage.Literals.RESOURCE__START_AMOUNT, true, false, false,
+						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
-	 * This returns game.gif.
+	 * This returns resource.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/game"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/resource"));
 	}
 
 	/**
@@ -137,9 +120,9 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((game) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_game_type")
-				: getString("_UI_game_type") + " " + label;
+		String label = ((resource) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_resource_type")
+				: getString("_UI_resource_type") + " " + label;
 	}
 
 	/**
@@ -153,15 +136,10 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(game.class)) {
-		case Clicker_GeneratorPackage.GAME__NAME:
+		switch (notification.getFeatureID(resource.class)) {
+		case Clicker_GeneratorPackage.RESOURCE__NAME:
+		case Clicker_GeneratorPackage.RESOURCE__START_AMOUNT:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
-		case Clicker_GeneratorPackage.GAME__RESOURCES:
-		case Clicker_GeneratorPackage.GAME__GENERATORS:
-		case Clicker_GeneratorPackage.GAME__UPGRADES:
-		case Clicker_GeneratorPackage.GAME__ACHIEVEMENTS:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -177,18 +155,6 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.GAME__RESOURCES,
-				Clicker_GeneratorFactory.eINSTANCE.createresource()));
-
-		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.GAME__GENERATORS,
-				Clicker_GeneratorFactory.eINSTANCE.creategenerator()));
-
-		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.GAME__UPGRADES,
-				Clicker_GeneratorFactory.eINSTANCE.createupgrade()));
-
-		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.GAME__ACHIEVEMENTS,
-				Clicker_GeneratorFactory.eINSTANCE.createachievement()));
 	}
 
 	/**

@@ -72,8 +72,58 @@ public class Clicker_GeneratorAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseresources(resources object) {
-			return createresourcesAdapter();
+		public Adapter caseresource(resource object) {
+			return createresourceAdapter();
+		}
+
+		@Override
+		public Adapter casegenerator(generator object) {
+			return creategeneratorAdapter();
+		}
+
+		@Override
+		public Adapter caseupgrade(upgrade object) {
+			return createupgradeAdapter();
+		}
+
+		@Override
+		public Adapter caseeffect(effect object) {
+			return createeffectAdapter();
+		}
+
+		@Override
+		public Adapter casemultiplyRateEffect(multiplyRateEffect object) {
+			return createmultiplyRateEffectAdapter();
+		}
+
+		@Override
+		public Adapter casereduceCostEffect(reduceCostEffect object) {
+			return createreduceCostEffectAdapter();
+		}
+
+		@Override
+		public Adapter caseunlockGeneratorEffect(unlockGeneratorEffect object) {
+			return createunlockGeneratorEffectAdapter();
+		}
+
+		@Override
+		public Adapter caseachievement(achievement object) {
+			return createachievementAdapter();
+		}
+
+		@Override
+		public Adapter caseexpression(expression object) {
+			return createexpressionAdapter();
+		}
+
+		@Override
+		public Adapter casecomparison(comparison object) {
+			return createcomparisonAdapter();
+		}
+
+		@Override
+		public Adapter casebinaryExpression(binaryExpression object) {
+			return createbinaryExpressionAdapter();
 		}
 
 		@Override
@@ -110,16 +160,156 @@ public class Clicker_GeneratorAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link clicker_Generator.resources <em>resources</em>}'.
+	 * Creates a new adapter for an object of class '{@link clicker_Generator.resource <em>resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see clicker_Generator.resources
+	 * @see clicker_Generator.resource
 	 * @generated
 	 */
-	public Adapter createresourcesAdapter() {
+	public Adapter createresourceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link clicker_Generator.generator <em>generator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see clicker_Generator.generator
+	 * @generated
+	 */
+	public Adapter creategeneratorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link clicker_Generator.upgrade <em>upgrade</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see clicker_Generator.upgrade
+	 * @generated
+	 */
+	public Adapter createupgradeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link clicker_Generator.effect <em>effect</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see clicker_Generator.effect
+	 * @generated
+	 */
+	public Adapter createeffectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link clicker_Generator.multiplyRateEffect <em>multiply Rate Effect</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see clicker_Generator.multiplyRateEffect
+	 * @generated
+	 */
+	public Adapter createmultiplyRateEffectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link clicker_Generator.reduceCostEffect <em>reduce Cost Effect</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see clicker_Generator.reduceCostEffect
+	 * @generated
+	 */
+	public Adapter createreduceCostEffectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link clicker_Generator.unlockGeneratorEffect <em>unlock Generator Effect</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see clicker_Generator.unlockGeneratorEffect
+	 * @generated
+	 */
+	public Adapter createunlockGeneratorEffectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link clicker_Generator.achievement <em>achievement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see clicker_Generator.achievement
+	 * @generated
+	 */
+	public Adapter createachievementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link clicker_Generator.expression <em>expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see clicker_Generator.expression
+	 * @generated
+	 */
+	public Adapter createexpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link clicker_Generator.comparison <em>comparison</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see clicker_Generator.comparison
+	 * @generated
+	 */
+	public Adapter createcomparisonAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link clicker_Generator.binaryExpression <em>binary Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see clicker_Generator.binaryExpression
+	 * @generated
+	 */
+	public Adapter createbinaryExpressionAdapter() {
 		return null;
 	}
 

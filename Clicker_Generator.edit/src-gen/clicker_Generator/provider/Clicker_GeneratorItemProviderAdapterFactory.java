@@ -96,26 +96,210 @@ public class Clicker_GeneratorItemProviderAdapterFactory extends Clicker_Generat
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link clicker_Generator.resources} instances.
+	 * This keeps track of the one adapter used for all {@link clicker_Generator.resource} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected resourcesItemProvider resourcesItemProvider;
+	protected resourceItemProvider resourceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link clicker_Generator.resources}.
+	 * This creates an adapter for a {@link clicker_Generator.resource}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createresourcesAdapter() {
-		if (resourcesItemProvider == null) {
-			resourcesItemProvider = new resourcesItemProvider(this);
+	public Adapter createresourceAdapter() {
+		if (resourceItemProvider == null) {
+			resourceItemProvider = new resourceItemProvider(this);
 		}
 
-		return resourcesItemProvider;
+		return resourceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link clicker_Generator.generator} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected generatorItemProvider generatorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link clicker_Generator.generator}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter creategeneratorAdapter() {
+		if (generatorItemProvider == null) {
+			generatorItemProvider = new generatorItemProvider(this);
+		}
+
+		return generatorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link clicker_Generator.upgrade} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected upgradeItemProvider upgradeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link clicker_Generator.upgrade}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createupgradeAdapter() {
+		if (upgradeItemProvider == null) {
+			upgradeItemProvider = new upgradeItemProvider(this);
+		}
+
+		return upgradeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link clicker_Generator.multiplyRateEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected multiplyRateEffectItemProvider multiplyRateEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link clicker_Generator.multiplyRateEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createmultiplyRateEffectAdapter() {
+		if (multiplyRateEffectItemProvider == null) {
+			multiplyRateEffectItemProvider = new multiplyRateEffectItemProvider(this);
+		}
+
+		return multiplyRateEffectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link clicker_Generator.reduceCostEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected reduceCostEffectItemProvider reduceCostEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link clicker_Generator.reduceCostEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createreduceCostEffectAdapter() {
+		if (reduceCostEffectItemProvider == null) {
+			reduceCostEffectItemProvider = new reduceCostEffectItemProvider(this);
+		}
+
+		return reduceCostEffectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link clicker_Generator.unlockGeneratorEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected unlockGeneratorEffectItemProvider unlockGeneratorEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link clicker_Generator.unlockGeneratorEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createunlockGeneratorEffectAdapter() {
+		if (unlockGeneratorEffectItemProvider == null) {
+			unlockGeneratorEffectItemProvider = new unlockGeneratorEffectItemProvider(this);
+		}
+
+		return unlockGeneratorEffectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link clicker_Generator.achievement} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected achievementItemProvider achievementItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link clicker_Generator.achievement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createachievementAdapter() {
+		if (achievementItemProvider == null) {
+			achievementItemProvider = new achievementItemProvider(this);
+		}
+
+		return achievementItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link clicker_Generator.comparison} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected comparisonItemProvider comparisonItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link clicker_Generator.comparison}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createcomparisonAdapter() {
+		if (comparisonItemProvider == null) {
+			comparisonItemProvider = new comparisonItemProvider(this);
+		}
+
+		return comparisonItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link clicker_Generator.binaryExpression} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected binaryExpressionItemProvider binaryExpressionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link clicker_Generator.binaryExpression}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createbinaryExpressionAdapter() {
+		if (binaryExpressionItemProvider == null) {
+			binaryExpressionItemProvider = new binaryExpressionItemProvider(this);
+		}
+
+		return binaryExpressionItemProvider;
 	}
 
 	/**
@@ -225,8 +409,24 @@ public class Clicker_GeneratorItemProviderAdapterFactory extends Clicker_Generat
 	public void dispose() {
 		if (gameItemProvider != null)
 			gameItemProvider.dispose();
-		if (resourcesItemProvider != null)
-			resourcesItemProvider.dispose();
+		if (resourceItemProvider != null)
+			resourceItemProvider.dispose();
+		if (generatorItemProvider != null)
+			generatorItemProvider.dispose();
+		if (upgradeItemProvider != null)
+			upgradeItemProvider.dispose();
+		if (multiplyRateEffectItemProvider != null)
+			multiplyRateEffectItemProvider.dispose();
+		if (reduceCostEffectItemProvider != null)
+			reduceCostEffectItemProvider.dispose();
+		if (unlockGeneratorEffectItemProvider != null)
+			unlockGeneratorEffectItemProvider.dispose();
+		if (achievementItemProvider != null)
+			achievementItemProvider.dispose();
+		if (comparisonItemProvider != null)
+			comparisonItemProvider.dispose();
+		if (binaryExpressionItemProvider != null)
+			binaryExpressionItemProvider.dispose();
 	}
 
 }

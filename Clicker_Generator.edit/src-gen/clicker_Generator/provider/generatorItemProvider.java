@@ -3,7 +3,7 @@
 package clicker_Generator.provider;
 
 import clicker_Generator.Clicker_GeneratorPackage;
-import clicker_Generator.resources;
+import clicker_Generator.generator;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,12 +25,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link clicker_Generator.resources} object.
+ * This is the item provider adapter for a {@link clicker_Generator.generator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class resourcesItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class generatorItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
 		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -38,7 +38,7 @@ public class resourcesItemProvider extends ItemProviderAdapter implements IEditi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public resourcesItemProvider(AdapterFactory adapterFactory) {
+	public generatorItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -54,7 +54,10 @@ public class resourcesItemProvider extends ItemProviderAdapter implements IEditi
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addStartAmountPropertyDescriptor(object);
+			addProducesPropertyDescriptor(object);
+			addBaseRatePropertyDescriptor(object);
+			addBaseCostPropertyDescriptor(object);
+			addCostGrowthPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -68,38 +71,85 @@ public class resourcesItemProvider extends ItemProviderAdapter implements IEditi
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_resources_name_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_resources_name_feature",
-								"_UI_resources_type"),
-						Clicker_GeneratorPackage.Literals.RESOURCES__NAME, true, false, false,
+						getResourceLocator(), getString("_UI_generator_name_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_generator_name_feature",
+								"_UI_generator_type"),
+						Clicker_GeneratorPackage.Literals.GENERATOR__NAME, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Start Amount feature.
+	 * This adds a property descriptor for the Produces feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addStartAmountPropertyDescriptor(Object object) {
+	protected void addProducesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_resources_startAmount_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_resources_startAmount_feature",
-								"_UI_resources_type"),
-						Clicker_GeneratorPackage.Literals.RESOURCES__START_AMOUNT, true, false, false,
+						getResourceLocator(), getString("_UI_generator_produces_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_generator_produces_feature",
+								"_UI_generator_type"),
+						Clicker_GeneratorPackage.Literals.GENERATOR__PRODUCES, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Base Rate feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBaseRatePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_generator_baseRate_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_generator_baseRate_feature",
+								"_UI_generator_type"),
+						Clicker_GeneratorPackage.Literals.GENERATOR__BASE_RATE, true, false, false,
 						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This returns resources.gif.
+	 * This adds a property descriptor for the Base Cost feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBaseCostPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_generator_baseCost_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_generator_baseCost_feature",
+								"_UI_generator_type"),
+						Clicker_GeneratorPackage.Literals.GENERATOR__BASE_COST, true, false, false,
+						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Cost Growth feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCostGrowthPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_generator_costGrowth_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_generator_costGrowth_feature",
+								"_UI_generator_type"),
+						Clicker_GeneratorPackage.Literals.GENERATOR__COST_GROWTH, true, false, false,
+						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This returns generator.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/resources"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/generator"));
 	}
 
 	/**
@@ -120,9 +170,9 @@ public class resourcesItemProvider extends ItemProviderAdapter implements IEditi
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((resources) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_resources_type")
-				: getString("_UI_resources_type") + " " + label;
+		String label = ((generator) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_generator_type")
+				: getString("_UI_generator_type") + " " + label;
 	}
 
 	/**
@@ -136,9 +186,11 @@ public class resourcesItemProvider extends ItemProviderAdapter implements IEditi
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(resources.class)) {
-		case Clicker_GeneratorPackage.RESOURCES__NAME:
-		case Clicker_GeneratorPackage.RESOURCES__START_AMOUNT:
+		switch (notification.getFeatureID(generator.class)) {
+		case Clicker_GeneratorPackage.GENERATOR__NAME:
+		case Clicker_GeneratorPackage.GENERATOR__BASE_RATE:
+		case Clicker_GeneratorPackage.GENERATOR__BASE_COST:
+		case Clicker_GeneratorPackage.GENERATOR__COST_GROWTH:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

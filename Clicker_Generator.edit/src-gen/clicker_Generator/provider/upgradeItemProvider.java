@@ -4,7 +4,7 @@ package clicker_Generator.provider;
 
 import clicker_Generator.Clicker_GeneratorFactory;
 import clicker_Generator.Clicker_GeneratorPackage;
-import clicker_Generator.game;
+import clicker_Generator.upgrade;
 
 import java.util.Collection;
 import java.util.List;
@@ -15,6 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -27,12 +28,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link clicker_Generator.game} object.
+ * This is the item provider adapter for a {@link clicker_Generator.upgrade} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class gameItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class upgradeItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
 		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -40,7 +41,7 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public gameItemProvider(AdapterFactory adapterFactory) {
+	public upgradeItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -56,6 +57,8 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addCostPropertyDescriptor(object);
+			addRequiresPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -69,10 +72,40 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_game_name_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_game_name_feature", "_UI_game_type"),
-						Clicker_GeneratorPackage.Literals.GAME__NAME, true, false, false,
+						getResourceLocator(), getString("_UI_upgrade_name_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_upgrade_name_feature", "_UI_upgrade_type"),
+						Clicker_GeneratorPackage.Literals.UPGRADE__NAME, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Cost feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCostPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_upgrade_cost_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_upgrade_cost_feature", "_UI_upgrade_type"),
+						Clicker_GeneratorPackage.Literals.UPGRADE__COST, true, false, false,
+						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Requires feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRequiresPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_upgrade_requires_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_upgrade_requires_feature",
+								"_UI_upgrade_type"),
+						Clicker_GeneratorPackage.Literals.UPGRADE__REQUIRES, true, false, true, null, null, null));
 	}
 
 	/**
@@ -87,10 +120,7 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(Clicker_GeneratorPackage.Literals.GAME__RESOURCES);
-			childrenFeatures.add(Clicker_GeneratorPackage.Literals.GAME__GENERATORS);
-			childrenFeatures.add(Clicker_GeneratorPackage.Literals.GAME__UPGRADES);
-			childrenFeatures.add(Clicker_GeneratorPackage.Literals.GAME__ACHIEVEMENTS);
+			childrenFeatures.add(Clicker_GeneratorPackage.Literals.UPGRADE__EFFECTS);
 		}
 		return childrenFeatures;
 	}
@@ -109,14 +139,14 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	}
 
 	/**
-	 * This returns game.gif.
+	 * This returns upgrade.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/game"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/upgrade"));
 	}
 
 	/**
@@ -137,9 +167,9 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((game) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_game_type")
-				: getString("_UI_game_type") + " " + label;
+		String label = ((upgrade) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_upgrade_type")
+				: getString("_UI_upgrade_type") + " " + label;
 	}
 
 	/**
@@ -153,14 +183,12 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(game.class)) {
-		case Clicker_GeneratorPackage.GAME__NAME:
+		switch (notification.getFeatureID(upgrade.class)) {
+		case Clicker_GeneratorPackage.UPGRADE__NAME:
+		case Clicker_GeneratorPackage.UPGRADE__COST:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case Clicker_GeneratorPackage.GAME__RESOURCES:
-		case Clicker_GeneratorPackage.GAME__GENERATORS:
-		case Clicker_GeneratorPackage.GAME__UPGRADES:
-		case Clicker_GeneratorPackage.GAME__ACHIEVEMENTS:
+		case Clicker_GeneratorPackage.UPGRADE__EFFECTS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -178,17 +206,14 @@ public class gameItemProvider extends ItemProviderAdapter implements IEditingDom
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.GAME__RESOURCES,
-				Clicker_GeneratorFactory.eINSTANCE.createresource()));
+		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.UPGRADE__EFFECTS,
+				Clicker_GeneratorFactory.eINSTANCE.createmultiplyRateEffect()));
 
-		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.GAME__GENERATORS,
-				Clicker_GeneratorFactory.eINSTANCE.creategenerator()));
+		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.UPGRADE__EFFECTS,
+				Clicker_GeneratorFactory.eINSTANCE.createreduceCostEffect()));
 
-		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.GAME__UPGRADES,
-				Clicker_GeneratorFactory.eINSTANCE.createupgrade()));
-
-		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.GAME__ACHIEVEMENTS,
-				Clicker_GeneratorFactory.eINSTANCE.createachievement()));
+		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.UPGRADE__EFFECTS,
+				Clicker_GeneratorFactory.eINSTANCE.createunlockGeneratorEffect()));
 	}
 
 	/**
