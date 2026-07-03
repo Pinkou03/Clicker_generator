@@ -36,7 +36,7 @@
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            class="clicker_Generator.presentation.MyClickerGeneratorGenerationHandlerXtend"
+            class="clicker_Generator.presentation.GeneratorTest"
             commandId="Clicker_Generator.editor.command1">
          <enabledWhen>
             <with

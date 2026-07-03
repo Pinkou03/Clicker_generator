@@ -1,4 +1,4 @@
-package test;
+package clicker_Generator.presentation;
 
 import clicker_Generator.achievement;
 import clicker_Generator.binaryExpression;
