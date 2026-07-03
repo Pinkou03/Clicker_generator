@@ -1,4 +1,4 @@
-import jdk.dynalink.linker.ConversionComparator.Comparison
+
 
 class ClickerHtmlGenerator {
 
@@ -52,7 +52,7 @@ class ClickerHtmlGenerator {
 	'''
 
     // === JavaScript-Teil ===
-    def String generateJs(Game game) '''
+    def String generateJs(clicker_Generator.game game) '''
 		let state = {
 		    «FOR r : game.resources SEPARATOR ','»
 		    	«r.name»: «r.startAmount»
@@ -113,30 +113,30 @@ class ClickerHtmlGenerator {
 	'''
 
     // === dispatch für Effect-Hierarchie ===
-    def dispatch String generateEffect(MultiplyRateEffect e) '''
+    def dispatch String generateEffect(clicker_Generator.multiplyRateEffect e) '''
 		// Rate von «e.target.name» verdoppeln etc.
 		globalMultiplier_«e.target.name» = («e.factor»);
 	'''
 
-    def dispatch String generateEffect(ReduceCostEffect e) '''
+    def dispatch String generateEffect(clicker_Generator.reduceCostEffect e) '''
 		cost_«e.target.name» *= «e.factor»;
 	'''
 
-    def dispatch String generateEffect(UnlockGeneratorEffect e) '''
+    def dispatch String generateEffect(clicker_Generator.unlockGeneratorEffect e) '''
 		document.getElementById('btn_«e.target.name»').style.display = 'block';
 	'''
 
     // === dispatch für Expression-Hierarchie (rekursiv!) ===
-    def dispatch String generateExpression(Comparison c) '''
+    def dispatch String generateExpression(clicker_Generator.comparison c) '''
 		state.«c.resource.name» «c.operator.toJsOperator» «c.value»
 	'''
 
-    def dispatch String generateExpression(BinaryExpression b) '''
+    def dispatch String generateExpression(clicker_Generator.binaryExpression b) '''
 		(«generateExpression(b.left)») «b.operator.toJsOperator» («generateExpression(b.right)»)
 	'''
 
     // === Helfer für Operator-Übersetzung ===
-    def String toJsOperator(ComparisonOperator op) {
+    def String toJsOperator(clicker_Generator.comparisonOperator op) {
         switch (op) {
             case GE: '>='
             case LE: '<='
@@ -146,7 +146,7 @@ class ClickerHtmlGenerator {
         }
     }
 
-    def String toJsOperator(LogicOperator op) {
+    def String toJsOperator(clicker_Generator.logicOperator op) {
         switch (op) {
             case AND: '&&'
             case OR: '||'
@@ -155,10 +155,10 @@ class ClickerHtmlGenerator {
 
     // === Helfer: Namen mit Leerzeichen (STRING-Namen bei Upgrade/Achievement) 
     //     für JS-Identifier sicher machen ===
-    def String safeName(Upgrade u) {
+    def String safeName(clicker_Generator.upgrade u) {
         u.name.replaceAll("[^a-zA-Z0-9]", "_")
     }
-    def String safeName(Achievement a) {
+    def String safeName(clicker_Generator.achievement a) {
         a.name.replaceAll("[^a-zA-Z0-9]", "_")
     }
 }
