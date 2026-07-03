@@ -3,6 +3,7 @@
   <viewpoint:DAnalysis uid="_Qyl9wHVCEfG4vYRrpZ-dgA" selectedViews="_Q1zCwHVCEfG4vYRrpZ-dgA" version="15.4.1.202403191723">
     <semanticResources>clicker_Generator.ecore</semanticResources>
     <semanticResources>clicker_Generator.genmodel</semanticResources>
+    <semanticResources>../src/ClickerHtmlGenerator.xtend</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_Q1zCwHVCEfG4vYRrpZ-dgA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RAhFAHVCEfG4vYRrpZ-dgA" name="clicker_Generator" repPath="#_Q61TwHVCEfG4vYRrpZ-dgA" changeId="1782910590562">
