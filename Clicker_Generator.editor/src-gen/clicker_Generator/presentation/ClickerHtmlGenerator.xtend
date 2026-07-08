@@ -35,6 +35,16 @@ class ClickerHtmlGenerator {
 		        «ENDFOR»
 		    </section>
 
+		    <section id="clicker">
+		        <button class="switch-arrow" id="switch_left" onclick="switchResource(-1)" aria-label="Vorherige Ressource">◀</button>
+		        <button class="cookie-btn" id="cookie" onclick="clickCookie()">
+		            <span class="cookie-emoji" id="cookie_emoji">🍪</span>
+		            <span class="cookie-label" id="cookie_label">+1</span>
+		        </button>
+		        <button class="switch-arrow" id="switch_right" onclick="switchResource(1)" aria-label="Nächste Ressource">▶</button>
+		    </section>
+		    <p id="switch-hint">Switch Resource</p>
+
 		    <main>
 		        <section class="panel" id="generators">
 		            <h2>Generatoren</h2>
@@ -139,6 +149,27 @@ class ClickerHtmlGenerator {
 		}
 		@keyframes toast-in { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
 		@keyframes toast-out { to { opacity: 0; transform: translateX(30px); } }
+		
+		/* --- Clicker (klickbarer Cookie + Ressourcen-Wechsel) --- */
+		#clicker { display: flex; align-items: center; justify-content: center; gap: 1.5em; margin: 0 auto 0.6em; }
+		.cookie-btn {
+		    width: 170px; height: 170px; border-radius: 50%; border: none; cursor: pointer;
+		    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.25em;
+		    color: var(--text); background: radial-gradient(circle at 35% 30%, #2b3157, var(--panel));
+		    box-shadow: 0 8px 24px rgba(0,0,0,0.45), inset 0 0 0 3px #2c3155;
+		    transition: transform 0.08s ease, box-shadow 0.15s; user-select: none;
+		}
+		.cookie-btn:hover { transform: scale(1.04); box-shadow: 0 10px 28px rgba(124,92,255,0.35), inset 0 0 0 3px var(--accent-2); }
+		.cookie-btn:active { transform: scale(0.93); }
+		.cookie-emoji { font-size: 4em; line-height: 1; pointer-events: none; }
+		.cookie-label { font-size: 0.9em; font-weight: 700; color: var(--muted); pointer-events: none; }
+		.switch-arrow {
+		    width: 54px; height: 54px; border-radius: 50%; border: none; background: #262b4a;
+		    color: var(--text); font-size: 1.4em; cursor: pointer; transition: background 0.15s, transform 0.1s;
+		}
+		.switch-arrow:hover { background: #323a63; transform: translateY(-1px); }
+		.switch-arrow:active { transform: scale(0.92); }
+		#switch-hint { text-align: center; color: var(--muted); font-size: 0.9em; letter-spacing: 0.05em; margin: 0 0 2em; }
 	'''
 
     // === JavaScript-Teil ===
@@ -252,6 +283,37 @@ class ClickerHtmlGenerator {
 		    updateAffordability();
 		}, 100);
 
+		// --- Klickbarer Cookie + Ressourcen-Wechsel ---
+		const resourceList = [«FOR r : game.resources SEPARATOR ', '»'«r.name»'«ENDFOR»];
+		const resourceIcons = { «FOR r : game.resources SEPARATOR ', '»«r.name»: '«r.icon»'«ENDFOR» };
+		const clickPower = 1;
+		let selectedResourceIndex = 0;
+		
+		function updateClicker() {
+		    const res = resourceList[selectedResourceIndex];
+		    if (!res) return;
+		    document.getElementById('cookie_emoji').innerText = resourceIcons[res] || '🍪';
+		    document.getElementById('cookie_label').innerText = '+' + clickPower + ' ' + res;
+		}
+		
+		function clickCookie() {
+		    if (resourceList.length === 0) return;
+		    const res = resourceList[selectedResourceIndex];
+		    state[res] += clickPower;
+		    document.getElementById('res_' + res).innerText = formatNumber(state[res]);
+		    «FOR a : game.achievements»
+		    	checkAchievement_«a.safeName»();
+		    «ENDFOR»
+		    updateAffordability();
+		}
+		
+		function switchResource(dir) {
+		    if (resourceList.length === 0) return;
+		    selectedResourceIndex = (selectedResourceIndex + dir + resourceList.length) % resourceList.length;
+		    updateClicker();
+		}
+
+		updateClicker();
 		updateAffordability();
 	'''
 

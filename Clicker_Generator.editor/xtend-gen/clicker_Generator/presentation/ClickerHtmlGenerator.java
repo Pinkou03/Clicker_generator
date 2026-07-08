@@ -130,6 +130,34 @@ public class ClickerHtmlGenerator {
       _builder.newLine();
       _builder.newLine();
       _builder.append("    ");
+      _builder.append("<section id=\"clicker\">");
+      _builder.newLine();
+      _builder.append("        ");
+      _builder.append("<button class=\"switch-arrow\" id=\"switch_left\" onclick=\"switchResource(-1)\" aria-label=\"Vorherige Ressource\">◀</button>");
+      _builder.newLine();
+      _builder.append("        ");
+      _builder.append("<button class=\"cookie-btn\" id=\"cookie\" onclick=\"clickCookie()\">");
+      _builder.newLine();
+      _builder.append("            ");
+      _builder.append("<span class=\"cookie-emoji\" id=\"cookie_emoji\">\ud83c\udf6a</span>");
+      _builder.newLine();
+      _builder.append("            ");
+      _builder.append("<span class=\"cookie-label\" id=\"cookie_label\">+1</span>");
+      _builder.newLine();
+      _builder.append("        ");
+      _builder.append("</button>");
+      _builder.newLine();
+      _builder.append("        ");
+      _builder.append("<button class=\"switch-arrow\" id=\"switch_right\" onclick=\"switchResource(1)\" aria-label=\"Nächste Ressource\">▶</button>");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("</section>");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("<p id=\"switch-hint\">Switch Resource</p>");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("    ");
       _builder.append("<main>");
       _builder.newLine();
       _builder.append("        ");
@@ -450,6 +478,54 @@ public class ClickerHtmlGenerator {
     _builder.append("@keyframes toast-in { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }");
     _builder.newLine();
     _builder.append("@keyframes toast-out { to { opacity: 0; transform: translateX(30px); } }");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("/* --- Clicker (klickbarer Cookie + Ressourcen-Wechsel) --- */");
+    _builder.newLine();
+    _builder.append("#clicker { display: flex; align-items: center; justify-content: center; gap: 1.5em; margin: 0 auto 0.6em; }");
+    _builder.newLine();
+    _builder.append(".cookie-btn {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("width: 170px; height: 170px; border-radius: 50%; border: none; cursor: pointer;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.25em;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("color: var(--text); background: radial-gradient(circle at 35% 30%, #2b3157, var(--panel));");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("box-shadow: 0 8px 24px rgba(0,0,0,0.45), inset 0 0 0 3px #2c3155;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("transition: transform 0.08s ease, box-shadow 0.15s; user-select: none;");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append(".cookie-btn:hover { transform: scale(1.04); box-shadow: 0 10px 28px rgba(124,92,255,0.35), inset 0 0 0 3px var(--accent-2); }");
+    _builder.newLine();
+    _builder.append(".cookie-btn:active { transform: scale(0.93); }");
+    _builder.newLine();
+    _builder.append(".cookie-emoji { font-size: 4em; line-height: 1; pointer-events: none; }");
+    _builder.newLine();
+    _builder.append(".cookie-label { font-size: 0.9em; font-weight: 700; color: var(--muted); pointer-events: none; }");
+    _builder.newLine();
+    _builder.append(".switch-arrow {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("width: 54px; height: 54px; border-radius: 50%; border: none; background: #262b4a;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("color: var(--text); font-size: 1.4em; cursor: pointer; transition: background 0.15s, transform 0.1s;");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append(".switch-arrow:hover { background: #323a63; transform: translateY(-1px); }");
+    _builder.newLine();
+    _builder.append(".switch-arrow:active { transform: scale(0.92); }");
+    _builder.newLine();
+    _builder.append("#switch-hint { text-align: center; color: var(--muted); font-size: 0.9em; letter-spacing: 0.05em; margin: 0 0 2em; }");
     _builder.newLine();
     return _builder.toString();
   }
@@ -910,6 +986,115 @@ public class ClickerHtmlGenerator {
     _builder.newLine();
     _builder.append("}, 100);");
     _builder.newLine();
+    _builder.newLine();
+    _builder.append("// --- Klickbarer Cookie + Ressourcen-Wechsel ---");
+    _builder.newLine();
+    _builder.append("const resourceList = [");
+    {
+      EList<resource> _resources_4 = game.getResources();
+      boolean _hasElements_2 = false;
+      for(final resource r_4 : _resources_4) {
+        if (!_hasElements_2) {
+          _hasElements_2 = true;
+        } else {
+          _builder.appendImmediate(", ", "");
+        }
+        _builder.append("\'");
+        String _name_33 = r_4.getName();
+        _builder.append(_name_33);
+        _builder.append("\'");
+      }
+    }
+    _builder.append("];");
+    _builder.newLineIfNotEmpty();
+    _builder.append("const resourceIcons = { ");
+    {
+      EList<resource> _resources_5 = game.getResources();
+      boolean _hasElements_3 = false;
+      for(final resource r_5 : _resources_5) {
+        if (!_hasElements_3) {
+          _hasElements_3 = true;
+        } else {
+          _builder.appendImmediate(", ", "");
+        }
+        String _name_34 = r_5.getName();
+        _builder.append(_name_34);
+        _builder.append(": \'");
+        String _icon = this.icon(r_5);
+        _builder.append(_icon);
+        _builder.append("\'");
+      }
+    }
+    _builder.append(" };");
+    _builder.newLineIfNotEmpty();
+    _builder.append("const clickPower = 1;");
+    _builder.newLine();
+    _builder.append("let selectedResourceIndex = 0;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("function updateClicker() {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("const res = resourceList[selectedResourceIndex];");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("if (!res) return;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("document.getElementById(\'cookie_emoji\').innerText = resourceIcons[res] || \'\ud83c\udf6a\';");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("document.getElementById(\'cookie_label\').innerText = \'+\' + clickPower + \' \' + res;");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("function clickCookie() {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("if (resourceList.length === 0) return;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("const res = resourceList[selectedResourceIndex];");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("state[res] += clickPower;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("document.getElementById(\'res_\' + res).innerText = formatNumber(state[res]);");
+    _builder.newLine();
+    {
+      EList<achievement> _achievements_3 = game.getAchievements();
+      for(final achievement a_3 : _achievements_3) {
+        _builder.append("    ");
+        _builder.append("checkAchievement_");
+        String _safeName_13 = this.safeName(a_3);
+        _builder.append(_safeName_13, "    ");
+        _builder.append("();");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("    ");
+    _builder.append("updateAffordability();");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("function switchResource(dir) {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("if (resourceList.length === 0) return;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("selectedResourceIndex = (selectedResourceIndex + dir + resourceList.length) % resourceList.length;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("updateClicker();");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("updateClicker();");
     _builder.newLine();
     _builder.append("updateAffordability();");
     _builder.newLine();
