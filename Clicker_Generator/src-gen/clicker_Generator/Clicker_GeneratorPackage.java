@@ -113,13 +113,22 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	int GAME__ACHIEVEMENTS = 4;
 
 	/**
+	 * The feature id for the '<em><b>Events</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GAME__EVENTS = 5;
+
+	/**
 	 * The number of structural features of the '<em>game</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GAME_FEATURE_COUNT = 5;
+	int GAME_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>game</em>' class.
@@ -673,6 +682,79 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	int BINARY_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link clicker_Generator.impl.eventImpl <em>event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see clicker_Generator.impl.eventImpl
+	 * @see clicker_Generator.impl.Clicker_GeneratorPackageImpl#getevent()
+	 * @generated
+	 */
+	int EVENT = 12;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Chance</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__CHANCE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Interval Seconds</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__INTERVAL_SECONDS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Duration Seconds</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__DURATION_SECONDS = 3;
+
+	/**
+	 * The feature id for the '<em><b>Effects</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__EFFECTS = 4;
+
+	/**
+	 * The number of structural features of the '<em>event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_FEATURE_COUNT = 5;
+
+	/**
+	 * The number of operations of the '<em>event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link clicker_Generator.comparisonOperator <em>comparison Operator</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -680,7 +762,7 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	 * @see clicker_Generator.impl.Clicker_GeneratorPackageImpl#getcomparisonOperator()
 	 * @generated
 	 */
-	int COMPARISON_OPERATOR = 12;
+	int COMPARISON_OPERATOR = 13;
 
 	/**
 	 * The meta object id for the '{@link clicker_Generator.logicOperator <em>logic Operator</em>}' enum.
@@ -690,7 +772,7 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	 * @see clicker_Generator.impl.Clicker_GeneratorPackageImpl#getlogicOperator()
 	 * @generated
 	 */
-	int LOGIC_OPERATOR = 13;
+	int LOGIC_OPERATOR = 14;
 
 	/**
 	 * Returns the meta object for class '{@link clicker_Generator.game <em>game</em>}'.
@@ -756,6 +838,17 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getgame_Achievements();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link clicker_Generator.game#getEvents <em>Events</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Events</em>'.
+	 * @see clicker_Generator.game#getEvents()
+	 * @see #getgame()
+	 * @generated
+	 */
+	EReference getgame_Events();
 
 	/**
 	 * Returns the meta object for class '{@link clicker_Generator.resource <em>resource</em>}'.
@@ -1154,6 +1247,71 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	EReference getbinaryExpression_Right();
 
 	/**
+	 * Returns the meta object for class '{@link clicker_Generator.event <em>event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>event</em>'.
+	 * @see clicker_Generator.event
+	 * @generated
+	 */
+	EClass getevent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link clicker_Generator.event#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see clicker_Generator.event#getName()
+	 * @see #getevent()
+	 * @generated
+	 */
+	EAttribute getevent_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link clicker_Generator.event#getChance <em>Chance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Chance</em>'.
+	 * @see clicker_Generator.event#getChance()
+	 * @see #getevent()
+	 * @generated
+	 */
+	EAttribute getevent_Chance();
+
+	/**
+	 * Returns the meta object for the attribute '{@link clicker_Generator.event#getIntervalSeconds <em>Interval Seconds</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Interval Seconds</em>'.
+	 * @see clicker_Generator.event#getIntervalSeconds()
+	 * @see #getevent()
+	 * @generated
+	 */
+	EAttribute getevent_IntervalSeconds();
+
+	/**
+	 * Returns the meta object for the attribute '{@link clicker_Generator.event#getDurationSeconds <em>Duration Seconds</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Duration Seconds</em>'.
+	 * @see clicker_Generator.event#getDurationSeconds()
+	 * @see #getevent()
+	 * @generated
+	 */
+	EAttribute getevent_DurationSeconds();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link clicker_Generator.event#getEffects <em>Effects</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Effects</em>'.
+	 * @see clicker_Generator.event#getEffects()
+	 * @see #getevent()
+	 * @generated
+	 */
+	EReference getevent_Effects();
+
+	/**
 	 * Returns the meta object for enum '{@link clicker_Generator.comparisonOperator <em>comparison Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1245,6 +1403,14 @@ public interface Clicker_GeneratorPackage extends EPackage {
 		 * @generated
 		 */
 		EReference GAME__ACHIEVEMENTS = eINSTANCE.getgame_Achievements();
+
+		/**
+		 * The meta object literal for the '<em><b>Events</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GAME__EVENTS = eINSTANCE.getgame_Events();
 
 		/**
 		 * The meta object literal for the '{@link clicker_Generator.impl.resourceImpl <em>resource</em>}' class.
@@ -1563,6 +1729,56 @@ public interface Clicker_GeneratorPackage extends EPackage {
 		 * @generated
 		 */
 		EReference BINARY_EXPRESSION__RIGHT = eINSTANCE.getbinaryExpression_Right();
+
+		/**
+		 * The meta object literal for the '{@link clicker_Generator.impl.eventImpl <em>event</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see clicker_Generator.impl.eventImpl
+		 * @see clicker_Generator.impl.Clicker_GeneratorPackageImpl#getevent()
+		 * @generated
+		 */
+		EClass EVENT = eINSTANCE.getevent();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EVENT__NAME = eINSTANCE.getevent_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Chance</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EVENT__CHANCE = eINSTANCE.getevent_Chance();
+
+		/**
+		 * The meta object literal for the '<em><b>Interval Seconds</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EVENT__INTERVAL_SECONDS = eINSTANCE.getevent_IntervalSeconds();
+
+		/**
+		 * The meta object literal for the '<em><b>Duration Seconds</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EVENT__DURATION_SECONDS = eINSTANCE.getevent_DurationSeconds();
+
+		/**
+		 * The meta object literal for the '<em><b>Effects</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EVENT__EFFECTS = eINSTANCE.getevent_Effects();
 
 		/**
 		 * The meta object literal for the '{@link clicker_Generator.comparisonOperator <em>comparison Operator</em>}' enum.

@@ -77,6 +77,8 @@ public class Clicker_GeneratorFactoryImpl extends EFactoryImpl implements Clicke
 			return createcomparison();
 		case Clicker_GeneratorPackage.BINARY_EXPRESSION:
 			return createbinaryExpression();
+		case Clicker_GeneratorPackage.EVENT:
+			return createevent();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -224,6 +226,17 @@ public class Clicker_GeneratorFactoryImpl extends EFactoryImpl implements Clicke
 	public binaryExpression createbinaryExpression() {
 		binaryExpressionImpl binaryExpression = new binaryExpressionImpl();
 		return binaryExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public event createevent() {
+		eventImpl event = new eventImpl();
+		return event;
 	}
 
 	/**

@@ -303,6 +303,29 @@ public class Clicker_GeneratorItemProviderAdapterFactory extends Clicker_Generat
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link clicker_Generator.event} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected eventItemProvider eventItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link clicker_Generator.event}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createeventAdapter() {
+		if (eventItemProvider == null) {
+			eventItemProvider = new eventItemProvider(this);
+		}
+
+		return eventItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -427,6 +450,8 @@ public class Clicker_GeneratorItemProviderAdapterFactory extends Clicker_Generat
 			comparisonItemProvider.dispose();
 		if (binaryExpressionItemProvider != null)
 			binaryExpressionItemProvider.dispose();
+		if (eventItemProvider != null)
+			eventItemProvider.dispose();
 	}
 
 }

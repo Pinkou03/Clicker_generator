@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link clicker_Generator.game#getGenerators <em>Generators</em>}</li>
  *   <li>{@link clicker_Generator.game#getUpgrades <em>Upgrades</em>}</li>
  *   <li>{@link clicker_Generator.game#getAchievements <em>Achievements</em>}</li>
+ *   <li>{@link clicker_Generator.game#getEvents <em>Events</em>}</li>
  * </ul>
  *
  * @see clicker_Generator.Clicker_GeneratorPackage#getgame()
@@ -95,5 +96,17 @@ public interface game extends EObject {
 	 * @generated
 	 */
 	EList<achievement> getAchievements();
+
+	/**
+	 * Returns the value of the '<em><b>Events</b></em>' containment reference list.
+	 * The list contents are of type {@link clicker_Generator.event}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Events</em>' containment reference list.
+	 * @see clicker_Generator.Clicker_GeneratorPackage#getgame_Events()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<event> getEvents();
 
 } // game

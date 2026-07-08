@@ -112,6 +112,15 @@ public interface Clicker_GeneratorFactory extends EFactory {
 	binaryExpression createbinaryExpression();
 
 	/**
+	 * Returns a new object of class '<em>event</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>event</em>'.
+	 * @generated
+	 */
+	event createevent();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -127,6 +127,11 @@ public class Clicker_GeneratorAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseevent(event object) {
+			return createeventAdapter();
+		}
+
+		@Override
 		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
@@ -310,6 +315,20 @@ public class Clicker_GeneratorAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createbinaryExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link clicker_Generator.event <em>event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see clicker_Generator.event
+	 * @generated
+	 */
+	public Adapter createeventAdapter() {
 		return null;
 	}
 

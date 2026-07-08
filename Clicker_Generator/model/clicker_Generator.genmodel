@@ -26,6 +26,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//game/generators"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//game/upgrades"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//game/achievements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//game/events"/>
     </genClasses>
     <genClasses ecoreClass="clicker_Generator.ecore#//resource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//resource/name"/>
@@ -72,6 +73,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//binaryExpression/operator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//binaryExpression/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//binaryExpression/right"/>
+    </genClasses>
+    <genClasses ecoreClass="clicker_Generator.ecore#//event">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//event/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//event/chance"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//event/intervalSeconds"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//event/durationSeconds"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//event/effects"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

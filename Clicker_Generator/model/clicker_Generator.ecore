@@ -12,6 +12,8 @@
         eType="#//upgrade" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="achievements" upperBound="-1"
         eType="#//achievement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
+        eType="#//event" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="resource">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -75,5 +77,13 @@
   <eClassifiers xsi:type="ecore:EEnum" name="logicOperator">
     <eLiterals name="AND"/>
     <eLiterals name="OR" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="event">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="chance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="intervalSeconds" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="durationSeconds" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="effects" upperBound="-1"
+        eType="#//effect" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
