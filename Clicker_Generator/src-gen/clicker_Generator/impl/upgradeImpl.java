@@ -4,6 +4,7 @@ package clicker_Generator.impl;
 
 import clicker_Generator.Clicker_GeneratorPackage;
 import clicker_Generator.effect;
+import clicker_Generator.resource;
 import clicker_Generator.upgrade;
 
 import java.util.Collection;
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link clicker_Generator.impl.upgradeImpl#getCost <em>Cost</em>}</li>
  *   <li>{@link clicker_Generator.impl.upgradeImpl#getEffects <em>Effects</em>}</li>
  *   <li>{@link clicker_Generator.impl.upgradeImpl#getRequires <em>Requires</em>}</li>
+ *   <li>{@link clicker_Generator.impl.upgradeImpl#getCostResource <em>Cost Resource</em>}</li>
  * </ul>
  *
  * @generated
@@ -99,6 +101,16 @@ public class upgradeImpl extends MinimalEObjectImpl.Container implements upgrade
 	 * @ordered
 	 */
 	protected EList<upgrade> requires;
+
+	/**
+	 * The cached value of the '{@link #getCostResource() <em>Cost Resource</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCostResource()
+	 * @generated
+	 * @ordered
+	 */
+	protected resource costResource;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -201,6 +213,48 @@ public class upgradeImpl extends MinimalEObjectImpl.Container implements upgrade
 	 * @generated
 	 */
 	@Override
+	public resource getCostResource() {
+		if (costResource != null && costResource.eIsProxy()) {
+			InternalEObject oldCostResource = (InternalEObject) costResource;
+			costResource = (resource) eResolveProxy(oldCostResource);
+			if (costResource != oldCostResource) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Clicker_GeneratorPackage.UPGRADE__COST_RESOURCE, oldCostResource, costResource));
+			}
+		}
+		return costResource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public resource basicGetCostResource() {
+		return costResource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCostResource(resource newCostResource) {
+		resource oldCostResource = costResource;
+		costResource = newCostResource;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Clicker_GeneratorPackage.UPGRADE__COST_RESOURCE,
+					oldCostResource, costResource));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Clicker_GeneratorPackage.UPGRADE__EFFECTS:
@@ -225,6 +279,10 @@ public class upgradeImpl extends MinimalEObjectImpl.Container implements upgrade
 			return getEffects();
 		case Clicker_GeneratorPackage.UPGRADE__REQUIRES:
 			return getRequires();
+		case Clicker_GeneratorPackage.UPGRADE__COST_RESOURCE:
+			if (resolve)
+				return getCostResource();
+			return basicGetCostResource();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -252,6 +310,9 @@ public class upgradeImpl extends MinimalEObjectImpl.Container implements upgrade
 			getRequires().clear();
 			getRequires().addAll((Collection<? extends upgrade>) newValue);
 			return;
+		case Clicker_GeneratorPackage.UPGRADE__COST_RESOURCE:
+			setCostResource((resource) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -276,6 +337,9 @@ public class upgradeImpl extends MinimalEObjectImpl.Container implements upgrade
 		case Clicker_GeneratorPackage.UPGRADE__REQUIRES:
 			getRequires().clear();
 			return;
+		case Clicker_GeneratorPackage.UPGRADE__COST_RESOURCE:
+			setCostResource((resource) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -296,6 +360,8 @@ public class upgradeImpl extends MinimalEObjectImpl.Container implements upgrade
 			return effects != null && !effects.isEmpty();
 		case Clicker_GeneratorPackage.UPGRADE__REQUIRES:
 			return requires != null && !requires.isEmpty();
+		case Clicker_GeneratorPackage.UPGRADE__COST_RESOURCE:
+			return costResource != null;
 		}
 		return super.eIsSet(featureID);
 	}

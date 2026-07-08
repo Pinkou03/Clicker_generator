@@ -31,6 +31,7 @@
         upperBound="-1" eType="#//effect" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requires" upperBound="-1"
         eType="#//upgrade"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="costResource" eType="#//resource"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="effect" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="multiplyRateEffect" eSuperTypes="#//effect">

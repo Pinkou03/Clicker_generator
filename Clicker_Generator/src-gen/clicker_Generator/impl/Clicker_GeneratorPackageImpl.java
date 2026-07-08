@@ -402,6 +402,16 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 	 * @generated
 	 */
 	@Override
+	public EReference getupgrade_CostResource() {
+		return (EReference) upgradeEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass geteffect() {
 		return effectEClass;
 	}
@@ -679,6 +689,7 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 		createEAttribute(upgradeEClass, UPGRADE__COST);
 		createEReference(upgradeEClass, UPGRADE__EFFECTS);
 		createEReference(upgradeEClass, UPGRADE__REQUIRES);
+		createEReference(upgradeEClass, UPGRADE__COST_RESOURCE);
 
 		effectEClass = createEClass(EFFECT);
 
@@ -796,6 +807,9 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getupgrade_Requires(), this.getupgrade(), null, "requires", null, 0, -1, upgrade.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getupgrade_CostResource(), this.getresource(), null, "costResource", null, 0, 1, upgrade.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

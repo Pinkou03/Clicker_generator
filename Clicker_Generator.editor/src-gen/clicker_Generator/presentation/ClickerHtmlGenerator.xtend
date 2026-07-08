@@ -1,129 +1,272 @@
 package clicker_Generator.presentation
 
+import java.util.HashSet
+import java.util.Set
+
 class ClickerHtmlGenerator {
 
     // === Haupt-Einstiegspunkt ===
-    def String generate(clicker_Generator.game game) '''
+    def String generate(clicker_Generator.game game) {
+        val lockedGenerators = collectLockedGenerators(game)
+        '''
 		<!DOCTYPE html>
-		<html>
+		<html lang="de">
 		<head>
 		    <meta charset="UTF-8">
+		    <meta name="viewport" content="width=device-width, initial-scale=1">
 		    <title>«game.name»</title>
 		    <style>«generateCss»</style>
 		</head>
 		<body>
-		    <h1>«game.name»</h1>
-		    
-		    <div id="resources">
+		    <header>
+		        <h1>«game.name»</h1>
+		    </header>
+
+		    <section id="resources">
 		        «FOR r : game.resources»
-		        	<div class="resource">
-		        	    «r.name»: <span id="res_«r.name»">«r.startAmount»</span>
+		        	<div class="resource-card" id="card_«r.name»">
+		        	    <div class="resource-icon">«r.icon»</div>
+		        	    <div class="resource-info">
+		        	        <div class="resource-name">«r.name»</div>
+		        	        <div class="resource-amount" id="res_«r.name»">«r.startAmount.formatStart»</div>
+		        	        <div class="resource-rate" id="rate_«r.name»">+0/s</div>
+		        	    </div>
 		        	</div>
 		        «ENDFOR»
-		    </div>
-		
-		    <div id="generators">
-		    «FOR g : game.generators»
-		    	<button id="btn_«g.name»" onclick="buy«g.name»()">
-		    	    Buy «g.name» — Cost: <span id="cost_«g.name»">«g.baseCost»</span>
-		    	</button>
-		    «ENDFOR»
-		    </div>
-		
-		    <div id="upgrades">
-		    «FOR u : game.upgrades»
-		    	<button id="upg_«u.safeName»" onclick="buyUpgrade_«u.safeName»()">
-		    	    «u.name» — Cost: «u.cost»
-		    	</button>
-		    «ENDFOR»
-		    </div>
-		
-		    <div id="achievements"></div>
-		
-		    <script>«generateJs(game)»</script>
+		    </section>
+
+		    <main>
+		        <section class="panel" id="generators">
+		            <h2>Generatoren</h2>
+		            «FOR g : game.generators»
+		            	<button class="buy-btn generator-btn«IF lockedGenerators.contains(g.name)» locked«ENDIF»"
+		            	        id="btn_«g.name»" onclick="buy«g.name»()"
+		            	        «IF lockedGenerators.contains(g.name)»style="display:none;"«ENDIF»>
+		            	    <span class="btn-title">«g.name»</span>
+		            	    <span class="btn-sub">produziert «g.produces.name» · besitzt <b id="count_«g.name»">0</b></span>
+		            	    <span class="btn-cost">Kosten: <span id="cost_«g.name»">«g.baseCost.formatStart»</span> «g.produces.name»</span>
+		            	</button>
+		            «ENDFOR»
+		        </section>
+
+		        <section class="panel" id="upgrades">
+		            <h2>Upgrades</h2>
+		            «FOR u : game.upgrades»
+		            	<button class="buy-btn upgrade-btn" id="upg_«u.safeName»" onclick="buyUpgrade_«u.safeName»()">
+		            	    <span class="btn-title">«u.name»</span>
+		            	    <span class="btn-cost">Kosten: <span id="upgcost_«u.safeName»">«u.cost.formatStart»</span> «u.costResourceName(game)»</span>
+		            	</button>
+		            «ENDFOR»
+		        </section>
+
+		        <section class="panel" id="achievements-panel">
+		            <h2>Erfolge</h2>
+		            <div id="achievements">
+		                «FOR a : game.achievements»
+		                	<div class="achievement locked" id="ach_«a.safeName»">🔒 «a.name»</div>
+		                «ENDFOR»
+		            </div>
+		        </section>
+		    </main>
+
+		    <div id="toast-container"></div>
+
+		    <script>«generateJs(game, lockedGenerators)»</script>
 		</body>
 		</html>
 	'''
+    }
 
     def String generateCss() '''
-		body { font-family: sans-serif; padding: 2em; }
-		button { display: block; margin: 0.5em 0; padding: 0.5em 1em; }
-		button:disabled { opacity: 0.4; }
+		:root {
+		    --bg: #0f1220;
+		    --panel: #1b1f33;
+		    --accent: #7c5cff;
+		    --accent-2: #37e0c4;
+		    --text: #e9ecff;
+		    --muted: #9aa0c3;
+		}
+		* { box-sizing: border-box; }
+		body {
+		    margin: 0; font-family: 'Segoe UI', system-ui, sans-serif;
+		    background: radial-gradient(circle at top, #1a1f38, var(--bg));
+		    color: var(--text); padding: 1.5em 2em 4em;
+		}
+		header h1 {
+		    text-align: center; font-size: 2.2em; margin-bottom: 0.6em;
+		    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+		    -webkit-background-clip: text; background-clip: text; color: transparent;
+		}
+		#resources {
+		    display: flex; flex-wrap: wrap; gap: 1em; justify-content: center; margin-bottom: 2em;
+		}
+		.resource-card {
+		    background: var(--panel); border-radius: 14px; padding: 0.8em 1.2em;
+		    display: flex; align-items: center; gap: 0.7em; min-width: 180px;
+		    box-shadow: 0 4px 14px rgba(0,0,0,0.35); transition: transform 0.15s;
+		}
+		.resource-card:hover { transform: translateY(-2px); }
+		.resource-icon { font-size: 1.8em; }
+		.resource-name { font-size: 0.8em; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+		.resource-amount { font-size: 1.3em; font-weight: 700; }
+		.resource-rate { font-size: 0.75em; color: var(--accent-2); }
+
+		main { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5em; max-width: 1100px; margin: 0 auto; }
+		.panel { background: var(--panel); border-radius: 16px; padding: 1.2em; }
+		.panel h2 { margin-top: 0; font-size: 1.1em; color: var(--accent-2); border-bottom: 1px solid #2c3155; padding-bottom: 0.4em; }
+
+		.buy-btn {
+		    display: flex; flex-direction: column; align-items: flex-start; gap: 0.2em;
+		    width: 100%; margin: 0.5em 0; padding: 0.7em 1em; border: none; border-radius: 10px;
+		    background: #262b4a; color: var(--text); cursor: pointer; text-align: left;
+		    transition: background 0.15s, transform 0.1s;
+		}
+		.buy-btn:hover:not(.cant-afford) { background: #323a63; transform: translateY(-1px); }
+		.buy-btn:active:not(.cant-afford) { transform: translateY(0); }
+		.buy-btn.cant-afford { opacity: 0.45; cursor: not-allowed; }
+		.buy-btn.bought { opacity: 0.35; cursor: default; }
+		.btn-title { font-weight: 700; }
+		.btn-sub, .btn-cost { font-size: 0.8em; color: var(--muted); }
+
+		.achievement { padding: 0.5em 0.7em; margin: 0.4em 0; border-radius: 8px; font-size: 0.9em; background: #262b4a; }
+		.achievement.locked { color: var(--muted); }
+		.achievement.unlocked { background: linear-gradient(90deg, #2e6b57, #1b1f33); color: var(--accent-2); }
+
+		#toast-container { position: fixed; top: 1em; right: 1em; display: flex; flex-direction: column; gap: 0.5em; z-index: 999; }
+		.toast {
+		    background: var(--accent); color: white; padding: 0.7em 1.1em; border-radius: 10px;
+		    box-shadow: 0 4px 12px rgba(0,0,0,0.4); animation: toast-in 0.25s ease-out, toast-out 0.4s ease-in 2.6s forwards;
+		}
+		@keyframes toast-in { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+		@keyframes toast-out { to { opacity: 0; transform: translateX(30px); } }
 	'''
 
     // === JavaScript-Teil ===
-    def String generateJs(clicker_Generator.game game) '''
+    def String generateJs(clicker_Generator.game game, Set<String> lockedGenerators) '''
 		let state = {
 		    «FOR r : game.resources SEPARATOR ','»
 		    	«r.name»: «r.startAmount»
 		    «ENDFOR»
 		};
-		
+
+		// Basis-Produktionsrate (pro Sekunde) je Ressource, wird jeden Tick neu berechnet
+		let ratePerSecond = { «FOR r : game.resources SEPARATOR ','»«r.name»: 0«ENDFOR» };
+
 		«FOR g : game.generators»
 			let count_«g.name» = 0;
 			let cost_«g.name» = «g.baseCost»;
-			
-				function buy«g.name»() {
-				    if (state.«g.produces.name» >= cost_«g.name») {
-				        state.«g.produces.name» -= cost_«g.name»;
-				        count_«g.name»++;
-				        cost_«g.name» *= «g.costGrowth»;
-				        document.getElementById('cost_«g.name»').innerText = cost_«g.name».toFixed(1);
-				    }
-				}
+			let mult_«g.name» = 1; // wird durch multiplyRateEffect-Upgrades verändert
 		«ENDFOR»
-		
+
 		«FOR u : game.upgrades»
 			let bought_«u.safeName» = false;
+		«ENDFOR»
+
+		«FOR a : game.achievements»
+			let unlocked_«a.safeName» = false;
+		«ENDFOR»
+
+		function formatNumber(n) {
+		    if (n >= 1e9) return (n / 1e9).toFixed(2) + 'B';
+		    if (n >= 1e6) return (n / 1e6).toFixed(2) + 'M';
+		    if (n >= 1e3) return (n / 1e3).toFixed(2) + 'K';
+		    return n.toFixed(1);
+		}
+
+		function showToast(msg) {
+		    const el = document.createElement('div');
+		    el.className = 'toast';
+		    el.textContent = msg;
+		    document.getElementById('toast-container').appendChild(el);
+		    setTimeout(() => el.remove(), 3000);
+		}
+
+		«FOR g : game.generators»
+			function buy«g.name»() {
+			    if (state.«g.produces.name» >= cost_«g.name») {
+			        state.«g.produces.name» -= cost_«g.name»;
+			        count_«g.name»++;
+			        cost_«g.name» *= «g.costGrowth»;
+			        document.getElementById('cost_«g.name»').innerText = formatNumber(cost_«g.name»);
+			        document.getElementById('count_«g.name»').innerText = count_«g.name»;
+			    }
+			}
+		«ENDFOR»
+
+		«FOR u : game.upgrades»
 			function buyUpgrade_«u.safeName»() {
-			    if (!bought_«u.safeName» && state.Cookies >= «u.cost») {
-			        «FOR r : game.resources»
-			        	state.«r.name» -= «u.cost»;
-			        «ENDFOR»
+			    if (bought_«u.safeName») return;
+			    if (state.«u.costResourceName(game)» >= «u.cost») {
+			        state.«u.costResourceName(game)» -= «u.cost»;
 			        bought_«u.safeName» = true;
 			        «FOR e : u.effects»
 			        	«generateEffect(e)»
 			        «ENDFOR»
-			        document.getElementById('upg_«u.safeName»').disabled = true;
+			        const btn = document.getElementById('upg_«u.safeName»');
+			        btn.classList.add('bought');
+			        btn.disabled = true;
+			        showToast('Upgrade gekauft: «u.name»');
 			    }
 			}
 		«ENDFOR»
-		
+
 		«FOR a : game.achievements»
 			function checkAchievement_«a.safeName»() {
 			    if (!unlocked_«a.safeName» && («generateExpression(a.condition)»)) {
 			        unlocked_«a.safeName» = true;
-			        alert("Achievement unlocked: «a.name»");
+			        const el = document.getElementById('ach_«a.safeName»');
+			        el.textContent = '🏆 «a.name»';
+			        el.classList.remove('locked');
+			        el.classList.add('unlocked');
+			        showToast('Erfolg freigeschaltet: «a.name»');
 			    }
 			}
-			let unlocked_«a.safeName» = false;
 		«ENDFOR»
-		
+
+		function updateAffordability() {
+		    «FOR g : game.generators»
+		    	document.getElementById('btn_«g.name»').classList.toggle('cant-afford', state.«g.produces.name» < cost_«g.name»);
+		    «ENDFOR»
+		    «FOR u : game.upgrades»
+		    	if (!bought_«u.safeName») {
+		    	    document.getElementById('upg_«u.safeName»').classList.toggle('cant-afford', state.«u.costResourceName(game)» < «u.cost»);
+		    	}
+		    «ENDFOR»
+		}
+
 		setInterval(() => {
 		    «FOR g : game.generators»
-		    	state.«g.produces.name» += count_«g.name» * «g.baseRate» * 0.1;
+		    	ratePerSecond.«g.produces.name» = (ratePerSecond.«g.produces.name» || 0) + count_«g.name» * «g.baseRate» * mult_«g.name»;
 		    «ENDFOR»
 		    «FOR r : game.resources»
-		    	document.getElementById('res_«r.name»').innerText = state.«r.name».toFixed(1);
+		    	state.«r.name» += (ratePerSecond.«r.name» || 0) * 0.1;
+		    	document.getElementById('res_«r.name»').innerText = formatNumber(state.«r.name»);
+		    	document.getElementById('rate_«r.name»').innerText = '+' + formatNumber(ratePerSecond.«r.name» || 0) + '/s';
+		    «ENDFOR»
+		    «FOR r : game.resources»
+		    	ratePerSecond.«r.name» = 0;
 		    «ENDFOR»
 		    «FOR a : game.achievements»
 		    	checkAchievement_«a.safeName»();
 		    «ENDFOR»
+		    updateAffordability();
 		}, 100);
+
+		updateAffordability();
 	'''
 
     // === dispatch für Effect-Hierarchie ===
     def dispatch String generateEffect(clicker_Generator.multiplyRateEffect e) '''
-		// Rate von «e.target.name» verdoppeln etc.
-		globalMultiplier_«e.target.name» = («e.factor»);
+		mult_«e.target.name» *= («e.factor»);
 	'''
 
     def dispatch String generateEffect(clicker_Generator.reduceCostEffect e) '''
-		cost_«e.target.name» *= «e.factor»;
+		cost_«e.target.name» *= («e.factor»);
+		document.getElementById('cost_«e.target.name»').innerText = formatNumber(cost_«e.target.name»);
 	'''
 
     def dispatch String generateEffect(clicker_Generator.unlockGeneratorEffect e) '''
-		document.getElementById('btn_«e.target.name»').style.display = 'block';
+		document.getElementById('btn_«e.target.name»').style.display = 'flex';
 	'''
 
     // === dispatch für Expression-Hierarchie (rekursiv!) ===
@@ -153,7 +296,56 @@ class ClickerHtmlGenerator {
         }
     }
 
-    // === Helfer: Namen mit Leerzeichen (STRING-Namen bei Upgrade/Achievement) 
+    // === Helfer: welche Ressource bezahlt ein Upgrade? ===
+    // Nutzt die neue costResource-Referenz; fällt auf die erste Ressource
+    // im Spiel zurück, falls im Modell (noch) keine gesetzt ist, damit
+    // alte Modelle nicht sofort kaputtgehen.
+    def String costResourceName(clicker_Generator.upgrade u, clicker_Generator.game game) {
+        if (u.costResource !== null) {
+            u.costResource.name
+        } else if (!game.resources.empty) {
+            game.resources.get(0).name
+        } else {
+            'undefined'
+        }
+    }
+
+    // === Helfer: welche Generatoren sind zu Beginn gesperrt,
+    //     weil sie Ziel eines unlockGeneratorEffect sind? ===
+    def Set<String> collectLockedGenerators(clicker_Generator.game game) {
+        val locked = new HashSet<String>()
+        for (u : game.upgrades) {
+            for (e : u.effects) {
+                if (e instanceof clicker_Generator.unlockGeneratorEffect) {
+                    locked.add(e.target.name)
+                }
+            }
+        }
+        return locked
+    }
+
+    // === Helfer: hübsche Startwert-Formatierung ohne unnötige Nachkommastellen ===
+    def String formatStart(double value) {
+        if (value == Math.floor(value)) {
+            String.valueOf(value.longValue)
+        } else {
+            String.valueOf(value)
+        }
+    }
+
+    // === Helfer: Emoji-Icon je nach Ressourcenname (rein kosmetisch) ===
+    def String icon(clicker_Generator.resource r) {
+        val n = r.name.toLowerCase
+        if (n.contains('cookie')) '🍪'
+        else if (n.contains('gold') || n.contains('coin') || n.contains('geld')) '🪙'
+        else if (n.contains('gem') || n.contains('diamond') || n.contains('crystal')) '💎'
+        else if (n.contains('energy') || n.contains('power') || n.contains('strom')) '⚡'
+        else if (n.contains('wood') || n.contains('holz')) '🪵'
+        else if (n.contains('star') || n.contains('stern')) '⭐'
+        else '✨'
+    }
+
+    // === Helfer: Namen mit Leerzeichen (STRING-Namen bei Upgrade/Achievement)
     //     für JS-Identifier sicher machen ===
     def String safeName(clicker_Generator.upgrade u) {
         u.name.replaceAll("[^a-zA-Z0-9]", "_")

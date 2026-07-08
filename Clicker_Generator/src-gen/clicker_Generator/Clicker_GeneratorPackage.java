@@ -296,13 +296,22 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	int UPGRADE__REQUIRES = 3;
 
 	/**
+	 * The feature id for the '<em><b>Cost Resource</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UPGRADE__COST_RESOURCE = 4;
+
+	/**
 	 * The number of structural features of the '<em>upgrade</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UPGRADE_FEATURE_COUNT = 4;
+	int UPGRADE_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>upgrade</em>' class.
@@ -891,6 +900,17 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	EReference getupgrade_Requires();
 
 	/**
+	 * Returns the meta object for the reference '{@link clicker_Generator.upgrade#getCostResource <em>Cost Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Cost Resource</em>'.
+	 * @see clicker_Generator.upgrade#getCostResource()
+	 * @see #getupgrade()
+	 * @generated
+	 */
+	EReference getupgrade_CostResource();
+
+	/**
 	 * Returns the meta object for class '{@link clicker_Generator.effect <em>effect</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1323,6 +1343,14 @@ public interface Clicker_GeneratorPackage extends EPackage {
 		 * @generated
 		 */
 		EReference UPGRADE__REQUIRES = eINSTANCE.getupgrade_Requires();
+
+		/**
+		 * The meta object literal for the '<em><b>Cost Resource</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UPGRADE__COST_RESOURCE = eINSTANCE.getupgrade_CostResource();
 
 		/**
 		 * The meta object literal for the '{@link clicker_Generator.impl.effectImpl <em>effect</em>}' class.

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link clicker_Generator.upgrade#getCost <em>Cost</em>}</li>
  *   <li>{@link clicker_Generator.upgrade#getEffects <em>Effects</em>}</li>
  *   <li>{@link clicker_Generator.upgrade#getRequires <em>Requires</em>}</li>
+ *   <li>{@link clicker_Generator.upgrade#getCostResource <em>Cost Resource</em>}</li>
  * </ul>
  *
  * @see clicker_Generator.Clicker_GeneratorPackage#getupgrade()
@@ -93,5 +94,27 @@ public interface upgrade extends EObject {
 	 * @generated
 	 */
 	EList<upgrade> getRequires();
+
+	/**
+	 * Returns the value of the '<em><b>Cost Resource</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cost Resource</em>' reference.
+	 * @see #setCostResource(resource)
+	 * @see clicker_Generator.Clicker_GeneratorPackage#getupgrade_CostResource()
+	 * @model
+	 * @generated
+	 */
+	resource getCostResource();
+
+	/**
+	 * Sets the value of the '{@link clicker_Generator.upgrade#getCostResource <em>Cost Resource</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cost Resource</em>' reference.
+	 * @see #getCostResource()
+	 * @generated
+	 */
+	void setCostResource(resource value);
 
 } // upgrade
