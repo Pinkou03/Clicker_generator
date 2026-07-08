@@ -84,8 +84,8 @@ public class ClickerHtmlGenerator {
           _builder.append("        ");
           _builder.append("    ");
           _builder.append("<div class=\"resource-icon\">");
-          String _icon = this.icon(r);
-          _builder.append(_icon, "            ");
+          String _iconMarkup = this.iconMarkup(r);
+          _builder.append(_iconMarkup, "            ");
           _builder.append("</div>");
           _builder.newLineIfNotEmpty();
           _builder.append("        ");
@@ -411,7 +411,9 @@ public class ClickerHtmlGenerator {
     _builder.newLine();
     _builder.append(".resource-card:hover { transform: translateY(-2px); }");
     _builder.newLine();
-    _builder.append(".resource-icon { font-size: 1.8em; }");
+    _builder.append(".resource-icon { font-size: 1.8em; display: flex; align-items: center; justify-content: center; }");
+    _builder.newLine();
+    _builder.append(".resource-icon-img { width: 1.8em; height: 1.8em; object-fit: contain; border-radius: 6px; }");
     _builder.newLine();
     _builder.append(".resource-name { font-size: 0.8em; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }");
     _builder.newLine();
@@ -507,7 +509,9 @@ public class ClickerHtmlGenerator {
     _builder.newLine();
     _builder.append(".cookie-btn:active { transform: scale(0.93); }");
     _builder.newLine();
-    _builder.append(".cookie-emoji { font-size: 4em; line-height: 1; pointer-events: none; }");
+    _builder.append(".cookie-emoji { font-size: 4em; line-height: 1; pointer-events: none; display: flex; align-items: center; justify-content: center; }");
+    _builder.newLine();
+    _builder.append(".cookie-emoji img { width: 3.2em; height: 3.2em; object-fit: contain; pointer-events: none; }");
     _builder.newLine();
     _builder.append(".cookie-label { font-size: 0.9em; font-weight: 700; color: var(--muted); pointer-events: none; }");
     _builder.newLine();
@@ -1007,6 +1011,8 @@ public class ClickerHtmlGenerator {
     }
     _builder.append("];");
     _builder.newLineIfNotEmpty();
+    _builder.append("// enthält für jede Ressource entweder ein <img>-Tag (falls icon im Modell gesetzt) oder ein Emoji");
+    _builder.newLine();
     _builder.append("const resourceIcons = { ");
     {
       EList<resource> _resources_5 = game.getResources();
@@ -1019,10 +1025,10 @@ public class ClickerHtmlGenerator {
         }
         String _name_34 = r_5.getName();
         _builder.append(_name_34);
-        _builder.append(": \'");
-        String _icon = this.icon(r_5);
-        _builder.append(_icon);
-        _builder.append("\'");
+        _builder.append(": `");
+        String _iconMarkup = this.iconMarkup(r_5);
+        _builder.append(_iconMarkup);
+        _builder.append("`");
       }
     }
     _builder.append(" };");
@@ -1041,7 +1047,7 @@ public class ClickerHtmlGenerator {
     _builder.append("if (!res) return;");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("document.getElementById(\'cookie_emoji\').innerText = resourceIcons[res] || \'\ud83c\udf6a\';");
+    _builder.append("document.getElementById(\'cookie_emoji\').innerHTML = resourceIcons[res] || \'\ud83c\udf6a\';");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("document.getElementById(\'cookie_label\').innerText = \'+\' + clickPower + \' \' + res;");
@@ -1309,6 +1315,24 @@ public class ClickerHtmlGenerator {
       _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
+  }
+
+  public String iconMarkup(final resource r) {
+    String _xifexpression = null;
+    if (((r.getIcon() != null) && (!r.getIcon().trim().isEmpty()))) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("<img class=\"resource-icon-img\" src=\"");
+      String _icon = r.getIcon();
+      _builder.append(_icon);
+      _builder.append("\" alt=\"");
+      String _name = r.getName();
+      _builder.append(_name);
+      _builder.append("\"/>");
+      _xifexpression = _builder.toString();
+    } else {
+      _xifexpression = this.icon(r);
+    }
+    return _xifexpression;
   }
 
   public String safeName(final upgrade u) {

@@ -55,6 +55,7 @@ public class resourceItemProvider extends ItemProviderAdapter implements IEditin
 
 			addNamePropertyDescriptor(object);
 			addStartAmountPropertyDescriptor(object);
+			addIconPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -89,6 +90,22 @@ public class resourceItemProvider extends ItemProviderAdapter implements IEditin
 								"_UI_resource_type"),
 						Clicker_GeneratorPackage.Literals.RESOURCE__START_AMOUNT, true, false, false,
 						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Icon feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIconPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_resource_icon_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_resource_icon_feature",
+								"_UI_resource_type"),
+						Clicker_GeneratorPackage.Literals.RESOURCE__ICON, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -139,6 +156,7 @@ public class resourceItemProvider extends ItemProviderAdapter implements IEditin
 		switch (notification.getFeatureID(resource.class)) {
 		case Clicker_GeneratorPackage.RESOURCE__NAME:
 		case Clicker_GeneratorPackage.RESOURCE__START_AMOUNT:
+		case Clicker_GeneratorPackage.RESOURCE__ICON:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

@@ -292,6 +292,16 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 	 * @generated
 	 */
 	@Override
+	public EAttribute getresource_Icon() {
+		return (EAttribute) resourceEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getgenerator() {
 		return generatorEClass;
 	}
@@ -676,6 +686,7 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 		resourceEClass = createEClass(RESOURCE);
 		createEAttribute(resourceEClass, RESOURCE__NAME);
 		createEAttribute(resourceEClass, RESOURCE__START_AMOUNT);
+		createEAttribute(resourceEClass, RESOURCE__ICON);
 
 		generatorEClass = createEClass(GENERATOR);
 		createEAttribute(generatorEClass, GENERATOR__NAME);
@@ -783,6 +794,8 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getresource_StartAmount(), ecorePackage.getEDouble(), "startAmount", null, 0, 1, resource.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getresource_Icon(), ecorePackage.getEString(), "icon", null, 0, 1, resource.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(generatorEClass, generator.class, "generator", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

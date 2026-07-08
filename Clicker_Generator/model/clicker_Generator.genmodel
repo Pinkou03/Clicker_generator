@@ -30,6 +30,7 @@
     <genClasses ecoreClass="clicker_Generator.ecore#//resource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//resource/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//resource/startAmount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//resource/icon"/>
     </genClasses>
     <genClasses ecoreClass="clicker_Generator.ecore#//generator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//generator/name"/>

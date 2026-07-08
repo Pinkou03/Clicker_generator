@@ -159,13 +159,22 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	int RESOURCE__START_AMOUNT = 1;
 
 	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__ICON = 2;
+
+	/**
 	 * The number of structural features of the '<em>resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_FEATURE_COUNT = 2;
+	int RESOURCE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>resource</em>' class.
@@ -781,6 +790,17 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	EAttribute getresource_StartAmount();
 
 	/**
+	 * Returns the meta object for the attribute '{@link clicker_Generator.resource#getIcon <em>Icon</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Icon</em>'.
+	 * @see clicker_Generator.resource#getIcon()
+	 * @see #getresource()
+	 * @generated
+	 */
+	EAttribute getresource_Icon();
+
+	/**
 	 * Returns the meta object for class '{@link clicker_Generator.generator <em>generator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1251,6 +1271,14 @@ public interface Clicker_GeneratorPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RESOURCE__START_AMOUNT = eINSTANCE.getresource_StartAmount();
+
+		/**
+		 * The meta object literal for the '<em><b>Icon</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESOURCE__ICON = eINSTANCE.getresource_Icon();
 
 		/**
 		 * The meta object literal for the '{@link clicker_Generator.impl.generatorImpl <em>generator</em>}' class.

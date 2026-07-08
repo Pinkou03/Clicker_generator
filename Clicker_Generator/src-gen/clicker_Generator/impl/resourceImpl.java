@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link clicker_Generator.impl.resourceImpl#getName <em>Name</em>}</li>
  *   <li>{@link clicker_Generator.impl.resourceImpl#getStartAmount <em>Start Amount</em>}</li>
+ *   <li>{@link clicker_Generator.impl.resourceImpl#getIcon <em>Icon</em>}</li>
  * </ul>
  *
  * @generated
@@ -66,6 +67,26 @@ public class resourceImpl extends MinimalEObjectImpl.Container implements resour
 	 * @ordered
 	 */
 	protected double startAmount = START_AMOUNT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIcon()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ICON_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getIcon() <em>Icon</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIcon()
+	 * @generated
+	 * @ordered
+	 */
+	protected String icon = ICON_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -140,12 +161,38 @@ public class resourceImpl extends MinimalEObjectImpl.Container implements resour
 	 * @generated
 	 */
 	@Override
+	public String getIcon() {
+		return icon;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setIcon(String newIcon) {
+		String oldIcon = icon;
+		icon = newIcon;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Clicker_GeneratorPackage.RESOURCE__ICON, oldIcon,
+					icon));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Clicker_GeneratorPackage.RESOURCE__NAME:
 			return getName();
 		case Clicker_GeneratorPackage.RESOURCE__START_AMOUNT:
 			return getStartAmount();
+		case Clicker_GeneratorPackage.RESOURCE__ICON:
+			return getIcon();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -163,6 +210,9 @@ public class resourceImpl extends MinimalEObjectImpl.Container implements resour
 			return;
 		case Clicker_GeneratorPackage.RESOURCE__START_AMOUNT:
 			setStartAmount((Double) newValue);
+			return;
+		case Clicker_GeneratorPackage.RESOURCE__ICON:
+			setIcon((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -182,6 +232,9 @@ public class resourceImpl extends MinimalEObjectImpl.Container implements resour
 		case Clicker_GeneratorPackage.RESOURCE__START_AMOUNT:
 			setStartAmount(START_AMOUNT_EDEFAULT);
 			return;
+		case Clicker_GeneratorPackage.RESOURCE__ICON:
+			setIcon(ICON_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -198,6 +251,8 @@ public class resourceImpl extends MinimalEObjectImpl.Container implements resour
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case Clicker_GeneratorPackage.RESOURCE__START_AMOUNT:
 			return startAmount != START_AMOUNT_EDEFAULT;
+		case Clicker_GeneratorPackage.RESOURCE__ICON:
+			return ICON_EDEFAULT == null ? icon != null : !ICON_EDEFAULT.equals(icon);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -217,6 +272,8 @@ public class resourceImpl extends MinimalEObjectImpl.Container implements resour
 		result.append(name);
 		result.append(", startAmount: ");
 		result.append(startAmount);
+		result.append(", icon: ");
+		result.append(icon);
 		result.append(')');
 		return result.toString();
 	}

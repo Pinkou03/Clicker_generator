@@ -25,7 +25,7 @@ class ClickerHtmlGenerator {
 		    <section id="resources">
 		        «FOR r : game.resources»
 		        	<div class="resource-card" id="card_«r.name»">
-		        	    <div class="resource-icon">«r.icon»</div>
+		        	    <div class="resource-icon">«r.iconMarkup»</div>
 		        	    <div class="resource-info">
 		        	        <div class="resource-name">«r.name»</div>
 		        	        <div class="resource-amount" id="res_«r.name»">«r.startAmount.formatStart»</div>
@@ -116,7 +116,8 @@ class ClickerHtmlGenerator {
 		    box-shadow: 0 4px 14px rgba(0,0,0,0.35); transition: transform 0.15s;
 		}
 		.resource-card:hover { transform: translateY(-2px); }
-		.resource-icon { font-size: 1.8em; }
+		.resource-icon { font-size: 1.8em; display: flex; align-items: center; justify-content: center; }
+		.resource-icon-img { width: 1.8em; height: 1.8em; object-fit: contain; border-radius: 6px; }
 		.resource-name { font-size: 0.8em; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
 		.resource-amount { font-size: 1.3em; font-weight: 700; }
 		.resource-rate { font-size: 0.75em; color: var(--accent-2); }
@@ -149,7 +150,7 @@ class ClickerHtmlGenerator {
 		}
 		@keyframes toast-in { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
 		@keyframes toast-out { to { opacity: 0; transform: translateX(30px); } }
-		
+
 		/* --- Clicker (klickbarer Cookie + Ressourcen-Wechsel) --- */
 		#clicker { display: flex; align-items: center; justify-content: center; gap: 1.5em; margin: 0 auto 0.6em; }
 		.cookie-btn {
@@ -161,7 +162,8 @@ class ClickerHtmlGenerator {
 		}
 		.cookie-btn:hover { transform: scale(1.04); box-shadow: 0 10px 28px rgba(124,92,255,0.35), inset 0 0 0 3px var(--accent-2); }
 		.cookie-btn:active { transform: scale(0.93); }
-		.cookie-emoji { font-size: 4em; line-height: 1; pointer-events: none; }
+		.cookie-emoji { font-size: 4em; line-height: 1; pointer-events: none; display: flex; align-items: center; justify-content: center; }
+		.cookie-emoji img { width: 3.2em; height: 3.2em; object-fit: contain; pointer-events: none; }
 		.cookie-label { font-size: 0.9em; font-weight: 700; color: var(--muted); pointer-events: none; }
 		.switch-arrow {
 		    width: 54px; height: 54px; border-radius: 50%; border: none; background: #262b4a;
@@ -285,17 +287,18 @@ class ClickerHtmlGenerator {
 
 		// --- Klickbarer Cookie + Ressourcen-Wechsel ---
 		const resourceList = [«FOR r : game.resources SEPARATOR ', '»'«r.name»'«ENDFOR»];
-		const resourceIcons = { «FOR r : game.resources SEPARATOR ', '»«r.name»: '«r.icon»'«ENDFOR» };
+		// enthält für jede Ressource entweder ein <img>-Tag (falls icon im Modell gesetzt) oder ein Emoji
+		const resourceIcons = { «FOR r : game.resources SEPARATOR ', '»«r.name»: `«r.iconMarkup»`«ENDFOR» };
 		const clickPower = 1;
 		let selectedResourceIndex = 0;
-		
+
 		function updateClicker() {
 		    const res = resourceList[selectedResourceIndex];
 		    if (!res) return;
-		    document.getElementById('cookie_emoji').innerText = resourceIcons[res] || '🍪';
+		    document.getElementById('cookie_emoji').innerHTML = resourceIcons[res] || '🍪';
 		    document.getElementById('cookie_label').innerText = '+' + clickPower + ' ' + res;
 		}
-		
+
 		function clickCookie() {
 		    if (resourceList.length === 0) return;
 		    const res = resourceList[selectedResourceIndex];
@@ -306,7 +309,7 @@ class ClickerHtmlGenerator {
 		    «ENDFOR»
 		    updateAffordability();
 		}
-		
+
 		function switchResource(dir) {
 		    if (resourceList.length === 0) return;
 		    selectedResourceIndex = (selectedResourceIndex + dir + resourceList.length) % resourceList.length;
@@ -395,7 +398,7 @@ class ClickerHtmlGenerator {
         }
     }
 
-    // === Helfer: Emoji-Icon je nach Ressourcenname (rein kosmetisch) ===
+    // === Helfer: Emoji-Icon je nach Ressourcenname (rein kosmetisch, nur Fallback) ===
     def String icon(clicker_Generator.resource r) {
         val n = r.name.toLowerCase
         if (n.contains('cookie')) '🍪'
@@ -405,6 +408,17 @@ class ClickerHtmlGenerator {
         else if (n.contains('wood') || n.contains('holz')) '🪵'
         else if (n.contains('star') || n.contains('stern')) '⭐'
         else '✨'
+    }
+
+    // === Icon-Auswahl: bevorzugt das im Modell gesetzte Bild (r.icon) als <img>-Tag,
+    //     fällt sonst auf ein anhand des Namens geratenes Emoji zurück.
+    //     Wird sowohl für die Resource-Card als auch für den Cookie-Button genutzt. ===
+    def String iconMarkup(clicker_Generator.resource r) {
+        if (r.icon !== null && !r.icon.trim.empty) {
+            '''<img class="resource-icon-img" src="«r.icon»" alt="«r.name»"/>'''
+        } else {
+            icon(r)
+        }
     }
 
     // === Helfer: Namen mit Leerzeichen (STRING-Namen bei Upgrade/Achievement)

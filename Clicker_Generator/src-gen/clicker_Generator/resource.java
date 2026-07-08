@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link clicker_Generator.resource#getName <em>Name</em>}</li>
  *   <li>{@link clicker_Generator.resource#getStartAmount <em>Start Amount</em>}</li>
+ *   <li>{@link clicker_Generator.resource#getIcon <em>Icon</em>}</li>
  * </ul>
  *
  * @see clicker_Generator.Clicker_GeneratorPackage#getresource()
@@ -65,5 +66,27 @@ public interface resource extends EObject {
 	 * @generated
 	 */
 	void setStartAmount(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Icon</em>' attribute.
+	 * @see #setIcon(String)
+	 * @see clicker_Generator.Clicker_GeneratorPackage#getresource_Icon()
+	 * @model
+	 * @generated
+	 */
+	String getIcon();
+
+	/**
+	 * Sets the value of the '{@link clicker_Generator.resource#getIcon <em>Icon</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Icon</em>' attribute.
+	 * @see #getIcon()
+	 * @generated
+	 */
+	void setIcon(String value);
 
 } // resource
