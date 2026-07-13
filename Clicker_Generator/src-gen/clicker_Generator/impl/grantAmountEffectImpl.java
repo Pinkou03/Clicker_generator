@@ -3,9 +3,9 @@
 package clicker_Generator.impl;
 
 import clicker_Generator.Clicker_GeneratorPackage;
-import clicker_Generator.generator;
 import clicker_Generator.grantAmountEffect;
 
+import clicker_Generator.resource;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -56,7 +56,7 @@ public class grantAmountEffectImpl extends effectImpl implements grantAmountEffe
 	 * @generated
 	 * @ordered
 	 */
-	protected generator target;
+	protected resource target;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -107,10 +107,10 @@ public class grantAmountEffectImpl extends effectImpl implements grantAmountEffe
 	 * @generated
 	 */
 	@Override
-	public generator getTarget() {
+	public resource getTarget() {
 		if (target != null && target.eIsProxy()) {
 			InternalEObject oldTarget = (InternalEObject) target;
-			target = (generator) eResolveProxy(oldTarget);
+			target = (resource) eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -125,7 +125,7 @@ public class grantAmountEffectImpl extends effectImpl implements grantAmountEffe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public generator basicGetTarget() {
+	public resource basicGetTarget() {
 		return target;
 	}
 
@@ -135,8 +135,8 @@ public class grantAmountEffectImpl extends effectImpl implements grantAmountEffe
 	 * @generated
 	 */
 	@Override
-	public void setTarget(generator newTarget) {
-		generator oldTarget = target;
+	public void setTarget(resource newTarget) {
+		resource oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Clicker_GeneratorPackage.GRANT_AMOUNT_EFFECT__TARGET,
@@ -173,7 +173,7 @@ public class grantAmountEffectImpl extends effectImpl implements grantAmountEffe
 			setAmount((Double) newValue);
 			return;
 		case Clicker_GeneratorPackage.GRANT_AMOUNT_EFFECT__TARGET:
-			setTarget((generator) newValue);
+			setTarget((resource) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -191,7 +191,7 @@ public class grantAmountEffectImpl extends effectImpl implements grantAmountEffe
 			setAmount(AMOUNT_EDEFAULT);
 			return;
 		case Clicker_GeneratorPackage.GRANT_AMOUNT_EFFECT__TARGET:
-			setTarget((generator) null);
+			setTarget((resource) null);
 			return;
 		}
 		super.eUnset(featureID);

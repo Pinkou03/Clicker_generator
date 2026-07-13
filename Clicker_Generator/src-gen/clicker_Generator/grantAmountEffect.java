@@ -47,12 +47,12 @@ public interface grantAmountEffect extends effect {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
-	 * @see #setTarget(generator)
+	 * @see #setTarget(resource)
 	 * @see clicker_Generator.Clicker_GeneratorPackage#getgrantAmountEffect_Target()
 	 * @model
 	 * @generated
 	 */
-	generator getTarget();
+	resource getTarget();
 
 	/**
 	 * Sets the value of the '{@link clicker_Generator.grantAmountEffect#getTarget <em>Target</em>}' reference.
@@ -62,6 +62,6 @@ public interface grantAmountEffect extends effect {
 	 * @see #getTarget()
 	 * @generated
 	 */
-	void setTarget(generator value);
+	void setTarget(resource value);
 
 } // grantAmountEffect

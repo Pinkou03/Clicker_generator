@@ -989,7 +989,7 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 		initEAttribute(getgrantAmountEffect_Amount(), ecorePackage.getEDouble(), "amount", null, 0, 1,
 				grantAmountEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEReference(getgrantAmountEffect_Target(), this.getgenerator(), null, "target", null, 0, 1,
+		initEReference(getgrantAmountEffect_Target(), this.getresource(), null, "target", null, 0, 1,
 				grantAmountEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
