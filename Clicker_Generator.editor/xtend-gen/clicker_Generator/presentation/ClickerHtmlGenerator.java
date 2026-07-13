@@ -5,6 +5,7 @@ import clicker_Generator.binaryExpression;
 import clicker_Generator.comparison;
 import clicker_Generator.comparisonOperator;
 import clicker_Generator.effect;
+import clicker_Generator.event;
 import clicker_Generator.expression;
 import clicker_Generator.game;
 import clicker_Generator.generator;
@@ -530,6 +531,24 @@ public class ClickerHtmlGenerator {
     _builder.append(".switch-arrow:active { transform: scale(0.92); }");
     _builder.newLine();
     _builder.append("#switch-hint { text-align: center; color: var(--muted); font-size: 0.9em; letter-spacing: 0.05em; margin: 0 0 2em; }");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("/* --- Events (golden-cookie style) --- */");
+    _builder.newLine();
+    _builder.append(".golden-cookie {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("position: fixed; width: 64px; height: 64px; border: none; background: transparent;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("font-size: 2.6em; cursor: pointer; z-index: 998; filter: drop-shadow(0 0 10px gold);");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("animation: golden-pulse 1s ease-in-out infinite;");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("@keyframes golden-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.15); } }");
     _builder.newLine();
     return _builder.toString();
   }
@@ -1104,6 +1123,158 @@ public class ClickerHtmlGenerator {
     _builder.newLine();
     _builder.append("updateAffordability();");
     _builder.newLine();
+    _builder.newLine();
+    _builder.append("// === Events (model-driven: x% Chance alle y Sekunden, pro Generator/Resource) ===");
+    _builder.newLine();
+    {
+      EList<event> _events = game.getEvents();
+      for(final event e_1 : _events) {
+        _builder.append("(function() {");
+        _builder.newLine();
+        _builder.append("    ");
+        _builder.append("const chance = ");
+        double _chance = e_1.getChance();
+        _builder.append(_chance, "    ");
+        _builder.append(";");
+        _builder.newLineIfNotEmpty();
+        _builder.append("    ");
+        _builder.append("const intervalMs = ");
+        double _intervalSeconds = e_1.getIntervalSeconds();
+        _builder.append(_intervalSeconds, "    ");
+        _builder.append(" * 1000;");
+        _builder.newLineIfNotEmpty();
+        _builder.append("    ");
+        _builder.append("const durationMs = ");
+        double _durationSeconds = e_1.getDurationSeconds();
+        _builder.append(_durationSeconds, "    ");
+        _builder.append(" * 1000;");
+        _builder.newLineIfNotEmpty();
+        _builder.newLine();
+        _builder.append("    ");
+        _builder.append("function apply_");
+        String _safeName_14 = this.safeName(e_1);
+        _builder.append(_safeName_14, "    ");
+        _builder.append("() {");
+        _builder.newLineIfNotEmpty();
+        {
+          EList<effect> _effects_1 = e_1.getEffects();
+          for(final effect ef : _effects_1) {
+            _builder.append("        ");
+            String _generateEventEffectApply = this.generateEventEffectApply(ef);
+            _builder.append(_generateEventEffectApply, "        ");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("        ");
+        _builder.append("showToast(\'Event: ");
+        String _name_35 = e_1.getName();
+        _builder.append(_name_35, "        ");
+        _builder.append("\');");
+        _builder.newLineIfNotEmpty();
+        _builder.append("        ");
+        _builder.append("updateAffordability();");
+        _builder.newLine();
+        {
+          double _durationSeconds_1 = e_1.getDurationSeconds();
+          boolean _greaterThan = (_durationSeconds_1 > 0);
+          if (_greaterThan) {
+            _builder.append("        ");
+            _builder.append("setTimeout(() => {");
+            _builder.newLine();
+            {
+              EList<effect> _effects_2 = e_1.getEffects();
+              for(final effect ef_1 : _effects_2) {
+                _builder.append("        ");
+                _builder.append("    ");
+                String _generateEventEffectRevert = this.generateEventEffectRevert(ef_1);
+                _builder.append(_generateEventEffectRevert, "            ");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+            _builder.append("        ");
+            _builder.append("    ");
+            _builder.append("updateAffordability();");
+            _builder.newLine();
+            _builder.append("        ");
+            _builder.append("}, durationMs);");
+            _builder.newLine();
+          }
+        }
+        _builder.append("    ");
+        _builder.append("}");
+        _builder.newLine();
+        _builder.newLine();
+        _builder.append("    ");
+        _builder.append("function spawn_");
+        String _safeName_15 = this.safeName(e_1);
+        _builder.append(_safeName_15, "    ");
+        _builder.append("() {");
+        _builder.newLineIfNotEmpty();
+        _builder.append("        ");
+        _builder.append("if (document.getElementById(\'event_");
+        String _safeName_16 = this.safeName(e_1);
+        _builder.append(_safeName_16, "        ");
+        _builder.append("\')) return; // nur eins gleichzeitig pro Event");
+        _builder.newLineIfNotEmpty();
+        _builder.append("        ");
+        _builder.append("const el = document.createElement(\'button\');");
+        _builder.newLine();
+        _builder.append("        ");
+        _builder.append("el.id = \'event_");
+        String _safeName_17 = this.safeName(e_1);
+        _builder.append(_safeName_17, "        ");
+        _builder.append("\';");
+        _builder.newLineIfNotEmpty();
+        _builder.append("        ");
+        _builder.append("el.className = \'golden-cookie\';");
+        _builder.newLine();
+        _builder.append("        ");
+        _builder.append("el.title = \'");
+        String _name_36 = e_1.getName();
+        _builder.append(_name_36, "        ");
+        _builder.append("\';");
+        _builder.newLineIfNotEmpty();
+        _builder.append("        ");
+        _builder.append("el.textContent = \'✨\';");
+        _builder.newLine();
+        _builder.append("        ");
+        _builder.append("el.style.top = (10 + Math.random() * 70) + \'%\';");
+        _builder.newLine();
+        _builder.append("        ");
+        _builder.append("el.style.left = (10 + Math.random() * 80) + \'%\';");
+        _builder.newLine();
+        _builder.append("        ");
+        _builder.append("el.onclick = () => { el.remove(); apply_");
+        String _safeName_18 = this.safeName(e_1);
+        _builder.append(_safeName_18, "        ");
+        _builder.append("(); };");
+        _builder.newLineIfNotEmpty();
+        _builder.append("        ");
+        _builder.append("document.body.appendChild(el);");
+        _builder.newLine();
+        _builder.append("        ");
+        _builder.append("setTimeout(() => el.remove(), 8000);");
+        _builder.newLine();
+        _builder.append("    ");
+        _builder.append("}");
+        _builder.newLine();
+        _builder.newLine();
+        _builder.append("    ");
+        _builder.append("setInterval(() => {");
+        _builder.newLine();
+        _builder.append("        ");
+        _builder.append("if (Math.random() < chance) spawn_");
+        String _safeName_19 = this.safeName(e_1);
+        _builder.append(_safeName_19, "        ");
+        _builder.append("();");
+        _builder.newLineIfNotEmpty();
+        _builder.append("    ");
+        _builder.append("}, intervalMs);");
+        _builder.newLine();
+        _builder.append("})();");
+        _builder.newLine();
+      }
+    }
     return _builder.toString();
   }
 
@@ -1148,6 +1319,45 @@ public class ClickerHtmlGenerator {
     _builder.append(_name);
     _builder.append("\').style.display = \'flex\';");
     _builder.newLineIfNotEmpty();
+    return _builder.toString();
+  }
+
+  protected String _generateEventEffectApply(final multiplyRateEffect e) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("mult_");
+    String _name = e.getTarget().getName();
+    _builder.append(_name);
+    _builder.append(" *= (");
+    double _factor = e.getFactor();
+    _builder.append(_factor);
+    _builder.append(");");
+    _builder.newLineIfNotEmpty();
+    return _builder.toString();
+  }
+
+  protected String _generateEventEffectApply(final effect e) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _generateEffect = this.generateEffect(e);
+    _builder.append(_generateEffect);
+    _builder.newLineIfNotEmpty();
+    return _builder.toString();
+  }
+
+  protected String _generateEventEffectRevert(final multiplyRateEffect e) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("mult_");
+    String _name = e.getTarget().getName();
+    _builder.append(_name);
+    _builder.append(" /= (");
+    double _factor = e.getFactor();
+    _builder.append(_factor);
+    _builder.append(");");
+    _builder.newLineIfNotEmpty();
+    return _builder.toString();
+  }
+
+  protected String _generateEventEffectRevert(final effect e) {
+    StringConcatenation _builder = new StringConcatenation();
     return _builder.toString();
   }
 
@@ -1343,6 +1553,10 @@ public class ClickerHtmlGenerator {
     return a.getName().replaceAll("[^a-zA-Z0-9]", "_");
   }
 
+  public String safeName(final event e) {
+    return e.getName().replaceAll("[^a-zA-Z0-9]", "_");
+  }
+
   @XbaseGenerated
   public String generateEffect(final effect e) {
     if (e instanceof multiplyRateEffect) {
@@ -1351,6 +1565,30 @@ public class ClickerHtmlGenerator {
       return _generateEffect((reduceCostEffect)e);
     } else if (e instanceof unlockGeneratorEffect) {
       return _generateEffect((unlockGeneratorEffect)e);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(e).toString());
+    }
+  }
+
+  @XbaseGenerated
+  public String generateEventEffectApply(final effect e) {
+    if (e instanceof multiplyRateEffect) {
+      return _generateEventEffectApply((multiplyRateEffect)e);
+    } else if (e != null) {
+      return _generateEventEffectApply(e);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(e).toString());
+    }
+  }
+
+  @XbaseGenerated
+  public String generateEventEffectRevert(final effect e) {
+    if (e instanceof multiplyRateEffect) {
+      return _generateEventEffectRevert((multiplyRateEffect)e);
+    } else if (e != null) {
+      return _generateEventEffectRevert(e);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(e).toString());

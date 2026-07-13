@@ -234,6 +234,9 @@ public class eventItemProvider extends ItemProviderAdapter implements IEditingDo
 
 		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.EVENT__EFFECTS,
 				Clicker_GeneratorFactory.eINSTANCE.createunlockGeneratorEffect()));
+
+		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.EVENT__EFFECTS,
+				Clicker_GeneratorFactory.eINSTANCE.creategrantAmountEffect()));
 	}
 
 	/**

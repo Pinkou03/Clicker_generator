@@ -128,6 +128,15 @@ public class Clicker_GeneratorSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case Clicker_GeneratorPackage.GRANT_AMOUNT_EFFECT: {
+			grantAmountEffect grantAmountEffect = (grantAmountEffect) theEObject;
+			T result = casegrantAmountEffect(grantAmountEffect);
+			if (result == null)
+				result = caseeffect(grantAmountEffect);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case Clicker_GeneratorPackage.ACHIEVEMENT: {
 			achievement achievement = (achievement) theEObject;
 			T result = caseachievement(achievement);
@@ -289,6 +298,21 @@ public class Clicker_GeneratorSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseunlockGeneratorEffect(unlockGeneratorEffect object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>grant Amount Effect</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>grant Amount Effect</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casegrantAmountEffect(grantAmountEffect object) {
 		return null;
 	}
 

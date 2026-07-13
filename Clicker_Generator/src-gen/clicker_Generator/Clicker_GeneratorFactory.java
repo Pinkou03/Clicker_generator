@@ -85,6 +85,15 @@ public interface Clicker_GeneratorFactory extends EFactory {
 	unlockGeneratorEffect createunlockGeneratorEffect();
 
 	/**
+	 * Returns a new object of class '<em>grant Amount Effect</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>grant Amount Effect</em>'.
+	 * @generated
+	 */
+	grantAmountEffect creategrantAmountEffect();
+
+	/**
 	 * Returns a new object of class '<em>achievement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -59,6 +59,10 @@
     <genClasses ecoreClass="clicker_Generator.ecore#//unlockGeneratorEffect">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//unlockGeneratorEffect/target"/>
     </genClasses>
+    <genClasses ecoreClass="clicker_Generator.ecore#//grantAmountEffect">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//grantAmountEffect/amount"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//grantAmountEffect/target"/>
+    </genClasses>
     <genClasses ecoreClass="clicker_Generator.ecore#//achievement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//achievement/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//achievement/condition"/>

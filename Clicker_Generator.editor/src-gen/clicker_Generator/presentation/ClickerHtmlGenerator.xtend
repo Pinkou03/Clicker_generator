@@ -172,6 +172,14 @@ class ClickerHtmlGenerator {
 		.switch-arrow:hover { background: #323a63; transform: translateY(-1px); }
 		.switch-arrow:active { transform: scale(0.92); }
 		#switch-hint { text-align: center; color: var(--muted); font-size: 0.9em; letter-spacing: 0.05em; margin: 0 0 2em; }
+
+		/* --- Events (golden-cookie style) --- */
+		.golden-cookie {
+		    position: fixed; width: 64px; height: 64px; border: none; background: transparent;
+		    font-size: 2.6em; cursor: pointer; z-index: 998; filter: drop-shadow(0 0 10px gold);
+		    animation: golden-pulse 1s ease-in-out infinite;
+		}
+		@keyframes golden-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.15); } }
 	'''
 
     // === JavaScript-Teil ===
@@ -318,6 +326,49 @@ class ClickerHtmlGenerator {
 
 		updateClicker();
 		updateAffordability();
+
+		// === Events (model-driven: x% Chance alle y Sekunden, pro Generator/Resource) ===
+		«FOR e : game.events»
+			(function() {
+			    const chance = «e.chance»;
+			    const intervalMs = «e.intervalSeconds» * 1000;
+			    const durationMs = «e.durationSeconds» * 1000;
+
+			    function apply_«e.safeName»() {
+			        «FOR ef : e.effects»
+			        	«generateEventEffectApply(ef)»
+			        «ENDFOR»
+			        showToast('Event: «e.name»');
+			        updateAffordability();
+			        «IF e.durationSeconds > 0»
+			        	setTimeout(() => {
+			        	    «FOR ef : e.effects»
+			        	    	«generateEventEffectRevert(ef)»
+			        	    «ENDFOR»
+			        	    updateAffordability();
+			        	}, durationMs);
+			        «ENDIF»
+			    }
+
+			    function spawn_«e.safeName»() {
+			        if (document.getElementById('event_«e.safeName»')) return; // nur eins gleichzeitig pro Event
+			        const el = document.createElement('button');
+			        el.id = 'event_«e.safeName»';
+			        el.className = 'golden-cookie';
+			        el.title = '«e.name»';
+			        el.textContent = '✨';
+			        el.style.top = (10 + Math.random() * 70) + '%';
+			        el.style.left = (10 + Math.random() * 80) + '%';
+			        el.onclick = () => { el.remove(); apply_«e.safeName»(); };
+			        document.body.appendChild(el);
+			        setTimeout(() => el.remove(), 8000);
+			    }
+
+			    setInterval(() => {
+			        if (Math.random() < chance) spawn_«e.safeName»();
+			    }, intervalMs);
+			})();
+		«ENDFOR»
 	'''
 
     // === dispatch für Effect-Hierarchie ===
@@ -333,6 +384,25 @@ class ClickerHtmlGenerator {
     def dispatch String generateEffect(clicker_Generator.unlockGeneratorEffect e) '''
 		document.getElementById('btn_«e.target.name»').style.display = 'flex';
 	'''
+
+    // === dispatch für Event-Effekte: anwenden (apply) ===
+    // multiplyRateEffect wird hier als TEMPORÄRER Boost benutzt (siehe revert unten),
+    // reduceCostEffect/unlockGeneratorEffect wirken wie gehabt dauerhaft.
+    def dispatch String generateEventEffectApply(clicker_Generator.multiplyRateEffect e) '''
+		mult_«e.target.name» *= («e.factor»);
+	'''
+
+    def dispatch String generateEventEffectApply(clicker_Generator.effect e) '''
+		«generateEffect(e)»
+	'''
+
+    // === dispatch für Event-Effekte: zurücksetzen (revert) nach durationSeconds ===
+    // Nur multiplyRateEffect ist reversibel (Boost läuft ab); alles andere bleibt dauerhaft.
+    def dispatch String generateEventEffectRevert(clicker_Generator.multiplyRateEffect e) '''
+		mult_«e.target.name» /= («e.factor»);
+	'''
+
+    def dispatch String generateEventEffectRevert(clicker_Generator.effect e) ''''''
 
     // === dispatch für Expression-Hierarchie (rekursiv!) ===
     def dispatch String generateExpression(clicker_Generator.comparison c) '''
@@ -428,5 +498,8 @@ class ClickerHtmlGenerator {
     }
     def String safeName(clicker_Generator.achievement a) {
         a.name.replaceAll("[^a-zA-Z0-9]", "_")
+    }
+    def String safeName(clicker_Generator.event e) {
+        e.name.replaceAll("[^a-zA-Z0-9]", "_")
     }
 }

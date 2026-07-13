@@ -234,6 +234,29 @@ public class Clicker_GeneratorItemProviderAdapterFactory extends Clicker_Generat
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link clicker_Generator.grantAmountEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected grantAmountEffectItemProvider grantAmountEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link clicker_Generator.grantAmountEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter creategrantAmountEffectAdapter() {
+		if (grantAmountEffectItemProvider == null) {
+			grantAmountEffectItemProvider = new grantAmountEffectItemProvider(this);
+		}
+
+		return grantAmountEffectItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link clicker_Generator.achievement} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -444,6 +467,8 @@ public class Clicker_GeneratorItemProviderAdapterFactory extends Clicker_Generat
 			reduceCostEffectItemProvider.dispose();
 		if (unlockGeneratorEffectItemProvider != null)
 			unlockGeneratorEffectItemProvider.dispose();
+		if (grantAmountEffectItemProvider != null)
+			grantAmountEffectItemProvider.dispose();
 		if (achievementItemProvider != null)
 			achievementItemProvider.dispose();
 		if (comparisonItemProvider != null)

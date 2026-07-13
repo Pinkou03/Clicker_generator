@@ -230,6 +230,9 @@ public class upgradeItemProvider extends ItemProviderAdapter implements IEditing
 
 		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.UPGRADE__EFFECTS,
 				Clicker_GeneratorFactory.eINSTANCE.createunlockGeneratorEffect()));
+
+		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.UPGRADE__EFFECTS,
+				Clicker_GeneratorFactory.eINSTANCE.creategrantAmountEffect()));
 	}
 
 	/**

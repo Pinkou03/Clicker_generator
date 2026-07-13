@@ -14,6 +14,7 @@ import clicker_Generator.expression;
 import clicker_Generator.game;
 
 import clicker_Generator.generator;
+import clicker_Generator.grantAmountEffect;
 import clicker_Generator.logicOperator;
 import clicker_Generator.multiplyRateEffect;
 import clicker_Generator.reduceCostEffect;
@@ -90,6 +91,13 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 	 * @generated
 	 */
 	private EClass unlockGeneratorEffectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass grantAmountEffectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -530,6 +538,36 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 	 * @generated
 	 */
 	@Override
+	public EClass getgrantAmountEffect() {
+		return grantAmountEffectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getgrantAmountEffect_Amount() {
+		return (EAttribute) grantAmountEffectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getgrantAmountEffect_Target() {
+		return (EReference) grantAmountEffectEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getachievement() {
 		return achievementEClass;
 	}
@@ -794,6 +832,10 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 		unlockGeneratorEffectEClass = createEClass(UNLOCK_GENERATOR_EFFECT);
 		createEReference(unlockGeneratorEffectEClass, UNLOCK_GENERATOR_EFFECT__TARGET);
 
+		grantAmountEffectEClass = createEClass(GRANT_AMOUNT_EFFECT);
+		createEAttribute(grantAmountEffectEClass, GRANT_AMOUNT_EFFECT__AMOUNT);
+		createEReference(grantAmountEffectEClass, GRANT_AMOUNT_EFFECT__TARGET);
+
 		achievementEClass = createEClass(ACHIEVEMENT);
 		createEAttribute(achievementEClass, ACHIEVEMENT__NAME);
 		createEReference(achievementEClass, ACHIEVEMENT__CONDITION);
@@ -854,6 +896,7 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 		multiplyRateEffectEClass.getESuperTypes().add(this.geteffect());
 		reduceCostEffectEClass.getESuperTypes().add(this.geteffect());
 		unlockGeneratorEffectEClass.getESuperTypes().add(this.geteffect());
+		grantAmountEffectEClass.getESuperTypes().add(this.geteffect());
 		comparisonEClass.getESuperTypes().add(this.getexpression());
 		binaryExpressionEClass.getESuperTypes().add(this.getexpression());
 
@@ -940,6 +983,15 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 		initEReference(getunlockGeneratorEffect_Target(), this.getgenerator(), null, "target", null, 0, 1,
 				unlockGeneratorEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(grantAmountEffectEClass, grantAmountEffect.class, "grantAmountEffect", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getgrantAmountEffect_Amount(), ecorePackage.getEDouble(), "amount", null, 0, 1,
+				grantAmountEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getgrantAmountEffect_Target(), this.getgenerator(), null, "target", null, 0, 1,
+				grantAmountEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(achievementEClass, achievement.class, "achievement", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

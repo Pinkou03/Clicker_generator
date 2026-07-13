@@ -107,6 +107,11 @@ public class Clicker_GeneratorAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter casegrantAmountEffect(grantAmountEffect object) {
+			return creategrantAmountEffectAdapter();
+		}
+
+		@Override
 		public Adapter caseachievement(achievement object) {
 			return createachievementAdapter();
 		}
@@ -259,6 +264,20 @@ public class Clicker_GeneratorAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createunlockGeneratorEffectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link clicker_Generator.grantAmountEffect <em>grant Amount Effect</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see clicker_Generator.grantAmountEffect
+	 * @generated
+	 */
+	public Adapter creategrantAmountEffectAdapter() {
 		return null;
 	}
 

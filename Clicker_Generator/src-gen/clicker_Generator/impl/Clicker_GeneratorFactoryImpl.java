@@ -71,6 +71,8 @@ public class Clicker_GeneratorFactoryImpl extends EFactoryImpl implements Clicke
 			return createreduceCostEffect();
 		case Clicker_GeneratorPackage.UNLOCK_GENERATOR_EFFECT:
 			return createunlockGeneratorEffect();
+		case Clicker_GeneratorPackage.GRANT_AMOUNT_EFFECT:
+			return creategrantAmountEffect();
 		case Clicker_GeneratorPackage.ACHIEVEMENT:
 			return createachievement();
 		case Clicker_GeneratorPackage.COMPARISON:
@@ -193,6 +195,17 @@ public class Clicker_GeneratorFactoryImpl extends EFactoryImpl implements Clicke
 	public unlockGeneratorEffect createunlockGeneratorEffect() {
 		unlockGeneratorEffectImpl unlockGeneratorEffect = new unlockGeneratorEffectImpl();
 		return unlockGeneratorEffect;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public grantAmountEffect creategrantAmountEffect() {
+		grantAmountEffectImpl grantAmountEffect = new grantAmountEffectImpl();
+		return grantAmountEffect;
 	}
 
 	/**

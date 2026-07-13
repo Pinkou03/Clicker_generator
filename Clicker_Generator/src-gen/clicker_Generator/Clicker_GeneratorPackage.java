@@ -498,6 +498,52 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	int UNLOCK_GENERATOR_EFFECT_OPERATION_COUNT = EFFECT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link clicker_Generator.impl.grantAmountEffectImpl <em>grant Amount Effect</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see clicker_Generator.impl.grantAmountEffectImpl
+	 * @see clicker_Generator.impl.Clicker_GeneratorPackageImpl#getgrantAmountEffect()
+	 * @generated
+	 */
+	int GRANT_AMOUNT_EFFECT = 8;
+
+	/**
+	 * The feature id for the '<em><b>Amount</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRANT_AMOUNT_EFFECT__AMOUNT = EFFECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRANT_AMOUNT_EFFECT__TARGET = EFFECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>grant Amount Effect</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRANT_AMOUNT_EFFECT_FEATURE_COUNT = EFFECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>grant Amount Effect</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRANT_AMOUNT_EFFECT_OPERATION_COUNT = EFFECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link clicker_Generator.impl.achievementImpl <em>achievement</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -505,7 +551,7 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	 * @see clicker_Generator.impl.Clicker_GeneratorPackageImpl#getachievement()
 	 * @generated
 	 */
-	int ACHIEVEMENT = 8;
+	int ACHIEVEMENT = 9;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -551,7 +597,7 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	 * @see clicker_Generator.impl.Clicker_GeneratorPackageImpl#getexpression()
 	 * @generated
 	 */
-	int EXPRESSION = 9;
+	int EXPRESSION = 10;
 
 	/**
 	 * The number of structural features of the '<em>expression</em>' class.
@@ -579,7 +625,7 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	 * @see clicker_Generator.impl.Clicker_GeneratorPackageImpl#getcomparison()
 	 * @generated
 	 */
-	int COMPARISON = 10;
+	int COMPARISON = 11;
 
 	/**
 	 * The feature id for the '<em><b>Resource</b></em>' reference.
@@ -634,7 +680,7 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	 * @see clicker_Generator.impl.Clicker_GeneratorPackageImpl#getbinaryExpression()
 	 * @generated
 	 */
-	int BINARY_EXPRESSION = 11;
+	int BINARY_EXPRESSION = 12;
 
 	/**
 	 * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -689,7 +735,7 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	 * @see clicker_Generator.impl.Clicker_GeneratorPackageImpl#getevent()
 	 * @generated
 	 */
-	int EVENT = 12;
+	int EVENT = 13;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -762,7 +808,7 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	 * @see clicker_Generator.impl.Clicker_GeneratorPackageImpl#getcomparisonOperator()
 	 * @generated
 	 */
-	int COMPARISON_OPERATOR = 13;
+	int COMPARISON_OPERATOR = 14;
 
 	/**
 	 * The meta object id for the '{@link clicker_Generator.logicOperator <em>logic Operator</em>}' enum.
@@ -772,7 +818,7 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	 * @see clicker_Generator.impl.Clicker_GeneratorPackageImpl#getlogicOperator()
 	 * @generated
 	 */
-	int LOGIC_OPERATOR = 14;
+	int LOGIC_OPERATOR = 15;
 
 	/**
 	 * Returns the meta object for class '{@link clicker_Generator.game <em>game</em>}'.
@@ -1117,6 +1163,38 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getunlockGeneratorEffect_Target();
+
+	/**
+	 * Returns the meta object for class '{@link clicker_Generator.grantAmountEffect <em>grant Amount Effect</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>grant Amount Effect</em>'.
+	 * @see clicker_Generator.grantAmountEffect
+	 * @generated
+	 */
+	EClass getgrantAmountEffect();
+
+	/**
+	 * Returns the meta object for the attribute '{@link clicker_Generator.grantAmountEffect#getAmount <em>Amount</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Amount</em>'.
+	 * @see clicker_Generator.grantAmountEffect#getAmount()
+	 * @see #getgrantAmountEffect()
+	 * @generated
+	 */
+	EAttribute getgrantAmountEffect_Amount();
+
+	/**
+	 * Returns the meta object for the reference '{@link clicker_Generator.grantAmountEffect#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see clicker_Generator.grantAmountEffect#getTarget()
+	 * @see #getgrantAmountEffect()
+	 * @generated
+	 */
+	EReference getgrantAmountEffect_Target();
 
 	/**
 	 * Returns the meta object for class '{@link clicker_Generator.achievement <em>achievement</em>}'.
@@ -1625,6 +1703,32 @@ public interface Clicker_GeneratorPackage extends EPackage {
 		 * @generated
 		 */
 		EReference UNLOCK_GENERATOR_EFFECT__TARGET = eINSTANCE.getunlockGeneratorEffect_Target();
+
+		/**
+		 * The meta object literal for the '{@link clicker_Generator.impl.grantAmountEffectImpl <em>grant Amount Effect</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see clicker_Generator.impl.grantAmountEffectImpl
+		 * @see clicker_Generator.impl.Clicker_GeneratorPackageImpl#getgrantAmountEffect()
+		 * @generated
+		 */
+		EClass GRANT_AMOUNT_EFFECT = eINSTANCE.getgrantAmountEffect();
+
+		/**
+		 * The meta object literal for the '<em><b>Amount</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GRANT_AMOUNT_EFFECT__AMOUNT = eINSTANCE.getgrantAmountEffect_Amount();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GRANT_AMOUNT_EFFECT__TARGET = eINSTANCE.getgrantAmountEffect_Target();
 
 		/**
 		 * The meta object literal for the '{@link clicker_Generator.impl.achievementImpl <em>achievement</em>}' class.
