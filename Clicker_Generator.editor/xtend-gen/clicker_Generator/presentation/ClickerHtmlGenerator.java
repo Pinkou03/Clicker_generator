@@ -78,8 +78,8 @@ public class ClickerHtmlGenerator {
         for(final resource r : _resources) {
           _builder.append("        ");
           _builder.append("<div class=\"resource-card\" id=\"card_");
-          String _name_2 = r.getName();
-          _builder.append(_name_2, "        ");
+          String _safeName = this.safeName(r);
+          _builder.append(_safeName, "        ");
           _builder.append("\">");
           _builder.newLineIfNotEmpty();
           _builder.append("        ");
@@ -96,15 +96,15 @@ public class ClickerHtmlGenerator {
           _builder.append("        ");
           _builder.append("        ");
           _builder.append("<div class=\"resource-name\">");
-          String _name_3 = r.getName();
-          _builder.append(_name_3, "                ");
+          String _name_2 = r.getName();
+          _builder.append(_name_2, "                ");
           _builder.append("</div>");
           _builder.newLineIfNotEmpty();
           _builder.append("        ");
           _builder.append("        ");
           _builder.append("<div class=\"resource-amount\" id=\"res_");
-          String _name_4 = r.getName();
-          _builder.append(_name_4, "                ");
+          String _safeName_1 = this.safeName(r);
+          _builder.append(_safeName_1, "                ");
           _builder.append("\">");
           String _formatStart = this.formatStart(r.getStartAmount());
           _builder.append(_formatStart, "                ");
@@ -113,8 +113,8 @@ public class ClickerHtmlGenerator {
           _builder.append("        ");
           _builder.append("        ");
           _builder.append("<div class=\"resource-rate\" id=\"rate_");
-          String _name_5 = r.getName();
-          _builder.append(_name_5, "                ");
+          String _safeName_2 = this.safeName(r);
+          _builder.append(_safeName_2, "                ");
           _builder.append("\">+0/s</div>");
           _builder.newLineIfNotEmpty();
           _builder.append("        ");
@@ -173,7 +173,7 @@ public class ClickerHtmlGenerator {
           _builder.append("            ");
           _builder.append("<button class=\"buy-btn generator-btn");
           {
-            boolean _contains = lockedGenerators.contains(g.getName());
+            boolean _contains = lockedGenerators.contains(this.safeName(g));
             if (_contains) {
               _builder.append(" locked");
             }
@@ -183,17 +183,17 @@ public class ClickerHtmlGenerator {
           _builder.append("            ");
           _builder.append("        ");
           _builder.append("id=\"btn_");
-          String _name_6 = g.getName();
-          _builder.append(_name_6, "                    ");
+          String _safeName_3 = this.safeName(g);
+          _builder.append(_safeName_3, "                    ");
           _builder.append("\" onclick=\"buy");
-          String _name_7 = g.getName();
-          _builder.append(_name_7, "                    ");
+          String _safeName_4 = this.safeName(g);
+          _builder.append(_safeName_4, "                    ");
           _builder.append("()\"");
           _builder.newLineIfNotEmpty();
           _builder.append("            ");
           _builder.append("        ");
           {
-            boolean _contains_1 = lockedGenerators.contains(g.getName());
+            boolean _contains_1 = lockedGenerators.contains(this.safeName(g));
             if (_contains_1) {
               _builder.append("style=\"display:none;\"");
             }
@@ -203,31 +203,31 @@ public class ClickerHtmlGenerator {
           _builder.append("            ");
           _builder.append("    ");
           _builder.append("<span class=\"btn-title\">");
-          String _name_8 = g.getName();
-          _builder.append(_name_8, "                ");
+          String _name_3 = g.getName();
+          _builder.append(_name_3, "                ");
           _builder.append("</span>");
           _builder.newLineIfNotEmpty();
           _builder.append("            ");
           _builder.append("    ");
           _builder.append("<span class=\"btn-sub\">produziert ");
-          String _name_9 = g.getProduces().getName();
-          _builder.append(_name_9, "                ");
+          String _name_4 = g.getProduces().getName();
+          _builder.append(_name_4, "                ");
           _builder.append(" · besitzt <b id=\"count_");
-          String _name_10 = g.getName();
-          _builder.append(_name_10, "                ");
+          String _safeName_5 = this.safeName(g);
+          _builder.append(_safeName_5, "                ");
           _builder.append("\">0</b></span>");
           _builder.newLineIfNotEmpty();
           _builder.append("            ");
           _builder.append("    ");
           _builder.append("<span class=\"btn-cost\">Kosten: <span id=\"cost_");
-          String _name_11 = g.getName();
-          _builder.append(_name_11, "                ");
+          String _safeName_6 = this.safeName(g);
+          _builder.append(_safeName_6, "                ");
           _builder.append("\">");
           String _formatStart_1 = this.formatStart(g.getBaseCost());
           _builder.append(_formatStart_1, "                ");
           _builder.append("</span> ");
-          String _name_12 = g.getProduces().getName();
-          _builder.append(_name_12, "                ");
+          String _name_5 = g.getProduces().getName();
+          _builder.append(_name_5, "                ");
           _builder.append("</span>");
           _builder.newLineIfNotEmpty();
           _builder.append("            ");
@@ -250,25 +250,25 @@ public class ClickerHtmlGenerator {
         for(final upgrade u : _upgrades) {
           _builder.append("            ");
           _builder.append("<button class=\"buy-btn upgrade-btn\" id=\"upg_");
-          String _safeName = this.safeName(u);
-          _builder.append(_safeName, "            ");
+          String _safeName_7 = this.safeName(u);
+          _builder.append(_safeName_7, "            ");
           _builder.append("\" onclick=\"buyUpgrade_");
-          String _safeName_1 = this.safeName(u);
-          _builder.append(_safeName_1, "            ");
+          String _safeName_8 = this.safeName(u);
+          _builder.append(_safeName_8, "            ");
           _builder.append("()\">");
           _builder.newLineIfNotEmpty();
           _builder.append("            ");
           _builder.append("    ");
           _builder.append("<span class=\"btn-title\">");
-          String _name_13 = u.getName();
-          _builder.append(_name_13, "                ");
+          String _name_6 = u.getName();
+          _builder.append(_name_6, "                ");
           _builder.append("</span>");
           _builder.newLineIfNotEmpty();
           _builder.append("            ");
           _builder.append("    ");
           _builder.append("<span class=\"btn-cost\">Kosten: <span id=\"upgcost_");
-          String _safeName_2 = this.safeName(u);
-          _builder.append(_safeName_2, "                ");
+          String _safeName_9 = this.safeName(u);
+          _builder.append(_safeName_9, "                ");
           _builder.append("\">");
           String _formatStart_2 = this.formatStart(u.getCost());
           _builder.append(_formatStart_2, "                ");
@@ -300,11 +300,11 @@ public class ClickerHtmlGenerator {
         for(final achievement a : _achievements) {
           _builder.append("                ");
           _builder.append("<div class=\"achievement locked\" id=\"ach_");
-          String _safeName_3 = this.safeName(a);
-          _builder.append(_safeName_3, "                ");
+          String _safeName_10 = this.safeName(a);
+          _builder.append(_safeName_10, "                ");
           _builder.append("\">\ud83d\udd12 ");
-          String _name_14 = a.getName();
-          _builder.append(_name_14, "                ");
+          String _name_7 = a.getName();
+          _builder.append(_name_7, "                ");
           _builder.append("</div>");
           _builder.newLineIfNotEmpty();
         }
@@ -567,8 +567,8 @@ public class ClickerHtmlGenerator {
           _builder.appendImmediate(",", "    ");
         }
         _builder.append("    ");
-        String _name = r.getName();
-        _builder.append(_name, "    ");
+        String _safeName = this.safeName(r);
+        _builder.append(_safeName, "    ");
         _builder.append(": ");
         double _startAmount = r.getStartAmount();
         _builder.append(_startAmount, "    ");
@@ -590,8 +590,8 @@ public class ClickerHtmlGenerator {
         } else {
           _builder.appendImmediate(",", "");
         }
-        String _name_1 = r_1.getName();
-        _builder.append(_name_1);
+        String _safeName_1 = this.safeName(r_1);
+        _builder.append(_safeName_1);
         _builder.append(": 0");
       }
     }
@@ -602,21 +602,21 @@ public class ClickerHtmlGenerator {
       EList<generator> _generators = game.getGenerators();
       for(final generator g : _generators) {
         _builder.append("let count_");
-        String _name_2 = g.getName();
-        _builder.append(_name_2);
+        String _safeName_2 = this.safeName(g);
+        _builder.append(_safeName_2);
         _builder.append(" = 0;");
         _builder.newLineIfNotEmpty();
         _builder.append("let cost_");
-        String _name_3 = g.getName();
-        _builder.append(_name_3);
+        String _safeName_3 = this.safeName(g);
+        _builder.append(_safeName_3);
         _builder.append(" = ");
         double _baseCost = g.getBaseCost();
         _builder.append(_baseCost);
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         _builder.append("let mult_");
-        String _name_4 = g.getName();
-        _builder.append(_name_4);
+        String _safeName_4 = this.safeName(g);
+        _builder.append(_safeName_4);
         _builder.append(" = 1; // wird durch multiplyRateEffect-Upgrades verändert");
         _builder.newLineIfNotEmpty();
       }
@@ -626,8 +626,8 @@ public class ClickerHtmlGenerator {
       EList<upgrade> _upgrades = game.getUpgrades();
       for(final upgrade u : _upgrades) {
         _builder.append("let bought_");
-        String _safeName = this.safeName(u);
-        _builder.append(_safeName);
+        String _safeName_5 = this.safeName(u);
+        _builder.append(_safeName_5);
         _builder.append(" = false;");
         _builder.newLineIfNotEmpty();
       }
@@ -637,8 +637,8 @@ public class ClickerHtmlGenerator {
       EList<achievement> _achievements = game.getAchievements();
       for(final achievement a : _achievements) {
         _builder.append("let unlocked_");
-        String _safeName_1 = this.safeName(a);
-        _builder.append(_safeName_1);
+        String _safeName_6 = this.safeName(a);
+        _builder.append(_safeName_6);
         _builder.append(" = false;");
         _builder.newLineIfNotEmpty();
       }
@@ -685,38 +685,38 @@ public class ClickerHtmlGenerator {
       EList<generator> _generators_1 = game.getGenerators();
       for(final generator g_1 : _generators_1) {
         _builder.append("function buy");
-        String _name_5 = g_1.getName();
-        _builder.append(_name_5);
+        String _safeName_7 = this.safeName(g_1);
+        _builder.append(_safeName_7);
         _builder.append("() {");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
         _builder.append("if (state.");
-        String _name_6 = g_1.getProduces().getName();
-        _builder.append(_name_6, "    ");
+        String _safeName_8 = this.safeName(g_1.getProduces());
+        _builder.append(_safeName_8, "    ");
         _builder.append(" >= cost_");
-        String _name_7 = g_1.getName();
-        _builder.append(_name_7, "    ");
+        String _safeName_9 = this.safeName(g_1);
+        _builder.append(_safeName_9, "    ");
         _builder.append(") {");
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
         _builder.append("state.");
-        String _name_8 = g_1.getProduces().getName();
-        _builder.append(_name_8, "        ");
+        String _safeName_10 = this.safeName(g_1.getProduces());
+        _builder.append(_safeName_10, "        ");
         _builder.append(" -= cost_");
-        String _name_9 = g_1.getName();
-        _builder.append(_name_9, "        ");
+        String _safeName_11 = this.safeName(g_1);
+        _builder.append(_safeName_11, "        ");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
         _builder.append("count_");
-        String _name_10 = g_1.getName();
-        _builder.append(_name_10, "        ");
+        String _safeName_12 = this.safeName(g_1);
+        _builder.append(_safeName_12, "        ");
         _builder.append("++;");
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
         _builder.append("cost_");
-        String _name_11 = g_1.getName();
-        _builder.append(_name_11, "        ");
+        String _safeName_13 = this.safeName(g_1);
+        _builder.append(_safeName_13, "        ");
         _builder.append(" *= ");
         double _costGrowth = g_1.getCostGrowth();
         _builder.append(_costGrowth, "        ");
@@ -724,20 +724,20 @@ public class ClickerHtmlGenerator {
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
         _builder.append("document.getElementById(\'cost_");
-        String _name_12 = g_1.getName();
-        _builder.append(_name_12, "        ");
+        String _safeName_14 = this.safeName(g_1);
+        _builder.append(_safeName_14, "        ");
         _builder.append("\').innerText = formatNumber(cost_");
-        String _name_13 = g_1.getName();
-        _builder.append(_name_13, "        ");
+        String _safeName_15 = this.safeName(g_1);
+        _builder.append(_safeName_15, "        ");
         _builder.append(");");
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
         _builder.append("document.getElementById(\'count_");
-        String _name_14 = g_1.getName();
-        _builder.append(_name_14, "        ");
+        String _safeName_16 = this.safeName(g_1);
+        _builder.append(_safeName_16, "        ");
         _builder.append("\').innerText = count_");
-        String _name_15 = g_1.getName();
-        _builder.append(_name_15, "        ");
+        String _safeName_17 = this.safeName(g_1);
+        _builder.append(_safeName_17, "        ");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
@@ -752,20 +752,20 @@ public class ClickerHtmlGenerator {
       EList<upgrade> _upgrades_1 = game.getUpgrades();
       for(final upgrade u_1 : _upgrades_1) {
         _builder.append("function buyUpgrade_");
-        String _safeName_2 = this.safeName(u_1);
-        _builder.append(_safeName_2);
+        String _safeName_18 = this.safeName(u_1);
+        _builder.append(_safeName_18);
         _builder.append("() {");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
         _builder.append("if (bought_");
-        String _safeName_3 = this.safeName(u_1);
-        _builder.append(_safeName_3, "    ");
+        String _safeName_19 = this.safeName(u_1);
+        _builder.append(_safeName_19, "    ");
         _builder.append(") return;");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
         _builder.append("if (state.");
-        String _costResourceName = this.costResourceName(u_1, game);
-        _builder.append(_costResourceName, "    ");
+        String _costResourceSafeName = this.costResourceSafeName(u_1, game);
+        _builder.append(_costResourceSafeName, "    ");
         _builder.append(" >= ");
         double _cost = u_1.getCost();
         _builder.append(_cost, "    ");
@@ -773,8 +773,8 @@ public class ClickerHtmlGenerator {
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
         _builder.append("state.");
-        String _costResourceName_1 = this.costResourceName(u_1, game);
-        _builder.append(_costResourceName_1, "        ");
+        String _costResourceSafeName_1 = this.costResourceSafeName(u_1, game);
+        _builder.append(_costResourceSafeName_1, "        ");
         _builder.append(" -= ");
         double _cost_1 = u_1.getCost();
         _builder.append(_cost_1, "        ");
@@ -782,8 +782,8 @@ public class ClickerHtmlGenerator {
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
         _builder.append("bought_");
-        String _safeName_4 = this.safeName(u_1);
-        _builder.append(_safeName_4, "        ");
+        String _safeName_20 = this.safeName(u_1);
+        _builder.append(_safeName_20, "        ");
         _builder.append(" = true;");
         _builder.newLineIfNotEmpty();
         {
@@ -797,8 +797,8 @@ public class ClickerHtmlGenerator {
         }
         _builder.append("        ");
         _builder.append("const btn = document.getElementById(\'upg_");
-        String _safeName_5 = this.safeName(u_1);
-        _builder.append(_safeName_5, "        ");
+        String _safeName_21 = this.safeName(u_1);
+        _builder.append(_safeName_21, "        ");
         _builder.append("\');");
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
@@ -809,8 +809,8 @@ public class ClickerHtmlGenerator {
         _builder.newLine();
         _builder.append("        ");
         _builder.append("showToast(\'Upgrade gekauft: ");
-        String _name_16 = u_1.getName();
-        _builder.append(_name_16, "        ");
+        String _name = u_1.getName();
+        _builder.append(_name, "        ");
         _builder.append("\');");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
@@ -825,14 +825,14 @@ public class ClickerHtmlGenerator {
       EList<achievement> _achievements_1 = game.getAchievements();
       for(final achievement a_1 : _achievements_1) {
         _builder.append("function checkAchievement_");
-        String _safeName_6 = this.safeName(a_1);
-        _builder.append(_safeName_6);
+        String _safeName_22 = this.safeName(a_1);
+        _builder.append(_safeName_22);
         _builder.append("() {");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
         _builder.append("if (!unlocked_");
-        String _safeName_7 = this.safeName(a_1);
-        _builder.append(_safeName_7, "    ");
+        String _safeName_23 = this.safeName(a_1);
+        _builder.append(_safeName_23, "    ");
         _builder.append(" && (");
         String _generateExpression = this.generateExpression(a_1.getCondition());
         _builder.append(_generateExpression, "    ");
@@ -840,20 +840,20 @@ public class ClickerHtmlGenerator {
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
         _builder.append("unlocked_");
-        String _safeName_8 = this.safeName(a_1);
-        _builder.append(_safeName_8, "        ");
+        String _safeName_24 = this.safeName(a_1);
+        _builder.append(_safeName_24, "        ");
         _builder.append(" = true;");
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
         _builder.append("const el = document.getElementById(\'ach_");
-        String _safeName_9 = this.safeName(a_1);
-        _builder.append(_safeName_9, "        ");
+        String _safeName_25 = this.safeName(a_1);
+        _builder.append(_safeName_25, "        ");
         _builder.append("\');");
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
         _builder.append("el.textContent = \'\ud83c\udfc6 ");
-        String _name_17 = a_1.getName();
-        _builder.append(_name_17, "        ");
+        String _name_1 = a_1.getName();
+        _builder.append(_name_1, "        ");
         _builder.append("\';");
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
@@ -864,8 +864,8 @@ public class ClickerHtmlGenerator {
         _builder.newLine();
         _builder.append("        ");
         _builder.append("showToast(\'Erfolg freigeschaltet: ");
-        String _name_18 = a_1.getName();
-        _builder.append(_name_18, "        ");
+        String _name_2 = a_1.getName();
+        _builder.append(_name_2, "        ");
         _builder.append("\');");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
@@ -883,14 +883,14 @@ public class ClickerHtmlGenerator {
       for(final generator g_2 : _generators_2) {
         _builder.append("    ");
         _builder.append("document.getElementById(\'btn_");
-        String _name_19 = g_2.getName();
-        _builder.append(_name_19, "    ");
+        String _safeName_26 = this.safeName(g_2);
+        _builder.append(_safeName_26, "    ");
         _builder.append("\').classList.toggle(\'cant-afford\', state.");
-        String _name_20 = g_2.getProduces().getName();
-        _builder.append(_name_20, "    ");
+        String _safeName_27 = this.safeName(g_2.getProduces());
+        _builder.append(_safeName_27, "    ");
         _builder.append(" < cost_");
-        String _name_21 = g_2.getName();
-        _builder.append(_name_21, "    ");
+        String _safeName_28 = this.safeName(g_2);
+        _builder.append(_safeName_28, "    ");
         _builder.append(");");
         _builder.newLineIfNotEmpty();
       }
@@ -900,18 +900,18 @@ public class ClickerHtmlGenerator {
       for(final upgrade u_2 : _upgrades_2) {
         _builder.append("    ");
         _builder.append("if (!bought_");
-        String _safeName_10 = this.safeName(u_2);
-        _builder.append(_safeName_10, "    ");
+        String _safeName_29 = this.safeName(u_2);
+        _builder.append(_safeName_29, "    ");
         _builder.append(") {");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
         _builder.append("    ");
         _builder.append("document.getElementById(\'upg_");
-        String _safeName_11 = this.safeName(u_2);
-        _builder.append(_safeName_11, "        ");
+        String _safeName_30 = this.safeName(u_2);
+        _builder.append(_safeName_30, "        ");
         _builder.append("\').classList.toggle(\'cant-afford\', state.");
-        String _costResourceName_2 = this.costResourceName(u_2, game);
-        _builder.append(_costResourceName_2, "        ");
+        String _costResourceSafeName_2 = this.costResourceSafeName(u_2, game);
+        _builder.append(_costResourceSafeName_2, "        ");
         _builder.append(" < ");
         double _cost_2 = u_2.getCost();
         _builder.append(_cost_2, "        ");
@@ -932,20 +932,20 @@ public class ClickerHtmlGenerator {
       for(final generator g_3 : _generators_3) {
         _builder.append("    ");
         _builder.append("ratePerSecond.");
-        String _name_22 = g_3.getProduces().getName();
-        _builder.append(_name_22, "    ");
+        String _safeName_31 = this.safeName(g_3.getProduces());
+        _builder.append(_safeName_31, "    ");
         _builder.append(" = (ratePerSecond.");
-        String _name_23 = g_3.getProduces().getName();
-        _builder.append(_name_23, "    ");
+        String _safeName_32 = this.safeName(g_3.getProduces());
+        _builder.append(_safeName_32, "    ");
         _builder.append(" || 0) + count_");
-        String _name_24 = g_3.getName();
-        _builder.append(_name_24, "    ");
+        String _safeName_33 = this.safeName(g_3);
+        _builder.append(_safeName_33, "    ");
         _builder.append(" * ");
         double _baseRate = g_3.getBaseRate();
         _builder.append(_baseRate, "    ");
         _builder.append(" * mult_");
-        String _name_25 = g_3.getName();
-        _builder.append(_name_25, "    ");
+        String _safeName_34 = this.safeName(g_3);
+        _builder.append(_safeName_34, "    ");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
       }
@@ -955,29 +955,29 @@ public class ClickerHtmlGenerator {
       for(final resource r_2 : _resources_2) {
         _builder.append("    ");
         _builder.append("state.");
-        String _name_26 = r_2.getName();
-        _builder.append(_name_26, "    ");
+        String _safeName_35 = this.safeName(r_2);
+        _builder.append(_safeName_35, "    ");
         _builder.append(" += (ratePerSecond.");
-        String _name_27 = r_2.getName();
-        _builder.append(_name_27, "    ");
+        String _safeName_36 = this.safeName(r_2);
+        _builder.append(_safeName_36, "    ");
         _builder.append(" || 0) * 0.1;");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
         _builder.append("document.getElementById(\'res_");
-        String _name_28 = r_2.getName();
-        _builder.append(_name_28, "    ");
+        String _safeName_37 = this.safeName(r_2);
+        _builder.append(_safeName_37, "    ");
         _builder.append("\').innerText = formatNumber(state.");
-        String _name_29 = r_2.getName();
-        _builder.append(_name_29, "    ");
+        String _safeName_38 = this.safeName(r_2);
+        _builder.append(_safeName_38, "    ");
         _builder.append(");");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
         _builder.append("document.getElementById(\'rate_");
-        String _name_30 = r_2.getName();
-        _builder.append(_name_30, "    ");
+        String _safeName_39 = this.safeName(r_2);
+        _builder.append(_safeName_39, "    ");
         _builder.append("\').innerText = \'+\' + formatNumber(ratePerSecond.");
-        String _name_31 = r_2.getName();
-        _builder.append(_name_31, "    ");
+        String _safeName_40 = this.safeName(r_2);
+        _builder.append(_safeName_40, "    ");
         _builder.append(" || 0) + \'/s\';");
         _builder.newLineIfNotEmpty();
       }
@@ -987,8 +987,8 @@ public class ClickerHtmlGenerator {
       for(final resource r_3 : _resources_3) {
         _builder.append("    ");
         _builder.append("ratePerSecond.");
-        String _name_32 = r_3.getName();
-        _builder.append(_name_32, "    ");
+        String _safeName_41 = this.safeName(r_3);
+        _builder.append(_safeName_41, "    ");
         _builder.append(" = 0;");
         _builder.newLineIfNotEmpty();
       }
@@ -998,8 +998,8 @@ public class ClickerHtmlGenerator {
       for(final achievement a_2 : _achievements_2) {
         _builder.append("    ");
         _builder.append("checkAchievement_");
-        String _safeName_12 = this.safeName(a_2);
-        _builder.append(_safeName_12, "    ");
+        String _safeName_42 = this.safeName(a_2);
+        _builder.append(_safeName_42, "    ");
         _builder.append("();");
         _builder.newLineIfNotEmpty();
       }
@@ -1012,6 +1012,12 @@ public class ClickerHtmlGenerator {
     _builder.newLine();
     _builder.append("// --- Klickbarer Cookie + Ressourcen-Wechsel ---");
     _builder.newLine();
+    _builder.append("// resourceList enthält die Anzeige-Namen (mit Leerzeichen etc.), resourceKeys");
+    _builder.newLine();
+    _builder.append("// an gleicher Position die JS-sicheren Keys (Leerzeichen -> Unterstrich),");
+    _builder.newLine();
+    _builder.append("// mit denen state/ratePerSecond/resourceIcons intern indiziert werden.");
+    _builder.newLine();
     _builder.append("const resourceList = [");
     {
       EList<resource> _resources_4 = game.getResources();
@@ -1023,16 +1029,14 @@ public class ClickerHtmlGenerator {
           _builder.appendImmediate(", ", "");
         }
         _builder.append("\'");
-        String _name_33 = r_4.getName();
-        _builder.append(_name_33);
+        String _name_3 = r_4.getName();
+        _builder.append(_name_3);
         _builder.append("\'");
       }
     }
     _builder.append("];");
     _builder.newLineIfNotEmpty();
-    _builder.append("// enthält für jede Ressource entweder ein <img>-Tag (falls icon im Modell gesetzt) oder ein Emoji");
-    _builder.newLine();
-    _builder.append("const resourceIcons = { ");
+    _builder.append("const resourceKeys = [");
     {
       EList<resource> _resources_5 = game.getResources();
       boolean _hasElements_3 = false;
@@ -1042,10 +1046,30 @@ public class ClickerHtmlGenerator {
         } else {
           _builder.appendImmediate(", ", "");
         }
-        String _name_34 = r_5.getName();
-        _builder.append(_name_34);
+        _builder.append("\'");
+        String _safeName_43 = this.safeName(r_5);
+        _builder.append(_safeName_43);
+        _builder.append("\'");
+      }
+    }
+    _builder.append("];");
+    _builder.newLineIfNotEmpty();
+    _builder.append("// enthält für jede Ressource entweder ein <img>-Tag (falls icon im Modell gesetzt) oder ein Emoji");
+    _builder.newLine();
+    _builder.append("const resourceIcons = { ");
+    {
+      EList<resource> _resources_6 = game.getResources();
+      boolean _hasElements_4 = false;
+      for(final resource r_6 : _resources_6) {
+        if (!_hasElements_4) {
+          _hasElements_4 = true;
+        } else {
+          _builder.appendImmediate(", ", "");
+        }
+        String _safeName_44 = this.safeName(r_6);
+        _builder.append(_safeName_44);
         _builder.append(": `");
-        String _iconMarkup = this.iconMarkup(r_5);
+        String _iconMarkup = this.iconMarkup(r_6);
         _builder.append(_iconMarkup);
         _builder.append("`");
       }
@@ -1063,10 +1087,13 @@ public class ClickerHtmlGenerator {
     _builder.append("const res = resourceList[selectedResourceIndex];");
     _builder.newLine();
     _builder.append("    ");
+    _builder.append("const key = resourceKeys[selectedResourceIndex];");
+    _builder.newLine();
+    _builder.append("    ");
     _builder.append("if (!res) return;");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("document.getElementById(\'cookie_emoji\').innerHTML = resourceIcons[res] || \'\ud83c\udf6a\';");
+    _builder.append("document.getElementById(\'cookie_emoji\').innerHTML = resourceIcons[key] || \'\ud83c\udf6a\';");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("document.getElementById(\'cookie_label\').innerText = \'+\' + clickPower + \' \' + res;");
@@ -1080,21 +1107,21 @@ public class ClickerHtmlGenerator {
     _builder.append("if (resourceList.length === 0) return;");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("const res = resourceList[selectedResourceIndex];");
+    _builder.append("const key = resourceKeys[selectedResourceIndex];");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("state[res] += clickPower;");
+    _builder.append("state[key] += clickPower;");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("document.getElementById(\'res_\' + res).innerText = formatNumber(state[res]);");
+    _builder.append("document.getElementById(\'res_\' + key).innerText = formatNumber(state[key]);");
     _builder.newLine();
     {
       EList<achievement> _achievements_3 = game.getAchievements();
       for(final achievement a_3 : _achievements_3) {
         _builder.append("    ");
         _builder.append("checkAchievement_");
-        String _safeName_13 = this.safeName(a_3);
-        _builder.append(_safeName_13, "    ");
+        String _safeName_45 = this.safeName(a_3);
+        _builder.append(_safeName_45, "    ");
         _builder.append("();");
         _builder.newLineIfNotEmpty();
       }
@@ -1152,8 +1179,8 @@ public class ClickerHtmlGenerator {
         _builder.newLine();
         _builder.append("    ");
         _builder.append("function apply_");
-        String _safeName_14 = this.safeName(e_1);
-        _builder.append(_safeName_14, "    ");
+        String _safeName_46 = this.safeName(e_1);
+        _builder.append(_safeName_46, "    ");
         _builder.append("() {");
         _builder.newLineIfNotEmpty();
         {
@@ -1167,8 +1194,8 @@ public class ClickerHtmlGenerator {
         }
         _builder.append("        ");
         _builder.append("showToast(\'Event: ");
-        String _name_35 = e_1.getName();
-        _builder.append(_name_35, "        ");
+        String _name_4 = e_1.getName();
+        _builder.append(_name_4, "        ");
         _builder.append("\');");
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
@@ -1206,14 +1233,14 @@ public class ClickerHtmlGenerator {
         _builder.newLine();
         _builder.append("    ");
         _builder.append("function spawn_");
-        String _safeName_15 = this.safeName(e_1);
-        _builder.append(_safeName_15, "    ");
+        String _safeName_47 = this.safeName(e_1);
+        _builder.append(_safeName_47, "    ");
         _builder.append("() {");
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
         _builder.append("if (document.getElementById(\'event_");
-        String _safeName_16 = this.safeName(e_1);
-        _builder.append(_safeName_16, "        ");
+        String _safeName_48 = this.safeName(e_1);
+        _builder.append(_safeName_48, "        ");
         _builder.append("\')) return; // nur eins gleichzeitig pro Event");
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
@@ -1221,8 +1248,8 @@ public class ClickerHtmlGenerator {
         _builder.newLine();
         _builder.append("        ");
         _builder.append("el.id = \'event_");
-        String _safeName_17 = this.safeName(e_1);
-        _builder.append(_safeName_17, "        ");
+        String _safeName_49 = this.safeName(e_1);
+        _builder.append(_safeName_49, "        ");
         _builder.append("\';");
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
@@ -1230,8 +1257,8 @@ public class ClickerHtmlGenerator {
         _builder.newLine();
         _builder.append("        ");
         _builder.append("el.title = \'");
-        String _name_36 = e_1.getName();
-        _builder.append(_name_36, "        ");
+        String _name_5 = e_1.getName();
+        _builder.append(_name_5, "        ");
         _builder.append("\';");
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
@@ -1245,8 +1272,8 @@ public class ClickerHtmlGenerator {
         _builder.newLine();
         _builder.append("        ");
         _builder.append("el.onclick = () => { el.remove(); apply_");
-        String _safeName_18 = this.safeName(e_1);
-        _builder.append(_safeName_18, "        ");
+        String _safeName_50 = this.safeName(e_1);
+        _builder.append(_safeName_50, "        ");
         _builder.append("(); };");
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
@@ -1264,8 +1291,8 @@ public class ClickerHtmlGenerator {
         _builder.newLine();
         _builder.append("        ");
         _builder.append("if (Math.random() < chance) spawn_");
-        String _safeName_19 = this.safeName(e_1);
-        _builder.append(_safeName_19, "        ");
+        String _safeName_51 = this.safeName(e_1);
+        _builder.append(_safeName_51, "        ");
         _builder.append("();");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
@@ -1281,8 +1308,8 @@ public class ClickerHtmlGenerator {
   protected String _generateEffect(final multiplyRateEffect e) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("mult_");
-    String _name = e.getTarget().getName();
-    _builder.append(_name);
+    String _safeName = this.safeName(e.getTarget());
+    _builder.append(_safeName);
     _builder.append(" *= (");
     double _factor = e.getFactor();
     _builder.append(_factor);
@@ -1294,19 +1321,19 @@ public class ClickerHtmlGenerator {
   protected String _generateEffect(final reduceCostEffect e) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("cost_");
-    String _name = e.getTarget().getName();
-    _builder.append(_name);
+    String _safeName = this.safeName(e.getTarget());
+    _builder.append(_safeName);
     _builder.append(" *= (");
     double _factor = e.getFactor();
     _builder.append(_factor);
     _builder.append(");");
     _builder.newLineIfNotEmpty();
     _builder.append("document.getElementById(\'cost_");
-    String _name_1 = e.getTarget().getName();
-    _builder.append(_name_1);
+    String _safeName_1 = this.safeName(e.getTarget());
+    _builder.append(_safeName_1);
     _builder.append("\').innerText = formatNumber(cost_");
-    String _name_2 = e.getTarget().getName();
-    _builder.append(_name_2);
+    String _safeName_2 = this.safeName(e.getTarget());
+    _builder.append(_safeName_2);
     _builder.append(");");
     _builder.newLineIfNotEmpty();
     return _builder.toString();
@@ -1315,8 +1342,8 @@ public class ClickerHtmlGenerator {
   protected String _generateEffect(final unlockGeneratorEffect e) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("document.getElementById(\'btn_");
-    String _name = e.getTarget().getName();
-    _builder.append(_name);
+    String _safeName = this.safeName(e.getTarget());
+    _builder.append(_safeName);
     _builder.append("\').style.display = \'flex\';");
     _builder.newLineIfNotEmpty();
     return _builder.toString();
@@ -1325,8 +1352,8 @@ public class ClickerHtmlGenerator {
   protected String _generateEventEffectApply(final multiplyRateEffect e) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("mult_");
-    String _name = e.getTarget().getName();
-    _builder.append(_name);
+    String _safeName = this.safeName(e.getTarget());
+    _builder.append(_safeName);
     _builder.append(" *= (");
     double _factor = e.getFactor();
     _builder.append(_factor);
@@ -1346,8 +1373,8 @@ public class ClickerHtmlGenerator {
   protected String _generateEventEffectRevert(final multiplyRateEffect e) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("mult_");
-    String _name = e.getTarget().getName();
-    _builder.append(_name);
+    String _safeName = this.safeName(e.getTarget());
+    _builder.append(_safeName);
     _builder.append(" /= (");
     double _factor = e.getFactor();
     _builder.append(_factor);
@@ -1364,8 +1391,8 @@ public class ClickerHtmlGenerator {
   protected String _generateExpression(final comparison c) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("state.");
-    String _name = c.getResource().getName();
-    _builder.append(_name);
+    String _safeName = this.safeName(c.getResource());
+    _builder.append(_safeName);
     _builder.append(" ");
     String _jsOperator = this.toJsOperator(c.getOperator());
     _builder.append(_jsOperator);
@@ -1455,6 +1482,26 @@ public class ClickerHtmlGenerator {
     return _xifexpression;
   }
 
+  public String costResourceSafeName(final upgrade u, final game game) {
+    String _xifexpression = null;
+    resource _costResource = u.getCostResource();
+    boolean _tripleNotEquals = (_costResource != null);
+    if (_tripleNotEquals) {
+      _xifexpression = this.safeName(u.getCostResource());
+    } else {
+      String _xifexpression_1 = null;
+      boolean _isEmpty = game.getResources().isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        _xifexpression_1 = this.safeName(game.getResources().get(0));
+      } else {
+        _xifexpression_1 = "undefined";
+      }
+      _xifexpression = _xifexpression_1;
+    }
+    return _xifexpression;
+  }
+
   public Set<String> collectLockedGenerators(final game game) {
     final HashSet<String> locked = new HashSet<String>();
     EList<upgrade> _upgrades = game.getUpgrades();
@@ -1462,7 +1509,7 @@ public class ClickerHtmlGenerator {
       EList<effect> _effects = u.getEffects();
       for (final effect e : _effects) {
         if ((e instanceof unlockGeneratorEffect)) {
-          locked.add(((unlockGeneratorEffect)e).getTarget().getName());
+          locked.add(this.safeName(((unlockGeneratorEffect)e).getTarget()));
         }
       }
     }
@@ -1555,6 +1602,14 @@ public class ClickerHtmlGenerator {
 
   public String safeName(final event e) {
     return e.getName().replaceAll("[^a-zA-Z0-9]", "_");
+  }
+
+  public String safeName(final generator e) {
+    return e.getName().replaceAll("[^a-zA-Z0-9]", "_");
+  }
+
+  public String safeName(final resource r) {
+    return r.getName().replaceAll("[^a-zA-Z0-9]", "_");
   }
 
   @XbaseGenerated

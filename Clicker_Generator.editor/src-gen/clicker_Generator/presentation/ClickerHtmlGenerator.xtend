@@ -2,6 +2,7 @@ package clicker_Generator.presentation
 
 import java.util.HashSet
 import java.util.Set
+import clicker_Generator.generator
 
 class ClickerHtmlGenerator {
 
@@ -24,12 +25,12 @@ class ClickerHtmlGenerator {
 
 		    <section id="resources">
 		        «FOR r : game.resources»
-		        	<div class="resource-card" id="card_«r.name»">
+		        	<div class="resource-card" id="card_«r.safeName»">
 		        	    <div class="resource-icon">«r.iconMarkup»</div>
 		        	    <div class="resource-info">
 		        	        <div class="resource-name">«r.name»</div>
-		        	        <div class="resource-amount" id="res_«r.name»">«r.startAmount.formatStart»</div>
-		        	        <div class="resource-rate" id="rate_«r.name»">+0/s</div>
+		        	        <div class="resource-amount" id="res_«r.safeName»">«r.startAmount.formatStart»</div>
+		        	        <div class="resource-rate" id="rate_«r.safeName»">+0/s</div>
 		        	    </div>
 		        	</div>
 		        «ENDFOR»
@@ -49,12 +50,12 @@ class ClickerHtmlGenerator {
 		        <section class="panel" id="generators">
 		            <h2>Generatoren</h2>
 		            «FOR g : game.generators»
-		            	<button class="buy-btn generator-btn«IF lockedGenerators.contains(g.name)» locked«ENDIF»"
-		            	        id="btn_«g.name»" onclick="buy«g.name»()"
-		            	        «IF lockedGenerators.contains(g.name)»style="display:none;"«ENDIF»>
+		            	<button class="buy-btn generator-btn«IF lockedGenerators.contains(g.safeName)» locked«ENDIF»"
+		            	        id="btn_«g.safeName»" onclick="buy«g.safeName»()"
+		            	        «IF lockedGenerators.contains(g.safeName)»style="display:none;"«ENDIF»>
 		            	    <span class="btn-title">«g.name»</span>
-		            	    <span class="btn-sub">produziert «g.produces.name» · besitzt <b id="count_«g.name»">0</b></span>
-		            	    <span class="btn-cost">Kosten: <span id="cost_«g.name»">«g.baseCost.formatStart»</span> «g.produces.name»</span>
+		            	    <span class="btn-sub">produziert «g.produces.name» · besitzt <b id="count_«g.safeName»">0</b></span>
+		            	    <span class="btn-cost">Kosten: <span id="cost_«g.safeName»">«g.baseCost.formatStart»</span> «g.produces.name»</span>
 		            	</button>
 		            «ENDFOR»
 		        </section>
@@ -186,17 +187,17 @@ class ClickerHtmlGenerator {
     def String generateJs(clicker_Generator.game game, Set<String> lockedGenerators) '''
 		let state = {
 		    «FOR r : game.resources SEPARATOR ','»
-		    	«r.name»: «r.startAmount»
+		    	«r.safeName»: «r.startAmount»
 		    «ENDFOR»
 		};
 
 		// Basis-Produktionsrate (pro Sekunde) je Ressource, wird jeden Tick neu berechnet
-		let ratePerSecond = { «FOR r : game.resources SEPARATOR ','»«r.name»: 0«ENDFOR» };
+		let ratePerSecond = { «FOR r : game.resources SEPARATOR ','»«r.safeName»: 0«ENDFOR» };
 
 		«FOR g : game.generators»
-			let count_«g.name» = 0;
-			let cost_«g.name» = «g.baseCost»;
-			let mult_«g.name» = 1; // wird durch multiplyRateEffect-Upgrades verändert
+			let count_«g.safeName» = 0;
+			let cost_«g.safeName» = «g.baseCost»;
+			let mult_«g.safeName» = 1; // wird durch multiplyRateEffect-Upgrades verändert
 		«ENDFOR»
 
 		«FOR u : game.upgrades»
@@ -223,13 +224,13 @@ class ClickerHtmlGenerator {
 		}
 
 		«FOR g : game.generators»
-			function buy«g.name»() {
-			    if (state.«g.produces.name» >= cost_«g.name») {
-			        state.«g.produces.name» -= cost_«g.name»;
-			        count_«g.name»++;
-			        cost_«g.name» *= «g.costGrowth»;
-			        document.getElementById('cost_«g.name»').innerText = formatNumber(cost_«g.name»);
-			        document.getElementById('count_«g.name»').innerText = count_«g.name»;
+			function buy«g.safeName»() {
+			    if (state.«g.produces.safeName» >= cost_«g.safeName») {
+			        state.«g.produces.safeName» -= cost_«g.safeName»;
+			        count_«g.safeName»++;
+			        cost_«g.safeName» *= «g.costGrowth»;
+			        document.getElementById('cost_«g.safeName»').innerText = formatNumber(cost_«g.safeName»);
+			        document.getElementById('count_«g.safeName»').innerText = count_«g.safeName»;
 			    }
 			}
 		«ENDFOR»
@@ -237,8 +238,8 @@ class ClickerHtmlGenerator {
 		«FOR u : game.upgrades»
 			function buyUpgrade_«u.safeName»() {
 			    if (bought_«u.safeName») return;
-			    if (state.«u.costResourceName(game)» >= «u.cost») {
-			        state.«u.costResourceName(game)» -= «u.cost»;
+			    if (state.«u.costResourceSafeName(game)» >= «u.cost») {
+			        state.«u.costResourceSafeName(game)» -= «u.cost»;
 			        bought_«u.safeName» = true;
 			        «FOR e : u.effects»
 			        	«generateEffect(e)»
@@ -266,26 +267,26 @@ class ClickerHtmlGenerator {
 
 		function updateAffordability() {
 		    «FOR g : game.generators»
-		    	document.getElementById('btn_«g.name»').classList.toggle('cant-afford', state.«g.produces.name» < cost_«g.name»);
+		    	document.getElementById('btn_«g.safeName»').classList.toggle('cant-afford', state.«g.produces.safeName» < cost_«g.safeName»);
 		    «ENDFOR»
 		    «FOR u : game.upgrades»
 		    	if (!bought_«u.safeName») {
-		    	    document.getElementById('upg_«u.safeName»').classList.toggle('cant-afford', state.«u.costResourceName(game)» < «u.cost»);
+		    	    document.getElementById('upg_«u.safeName»').classList.toggle('cant-afford', state.«u.costResourceSafeName(game)» < «u.cost»);
 		    	}
 		    «ENDFOR»
 		}
 
 		setInterval(() => {
 		    «FOR g : game.generators»
-		    	ratePerSecond.«g.produces.name» = (ratePerSecond.«g.produces.name» || 0) + count_«g.name» * «g.baseRate» * mult_«g.name»;
+		    	ratePerSecond.«g.produces.safeName» = (ratePerSecond.«g.produces.safeName» || 0) + count_«g.safeName» * «g.baseRate» * mult_«g.safeName»;
 		    «ENDFOR»
 		    «FOR r : game.resources»
-		    	state.«r.name» += (ratePerSecond.«r.name» || 0) * 0.1;
-		    	document.getElementById('res_«r.name»').innerText = formatNumber(state.«r.name»);
-		    	document.getElementById('rate_«r.name»').innerText = '+' + formatNumber(ratePerSecond.«r.name» || 0) + '/s';
+		    	state.«r.safeName» += (ratePerSecond.«r.safeName» || 0) * 0.1;
+		    	document.getElementById('res_«r.safeName»').innerText = formatNumber(state.«r.safeName»);
+		    	document.getElementById('rate_«r.safeName»').innerText = '+' + formatNumber(ratePerSecond.«r.safeName» || 0) + '/s';
 		    «ENDFOR»
 		    «FOR r : game.resources»
-		    	ratePerSecond.«r.name» = 0;
+		    	ratePerSecond.«r.safeName» = 0;
 		    «ENDFOR»
 		    «FOR a : game.achievements»
 		    	checkAchievement_«a.safeName»();
@@ -294,24 +295,29 @@ class ClickerHtmlGenerator {
 		}, 100);
 
 		// --- Klickbarer Cookie + Ressourcen-Wechsel ---
+		// resourceList enthält die Anzeige-Namen (mit Leerzeichen etc.), resourceKeys
+		// an gleicher Position die JS-sicheren Keys (Leerzeichen -> Unterstrich),
+		// mit denen state/ratePerSecond/resourceIcons intern indiziert werden.
 		const resourceList = [«FOR r : game.resources SEPARATOR ', '»'«r.name»'«ENDFOR»];
+		const resourceKeys = [«FOR r : game.resources SEPARATOR ', '»'«r.safeName»'«ENDFOR»];
 		// enthält für jede Ressource entweder ein <img>-Tag (falls icon im Modell gesetzt) oder ein Emoji
-		const resourceIcons = { «FOR r : game.resources SEPARATOR ', '»«r.name»: `«r.iconMarkup»`«ENDFOR» };
+		const resourceIcons = { «FOR r : game.resources SEPARATOR ', '»«r.safeName»: `«r.iconMarkup»`«ENDFOR» };
 		const clickPower = 1;
 		let selectedResourceIndex = 0;
 
 		function updateClicker() {
 		    const res = resourceList[selectedResourceIndex];
+		    const key = resourceKeys[selectedResourceIndex];
 		    if (!res) return;
-		    document.getElementById('cookie_emoji').innerHTML = resourceIcons[res] || '🍪';
+		    document.getElementById('cookie_emoji').innerHTML = resourceIcons[key] || '🍪';
 		    document.getElementById('cookie_label').innerText = '+' + clickPower + ' ' + res;
 		}
 
 		function clickCookie() {
 		    if (resourceList.length === 0) return;
-		    const res = resourceList[selectedResourceIndex];
-		    state[res] += clickPower;
-		    document.getElementById('res_' + res).innerText = formatNumber(state[res]);
+		    const key = resourceKeys[selectedResourceIndex];
+		    state[key] += clickPower;
+		    document.getElementById('res_' + key).innerText = formatNumber(state[key]);
 		    «FOR a : game.achievements»
 		    	checkAchievement_«a.safeName»();
 		    «ENDFOR»
@@ -373,23 +379,23 @@ class ClickerHtmlGenerator {
 
     // === dispatch für Effect-Hierarchie ===
     def dispatch String generateEffect(clicker_Generator.multiplyRateEffect e) '''
-		mult_«e.target.name» *= («e.factor»);
+		mult_«e.target.safeName» *= («e.factor»);
 	'''
 
     def dispatch String generateEffect(clicker_Generator.reduceCostEffect e) '''
-		cost_«e.target.name» *= («e.factor»);
-		document.getElementById('cost_«e.target.name»').innerText = formatNumber(cost_«e.target.name»);
+		cost_«e.target.safeName» *= («e.factor»);
+		document.getElementById('cost_«e.target.safeName»').innerText = formatNumber(cost_«e.target.safeName»);
 	'''
 
     def dispatch String generateEffect(clicker_Generator.unlockGeneratorEffect e) '''
-		document.getElementById('btn_«e.target.name»').style.display = 'flex';
+		document.getElementById('btn_«e.target.safeName»').style.display = 'flex';
 	'''
 
     // === dispatch für Event-Effekte: anwenden (apply) ===
     // multiplyRateEffect wird hier als TEMPORÄRER Boost benutzt (siehe revert unten),
     // reduceCostEffect/unlockGeneratorEffect wirken wie gehabt dauerhaft.
     def dispatch String generateEventEffectApply(clicker_Generator.multiplyRateEffect e) '''
-		mult_«e.target.name» *= («e.factor»);
+		mult_«e.target.safeName» *= («e.factor»);
 	'''
 
     def dispatch String generateEventEffectApply(clicker_Generator.effect e) '''
@@ -399,14 +405,14 @@ class ClickerHtmlGenerator {
     // === dispatch für Event-Effekte: zurücksetzen (revert) nach durationSeconds ===
     // Nur multiplyRateEffect ist reversibel (Boost läuft ab); alles andere bleibt dauerhaft.
     def dispatch String generateEventEffectRevert(clicker_Generator.multiplyRateEffect e) '''
-		mult_«e.target.name» /= («e.factor»);
+		mult_«e.target.safeName» /= («e.factor»);
 	'''
 
     def dispatch String generateEventEffectRevert(clicker_Generator.effect e) ''''''
 
     // === dispatch für Expression-Hierarchie (rekursiv!) ===
     def dispatch String generateExpression(clicker_Generator.comparison c) '''
-		state.«c.resource.name» «c.operator.toJsOperator» «c.value»
+		state.«c.resource.safeName» «c.operator.toJsOperator» «c.value»
 	'''
 
     def dispatch String generateExpression(clicker_Generator.binaryExpression b) '''
@@ -445,6 +451,17 @@ class ClickerHtmlGenerator {
         }
     }
 
+    // === Helfer: wie costResourceName, aber als JS-sicherer Key (für state.«...» Zugriffe) ===
+    def String costResourceSafeName(clicker_Generator.upgrade u, clicker_Generator.game game) {
+        if (u.costResource !== null) {
+            u.costResource.safeName
+        } else if (!game.resources.empty) {
+            game.resources.get(0).safeName
+        } else {
+            'undefined'
+        }
+    }
+
     // === Helfer: welche Generatoren sind zu Beginn gesperrt,
     //     weil sie Ziel eines unlockGeneratorEffect sind? ===
     def Set<String> collectLockedGenerators(clicker_Generator.game game) {
@@ -452,7 +469,7 @@ class ClickerHtmlGenerator {
         for (u : game.upgrades) {
             for (e : u.effects) {
                 if (e instanceof clicker_Generator.unlockGeneratorEffect) {
-                    locked.add(e.target.name)
+                    locked.add(e.target.safeName)
                 }
             }
         }
@@ -501,5 +518,11 @@ class ClickerHtmlGenerator {
     }
     def String safeName(clicker_Generator.event e) {
         e.name.replaceAll("[^a-zA-Z0-9]", "_")
+    }
+    def String safeName(clicker_Generator.generator e) {
+        e.name.replaceAll("[^a-zA-Z0-9]", "_")
+    }
+    def String safeName(clicker_Generator.resource r) {
+        r.name.replaceAll("[^a-zA-Z0-9]", "_")
     }
 }
