@@ -783,13 +783,22 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	int EVENT__EFFECTS = 4;
 
 	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__ICON = 5;
+
+	/**
 	 * The number of structural features of the '<em>event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_FEATURE_COUNT = 5;
+	int EVENT_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>event</em>' class.
@@ -1390,6 +1399,17 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	EReference getevent_Effects();
 
 	/**
+	 * Returns the meta object for the attribute '{@link clicker_Generator.event#getIcon <em>Icon</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Icon</em>'.
+	 * @see clicker_Generator.event#getIcon()
+	 * @see #getevent()
+	 * @generated
+	 */
+	EAttribute getevent_Icon();
+
+	/**
 	 * Returns the meta object for enum '{@link clicker_Generator.comparisonOperator <em>comparison Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1883,6 +1903,14 @@ public interface Clicker_GeneratorPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EVENT__EFFECTS = eINSTANCE.getevent_Effects();
+
+		/**
+		 * The meta object literal for the '<em><b>Icon</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EVENT__ICON = eINSTANCE.getevent_Icon();
 
 		/**
 		 * The meta object literal for the '{@link clicker_Generator.comparisonOperator <em>comparison Operator</em>}' enum.

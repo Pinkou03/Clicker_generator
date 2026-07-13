@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link clicker_Generator.impl.eventImpl#getIntervalSeconds <em>Interval Seconds</em>}</li>
  *   <li>{@link clicker_Generator.impl.eventImpl#getDurationSeconds <em>Duration Seconds</em>}</li>
  *   <li>{@link clicker_Generator.impl.eventImpl#getEffects <em>Effects</em>}</li>
+ *   <li>{@link clicker_Generator.impl.eventImpl#getIcon <em>Icon</em>}</li>
  * </ul>
  *
  * @generated
@@ -129,6 +130,26 @@ public class eventImpl extends MinimalEObjectImpl.Container implements event {
 	 * @ordered
 	 */
 	protected EList<effect> effects;
+
+	/**
+	 * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIcon()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ICON_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getIcon() <em>Icon</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIcon()
+	 * @generated
+	 * @ordered
+	 */
+	protected String icon = ICON_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -263,6 +284,29 @@ public class eventImpl extends MinimalEObjectImpl.Container implements event {
 	 * @generated
 	 */
 	@Override
+	public String getIcon() {
+		return icon;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setIcon(String newIcon) {
+		String oldIcon = icon;
+		icon = newIcon;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Clicker_GeneratorPackage.EVENT__ICON, oldIcon, icon));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Clicker_GeneratorPackage.EVENT__EFFECTS:
@@ -289,6 +333,8 @@ public class eventImpl extends MinimalEObjectImpl.Container implements event {
 			return getDurationSeconds();
 		case Clicker_GeneratorPackage.EVENT__EFFECTS:
 			return getEffects();
+		case Clicker_GeneratorPackage.EVENT__ICON:
+			return getIcon();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -318,6 +364,9 @@ public class eventImpl extends MinimalEObjectImpl.Container implements event {
 			getEffects().clear();
 			getEffects().addAll((Collection<? extends effect>) newValue);
 			return;
+		case Clicker_GeneratorPackage.EVENT__ICON:
+			setIcon((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -345,6 +394,9 @@ public class eventImpl extends MinimalEObjectImpl.Container implements event {
 		case Clicker_GeneratorPackage.EVENT__EFFECTS:
 			getEffects().clear();
 			return;
+		case Clicker_GeneratorPackage.EVENT__ICON:
+			setIcon(ICON_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -367,6 +419,8 @@ public class eventImpl extends MinimalEObjectImpl.Container implements event {
 			return durationSeconds != DURATION_SECONDS_EDEFAULT;
 		case Clicker_GeneratorPackage.EVENT__EFFECTS:
 			return effects != null && !effects.isEmpty();
+		case Clicker_GeneratorPackage.EVENT__ICON:
+			return ICON_EDEFAULT == null ? icon != null : !ICON_EDEFAULT.equals(icon);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -390,6 +444,8 @@ public class eventImpl extends MinimalEObjectImpl.Container implements event {
 		result.append(intervalSeconds);
 		result.append(", durationSeconds: ");
 		result.append(durationSeconds);
+		result.append(", icon: ");
+		result.append(icon);
 		result.append(')');
 		return result.toString();
 	}

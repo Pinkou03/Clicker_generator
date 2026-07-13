@@ -84,6 +84,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//event/intervalSeconds"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//event/durationSeconds"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//event/effects"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//event/icon"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

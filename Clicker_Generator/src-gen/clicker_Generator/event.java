@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link clicker_Generator.event#getIntervalSeconds <em>Interval Seconds</em>}</li>
  *   <li>{@link clicker_Generator.event#getDurationSeconds <em>Duration Seconds</em>}</li>
  *   <li>{@link clicker_Generator.event#getEffects <em>Effects</em>}</li>
+ *   <li>{@link clicker_Generator.event#getIcon <em>Icon</em>}</li>
  * </ul>
  *
  * @see clicker_Generator.Clicker_GeneratorPackage#getevent()
@@ -126,5 +127,27 @@ public interface event extends EObject {
 	 * @generated
 	 */
 	EList<effect> getEffects();
+
+	/**
+	 * Returns the value of the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Icon</em>' attribute.
+	 * @see #setIcon(String)
+	 * @see clicker_Generator.Clicker_GeneratorPackage#getevent_Icon()
+	 * @model
+	 * @generated
+	 */
+	String getIcon();
+
+	/**
+	 * Sets the value of the '{@link clicker_Generator.event#getIcon <em>Icon</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Icon</em>' attribute.
+	 * @see #getIcon()
+	 * @generated
+	 */
+	void setIcon(String value);
 
 } // event

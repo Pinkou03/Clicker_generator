@@ -748,6 +748,16 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 	 * @generated
 	 */
 	@Override
+	public EAttribute getevent_Icon() {
+		return (EAttribute) eventEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getcomparisonOperator() {
 		return comparisonOperatorEEnum;
 	}
@@ -858,6 +868,7 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 		createEAttribute(eventEClass, EVENT__INTERVAL_SECONDS);
 		createEAttribute(eventEClass, EVENT__DURATION_SECONDS);
 		createEReference(eventEClass, EVENT__EFFECTS);
+		createEAttribute(eventEClass, EVENT__ICON);
 
 		// Create enums
 		comparisonOperatorEEnum = createEEnum(COMPARISON_OPERATOR);
@@ -1040,6 +1051,8 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 		initEReference(getevent_Effects(), this.geteffect(), null, "effects", null, 0, -1, event.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+		initEAttribute(getevent_Icon(), ecorePackage.getEString(), "icon", null, 0, 1, event.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(comparisonOperatorEEnum, comparisonOperator.class, "comparisonOperator");

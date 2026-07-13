@@ -60,6 +60,7 @@ public class eventItemProvider extends ItemProviderAdapter implements IEditingDo
 			addChancePropertyDescriptor(object);
 			addIntervalSecondsPropertyDescriptor(object);
 			addDurationSecondsPropertyDescriptor(object);
+			addIconPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -124,6 +125,21 @@ public class eventItemProvider extends ItemProviderAdapter implements IEditingDo
 								"_UI_event_type"),
 						Clicker_GeneratorPackage.Literals.EVENT__DURATION_SECONDS, true, false, false,
 						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Icon feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIconPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_event_icon_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_event_icon_feature", "_UI_event_type"),
+						Clicker_GeneratorPackage.Literals.EVENT__ICON, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -206,6 +222,7 @@ public class eventItemProvider extends ItemProviderAdapter implements IEditingDo
 		case Clicker_GeneratorPackage.EVENT__CHANCE:
 		case Clicker_GeneratorPackage.EVENT__INTERVAL_SECONDS:
 		case Clicker_GeneratorPackage.EVENT__DURATION_SECONDS:
+		case Clicker_GeneratorPackage.EVENT__ICON:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case Clicker_GeneratorPackage.EVENT__EFFECTS:
