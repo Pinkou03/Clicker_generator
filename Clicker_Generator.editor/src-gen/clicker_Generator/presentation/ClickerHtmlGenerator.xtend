@@ -376,7 +376,7 @@ class ClickerHtmlGenerator {
 		}, intervalMs);
 		})();
 		«ENDFOR»
-	'''
+	''' 
 
 	// === dispatch für Effect-Hierarchie ===
 	def dispatch String generateEffect(clicker_Generator.multiplyRateEffect e) '''
