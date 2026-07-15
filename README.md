@@ -1,6 +1,7 @@
 # Clicker Generator
-Ein modellgetriebener Generator für Incremental-/Clicker-Games. Man modelliert sein Spiel in EMF : Ressourcen, Generatoren, Upgrades, Erfolge, Events : und bekommt eine fertig spielbare HTML-Datei mit eingebettetem CSS und JavaScript.
+Ein modellgetriebener Generator für Incremental-/Clicker-Games. Man modelliert sein Spiel in EMF : Ressourcen, Generatoren, Upgrades, Erfolge, Events und bekommt eine fertig spielbare HTML-Datei mit eingebettetem CSS und JavaScript.
 Basiert auf EMF und Xtend, aufgeteilt in drei Eclipse-Plug-in-Projekte. Java 21.
+
 ## Projekte
 - **`Clicker_Generator`** : Metamodell (`model/clicker_Generator.ecore`), GenModel, generierter Code.
 - **`Clicker_Generator.edit`** : ItemProvider für den Baum-Editor.
@@ -19,7 +20,7 @@ Wurzel ist `game` mit Listen von:
 **Bedingungen:** Vergleiche (`Cookies >= 100`), verknüpfbar mit `AND`/`OR` und beliebig verschachtelbar.
 
 ## Was rauskommt
-Eine einzelne HTML-Datei mit Ressourcen-Karten, Klick-Button, Generator- und Upgrade-Buttons, Erfolgen, Zufalls-Events, Toast-Benachrichtigungen und einem Tick alle 100 ms. Icons kommen aus dem Modell oder werden per Emoji aus dem Ressourcennamen geraten (cookie → 🍪, gold → 🪙 …).
+Eine einzelne HTML-Datei mit Ressourcen-Karten, Klick-Button, Generator- und Upgrade-Buttons, Erfolgen, Zufalls-Events, Toast-Benachrichtigungen und einem Tick alle 100 ms.
 
 ## Benutzung
 **Voraussetzungen:** Eclipse (Modeling Tools bzw. IDE for Java and DSL Developers) mit EMF und Xtend, JDK 21.
