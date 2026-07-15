@@ -2,17 +2,16 @@
  */
 package clicker_Generator.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import clicker_Generator.Clicker_GeneratorPackage;
 import clicker_Generator.comparison;
 import clicker_Generator.comparisonOperator;
+import clicker_Generator.generator;
 import clicker_Generator.resource;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,6 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link clicker_Generator.impl.comparisonImpl#getResource <em>Resource</em>}</li>
  *   <li>{@link clicker_Generator.impl.comparisonImpl#getOperator <em>Operator</em>}</li>
  *   <li>{@link clicker_Generator.impl.comparisonImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link clicker_Generator.impl.comparisonImpl#getGenerator <em>Generator</em>}</li>
  * </ul>
  *
  * @generated
@@ -79,6 +79,16 @@ public class comparisonImpl extends expressionImpl implements comparison {
 	 * @ordered
 	 */
 	protected double value = VALUE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getGenerator() <em>Generator</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGenerator()
+	 * @generated
+	 * @ordered
+	 */
+	protected generator generator;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -195,6 +205,48 @@ public class comparisonImpl extends expressionImpl implements comparison {
 	 * @generated
 	 */
 	@Override
+	public generator getGenerator() {
+		if (generator != null && generator.eIsProxy()) {
+			InternalEObject oldGenerator = (InternalEObject) generator;
+			generator = (generator) eResolveProxy(oldGenerator);
+			if (generator != oldGenerator) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Clicker_GeneratorPackage.COMPARISON__GENERATOR, oldGenerator, generator));
+			}
+		}
+		return generator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public generator basicGetGenerator() {
+		return generator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setGenerator(generator newGenerator) {
+		generator oldGenerator = generator;
+		generator = newGenerator;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Clicker_GeneratorPackage.COMPARISON__GENERATOR,
+					oldGenerator, generator));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Clicker_GeneratorPackage.COMPARISON__RESOURCE:
@@ -205,6 +257,10 @@ public class comparisonImpl extends expressionImpl implements comparison {
 			return getOperator();
 		case Clicker_GeneratorPackage.COMPARISON__VALUE:
 			return getValue();
+		case Clicker_GeneratorPackage.COMPARISON__GENERATOR:
+			if (resolve)
+				return getGenerator();
+			return basicGetGenerator();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -225,6 +281,9 @@ public class comparisonImpl extends expressionImpl implements comparison {
 			return;
 		case Clicker_GeneratorPackage.COMPARISON__VALUE:
 			setValue((Double) newValue);
+			return;
+		case Clicker_GeneratorPackage.COMPARISON__GENERATOR:
+			setGenerator((generator) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -247,6 +306,9 @@ public class comparisonImpl extends expressionImpl implements comparison {
 		case Clicker_GeneratorPackage.COMPARISON__VALUE:
 			setValue(VALUE_EDEFAULT);
 			return;
+		case Clicker_GeneratorPackage.COMPARISON__GENERATOR:
+			setGenerator((generator) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -265,6 +327,8 @@ public class comparisonImpl extends expressionImpl implements comparison {
 			return operator != OPERATOR_EDEFAULT;
 		case Clicker_GeneratorPackage.COMPARISON__VALUE:
 			return value != VALUE_EDEFAULT;
+		case Clicker_GeneratorPackage.COMPARISON__GENERATOR:
+			return generator != null;
 		}
 		return super.eIsSet(featureID);
 	}

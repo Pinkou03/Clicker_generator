@@ -68,7 +68,7 @@ class ClickerHtmlGenerator {
 			    	    <span class="btn-cost">Kosten: <span id="upgcost_«u.safeName»">«u.cost.formatStart»</span> «u.costResourceName(game)»</span>
 			    	</button>
 			    «ENDFOR»
-			        </section>
+			    </section>
 			
 			        <section class="panel" id="achievements-panel">
 			    <h2>Erfolge</h2>
@@ -340,41 +340,41 @@ class ClickerHtmlGenerator {
 			    const chance = «e.chance»;
 			    const intervalMs = «e.intervalSeconds» * 1000;
 			    const durationMs = «e.durationSeconds» * 1000;
-		
-			function apply_«e.safeName»() {
-			    «FOR ef : e.effects»
-			    	«generateEventEffectApply(ef)»
-			    «ENDFOR»
-			    showToast('Event: «e.name»');
-			    updateAffordability();
-			    «IF e.durationSeconds > 0»
-			    	setTimeout(() => {
-			    	    «FOR ef : e.effects»
-			    	    	«generateEventEffectRevert(ef)»
-			    	    «ENDFOR»
-			    	    updateAffordability();
-			    	}, durationMs);
-			    «ENDIF»
-			}
-		
-			function spawn_«e.safeName»() {
-			    if (document.getElementById('event_«e.safeName»')) return; // nur eins gleichzeitig pro Event
-			    const el = document.createElement('button');
-			    el.id = 'event_«e.safeName»';
-			    el.className = 'golden-cookie';
-			    el.title = '«e.name»';
-			    el.innerHTML = '«e.iconMarkup»';
-			    el.style.top = (10 + Math.random() * 70) + '%';
-			    el.style.left = (10 + Math.random() * 80) + '%';
-			    el.onclick = () => { el.remove(); apply_«e.safeName»(); };
-			    document.body.appendChild(el);
-			    setTimeout(() => el.remove(), 8000);
-			}
-		
-			setInterval(() => {
-			    if (Math.random() < chance) spawn_«e.safeName»();
-			}, intervalMs);
-			})();
+			
+				function apply_«e.safeName»() {
+				    «FOR ef : e.effects»
+				    	«generateEventEffectApply(ef)»
+				    «ENDFOR»
+				    showToast('Event: «e.name»');
+				    updateAffordability();
+				    «IF e.durationSeconds > 0»
+				    	setTimeout(() => {
+				    	    «FOR ef : e.effects»
+				    	    	«generateEventEffectRevert(ef)»
+				    	    «ENDFOR»
+				    	    updateAffordability();
+				    	}, durationMs);
+				    «ENDIF»
+				}
+			
+				function spawn_«e.safeName»() {
+				    if (document.getElementById('event_«e.safeName»')) return; // nur eins gleichzeitig pro Event
+				    const el = document.createElement('button');
+				    el.id = 'event_«e.safeName»';
+				    el.className = 'golden-cookie';
+				    el.title = '«e.name»';
+				    el.innerHTML = '«e.iconMarkup»';
+				    el.style.top = (10 + Math.random() * 70) + '%';
+				    el.style.left = (10 + Math.random() * 80) + '%';
+				    el.onclick = () => { el.remove(); apply_«e.safeName»(); };
+				    document.body.appendChild(el);
+				    setTimeout(() => el.remove(), 8000);
+				}
+			
+		setInterval(() => {
+			if (Math.random() < chance «IF e.condition !== null»&& («generateExpression(e.condition)»)«ENDIF») spawn_«e.safeName»();
+		}, intervalMs);
+		})();
 		«ENDFOR»
 	'''
 
@@ -413,7 +413,11 @@ class ClickerHtmlGenerator {
 
 	// === dispatch für Expression-Hierarchie (rekursiv!) ===
 	def dispatch String generateExpression(clicker_Generator.comparison c) '''
-		state.«c.resource.safeName» «c.operator.toJsOperator» «c.value»
+		«IF c.generator !== null»
+			count_«c.generator.safeName» «c.operator.toJsOperator» «c.value»
+		«ELSE»
+			state.«c.resource.safeName» «c.operator.toJsOperator» «c.value»
+		«ENDIF»
 	'''
 
 	def dispatch String generateExpression(clicker_Generator.binaryExpression b) '''

@@ -48,6 +48,7 @@ public class comparisonItemProvider extends expressionItemProvider {
 			addResourcePropertyDescriptor(object);
 			addOperatorPropertyDescriptor(object);
 			addValuePropertyDescriptor(object);
+			addGeneratorPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -97,6 +98,21 @@ public class comparisonItemProvider extends expressionItemProvider {
 								"_UI_comparison_type"),
 						Clicker_GeneratorPackage.Literals.COMPARISON__VALUE, true, false, false,
 						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Generator feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addGeneratorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_comparison_generator_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_comparison_generator_feature",
+								"_UI_comparison_type"),
+						Clicker_GeneratorPackage.Literals.COMPARISON__GENERATOR, true, false, true, null, null, null));
 	}
 
 	/**

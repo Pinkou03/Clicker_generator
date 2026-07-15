@@ -3,7 +3,6 @@
 package clicker_Generator;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -21,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link clicker_Generator.event#getDurationSeconds <em>Duration Seconds</em>}</li>
  *   <li>{@link clicker_Generator.event#getEffects <em>Effects</em>}</li>
  *   <li>{@link clicker_Generator.event#getIcon <em>Icon</em>}</li>
+ *   <li>{@link clicker_Generator.event#getCondition <em>Condition</em>}</li>
  * </ul>
  *
  * @see clicker_Generator.Clicker_GeneratorPackage#getevent()
@@ -149,5 +149,27 @@ public interface event extends EObject {
 	 * @generated
 	 */
 	void setIcon(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Condition</em>' containment reference.
+	 * @see #setCondition(expression)
+	 * @see clicker_Generator.Clicker_GeneratorPackage#getevent_Condition()
+	 * @model containment="true"
+	 * @generated
+	 */
+	expression getCondition();
+
+	/**
+	 * Sets the value of the '{@link clicker_Generator.event#getCondition <em>Condition</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Condition</em>' containment reference.
+	 * @see #getCondition()
+	 * @generated
+	 */
+	void setCondition(expression value);
 
 } // event

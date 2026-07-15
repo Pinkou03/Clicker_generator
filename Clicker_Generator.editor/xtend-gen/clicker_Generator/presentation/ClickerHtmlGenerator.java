@@ -279,7 +279,7 @@ public class ClickerHtmlGenerator {
           _builder.newLine();
         }
       }
-      _builder.append("        ");
+      _builder.append("    ");
       _builder.append("</section>");
       _builder.newLine();
       _builder.newLine();
@@ -1155,25 +1155,24 @@ public class ClickerHtmlGenerator {
     {
       EList<event> _events = game.getEvents();
       for(final event e_1 : _events) {
-        _builder.append("\t");
         _builder.append("(function() {");
         _builder.newLine();
-        _builder.append("\t    ");
+        _builder.append("    ");
         _builder.append("const chance = ");
         double _chance = e_1.getChance();
-        _builder.append(_chance, "\t    ");
+        _builder.append(_chance, "    ");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t    ");
+        _builder.append("    ");
         _builder.append("const intervalMs = ");
         double _intervalSeconds = e_1.getIntervalSeconds();
-        _builder.append(_intervalSeconds, "\t    ");
+        _builder.append(_intervalSeconds, "    ");
         _builder.append(" * 1000;");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t    ");
+        _builder.append("    ");
         _builder.append("const durationMs = ");
         double _durationSeconds = e_1.getDurationSeconds();
-        _builder.append(_durationSeconds, "\t    ");
+        _builder.append(_durationSeconds, "    ");
         _builder.append(" * 1000;");
         _builder.newLineIfNotEmpty();
         _builder.newLine();
@@ -1289,19 +1288,29 @@ public class ClickerHtmlGenerator {
         _builder.append("}");
         _builder.newLine();
         _builder.newLine();
-        _builder.append("\t");
+        _builder.append("\t\t");
         _builder.append("setInterval(() => {");
         _builder.newLine();
-        _builder.append("\t    ");
-        _builder.append("if (Math.random() < chance) spawn_");
+        _builder.append("if (Math.random() < chance ");
+        {
+          expression _condition = e_1.getCondition();
+          boolean _tripleNotEquals = (_condition != null);
+          if (_tripleNotEquals) {
+            _builder.append("&& (");
+            String _generateExpression_1 = this.generateExpression(e_1.getCondition());
+            _builder.append(_generateExpression_1);
+            _builder.append(")");
+          }
+        }
+        _builder.append(") spawn_");
         String _safeName_51 = this.safeName(e_1);
-        _builder.append(_safeName_51, "\t    ");
+        _builder.append(_safeName_51);
         _builder.append("();");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t");
+        _builder.append("\t\t");
         _builder.append("}, intervalMs);");
         _builder.newLine();
-        _builder.append("\t");
+        _builder.append("\t\t");
         _builder.append("})();");
         _builder.newLine();
       }
@@ -1394,16 +1403,33 @@ public class ClickerHtmlGenerator {
 
   protected String _generateExpression(final comparison c) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("state.");
-    String _safeName = this.safeName(c.getResource());
-    _builder.append(_safeName);
-    _builder.append(" ");
-    String _jsOperator = this.toJsOperator(c.getOperator());
-    _builder.append(_jsOperator);
-    _builder.append(" ");
-    double _value = c.getValue();
-    _builder.append(_value);
-    _builder.newLineIfNotEmpty();
+    {
+      generator _generator = c.getGenerator();
+      boolean _tripleNotEquals = (_generator != null);
+      if (_tripleNotEquals) {
+        _builder.append("count_");
+        String _safeName = this.safeName(c.getGenerator());
+        _builder.append(_safeName);
+        _builder.append(" ");
+        String _jsOperator = this.toJsOperator(c.getOperator());
+        _builder.append(_jsOperator);
+        _builder.append(" ");
+        double _value = c.getValue();
+        _builder.append(_value);
+        _builder.newLineIfNotEmpty();
+      } else {
+        _builder.append("state.");
+        String _safeName_1 = this.safeName(c.getResource());
+        _builder.append(_safeName_1);
+        _builder.append(" ");
+        String _jsOperator_1 = this.toJsOperator(c.getOperator());
+        _builder.append(_jsOperator_1);
+        _builder.append(" ");
+        double _value_1 = c.getValue();
+        _builder.append(_value_1);
+        _builder.newLineIfNotEmpty();
+      }
+    }
     return _builder.toString();
   }
 

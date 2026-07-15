@@ -655,13 +655,22 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	int COMPARISON__VALUE = EXPRESSION_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Generator</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARISON__GENERATOR = EXPRESSION_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>comparison</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPARISON_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+	int COMPARISON_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>comparison</em>' class.
@@ -792,13 +801,22 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	int EVENT__ICON = 5;
 
 	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__CONDITION = 6;
+
+	/**
 	 * The number of structural features of the '<em>event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_FEATURE_COUNT = 6;
+	int EVENT_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>event</em>' class.
@@ -1291,6 +1309,17 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	EAttribute getcomparison_Value();
 
 	/**
+	 * Returns the meta object for the reference '{@link clicker_Generator.comparison#getGenerator <em>Generator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Generator</em>'.
+	 * @see clicker_Generator.comparison#getGenerator()
+	 * @see #getcomparison()
+	 * @generated
+	 */
+	EReference getcomparison_Generator();
+
+	/**
 	 * Returns the meta object for class '{@link clicker_Generator.binaryExpression <em>binary Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1408,6 +1437,17 @@ public interface Clicker_GeneratorPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getevent_Icon();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link clicker_Generator.event#getCondition <em>Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Condition</em>'.
+	 * @see clicker_Generator.event#getCondition()
+	 * @see #getevent()
+	 * @generated
+	 */
+	EReference getevent_Condition();
 
 	/**
 	 * Returns the meta object for enum '{@link clicker_Generator.comparisonOperator <em>comparison Operator</em>}'.
@@ -1821,6 +1861,14 @@ public interface Clicker_GeneratorPackage extends EPackage {
 		EAttribute COMPARISON__VALUE = eINSTANCE.getcomparison_Value();
 
 		/**
+		 * The meta object literal for the '<em><b>Generator</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPARISON__GENERATOR = eINSTANCE.getcomparison_Generator();
+
+		/**
 		 * The meta object literal for the '{@link clicker_Generator.impl.binaryExpressionImpl <em>binary Expression</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1911,6 +1959,14 @@ public interface Clicker_GeneratorPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EVENT__ICON = eINSTANCE.getevent_Icon();
+
+		/**
+		 * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EVENT__CONDITION = eINSTANCE.getevent_Condition();
 
 		/**
 		 * The meta object literal for the '{@link clicker_Generator.comparisonOperator <em>comparison Operator</em>}' enum.

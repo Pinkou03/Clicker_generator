@@ -14,6 +14,7 @@ package clicker_Generator;
  *   <li>{@link clicker_Generator.comparison#getResource <em>Resource</em>}</li>
  *   <li>{@link clicker_Generator.comparison#getOperator <em>Operator</em>}</li>
  *   <li>{@link clicker_Generator.comparison#getValue <em>Value</em>}</li>
+ *   <li>{@link clicker_Generator.comparison#getGenerator <em>Generator</em>}</li>
  * </ul>
  *
  * @see clicker_Generator.Clicker_GeneratorPackage#getcomparison()
@@ -28,7 +29,7 @@ public interface comparison extends expression {
 	 * @return the value of the '<em>Resource</em>' reference.
 	 * @see #setResource(resource)
 	 * @see clicker_Generator.Clicker_GeneratorPackage#getcomparison_Resource()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	resource getResource();
@@ -89,5 +90,27 @@ public interface comparison extends expression {
 	 * @generated
 	 */
 	void setValue(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Generator</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Generator</em>' reference.
+	 * @see #setGenerator(generator)
+	 * @see clicker_Generator.Clicker_GeneratorPackage#getcomparison_Generator()
+	 * @model
+	 * @generated
+	 */
+	generator getGenerator();
+
+	/**
+	 * Sets the value of the '{@link clicker_Generator.comparison#getGenerator <em>Generator</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Generator</em>' reference.
+	 * @see #getGenerator()
+	 * @generated
+	 */
+	void setGenerator(generator value);
 
 } // comparison

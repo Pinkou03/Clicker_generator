@@ -2,12 +2,11 @@
  */
 package clicker_Generator.impl;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import clicker_Generator.Clicker_GeneratorPackage;
 import clicker_Generator.expression;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->

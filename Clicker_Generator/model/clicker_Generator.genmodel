@@ -72,6 +72,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//comparison/resource"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//comparison/operator"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//comparison/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//comparison/generator"/>
     </genClasses>
     <genClasses ecoreClass="clicker_Generator.ecore#//binaryExpression">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//binaryExpression/operator"/>
@@ -85,6 +86,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//event/durationSeconds"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//event/effects"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute clicker_Generator.ecore#//event/icon"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference clicker_Generator.ecore#//event/condition"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

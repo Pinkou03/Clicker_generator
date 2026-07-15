@@ -59,10 +59,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="expression" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="comparison" eSuperTypes="#//expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="resource" lowerBound="1"
-        eType="#//resource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resource" eType="#//resource"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//comparisonOperator"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generator" eType="#//generator"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="binaryExpression" eSuperTypes="#//expression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//logicOperator"/>
@@ -90,5 +90,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="effects" upperBound="-1"
         eType="#//effect" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="icon" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//expression"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

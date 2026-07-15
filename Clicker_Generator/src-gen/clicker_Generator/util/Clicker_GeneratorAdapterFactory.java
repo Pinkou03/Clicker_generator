@@ -2,14 +2,26 @@
  */
 package clicker_Generator.util;
 
-import clicker_Generator.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+
+import clicker_Generator.Clicker_GeneratorPackage;
+import clicker_Generator.achievement;
+import clicker_Generator.binaryExpression;
+import clicker_Generator.comparison;
+import clicker_Generator.effect;
+import clicker_Generator.event;
+import clicker_Generator.expression;
+import clicker_Generator.game;
+import clicker_Generator.generator;
+import clicker_Generator.grantAmountEffect;
+import clicker_Generator.multiplyRateEffect;
+import clicker_Generator.reduceCostEffect;
+import clicker_Generator.resource;
+import clicker_Generator.unlockGeneratorEffect;
+import clicker_Generator.upgrade;
 
 /**
  * <!-- begin-user-doc -->

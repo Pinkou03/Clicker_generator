@@ -2,16 +2,14 @@
  */
 package clicker_Generator.impl;
 
-import clicker_Generator.Clicker_GeneratorPackage;
-import clicker_Generator.grantAmountEffect;
-
-import clicker_Generator.resource;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import clicker_Generator.Clicker_GeneratorPackage;
+import clicker_Generator.grantAmountEffect;
+import clicker_Generator.resource;
 
 /**
  * <!-- begin-user-doc -->

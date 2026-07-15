@@ -2,6 +2,15 @@
  */
 package clicker_Generator.impl;
 
+import static clicker_Generator.Clicker_GeneratorPackage.RESOURCE;
+
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import clicker_Generator.Clicker_GeneratorFactory;
 import clicker_Generator.Clicker_GeneratorPackage;
 import clicker_Generator.achievement;
@@ -12,7 +21,6 @@ import clicker_Generator.effect;
 import clicker_Generator.event;
 import clicker_Generator.expression;
 import clicker_Generator.game;
-
 import clicker_Generator.generator;
 import clicker_Generator.grantAmountEffect;
 import clicker_Generator.logicOperator;
@@ -21,13 +29,6 @@ import clicker_Generator.reduceCostEffect;
 import clicker_Generator.resource;
 import clicker_Generator.unlockGeneratorEffect;
 import clicker_Generator.upgrade;
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EPackage;
-
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -648,6 +649,16 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 	 * @generated
 	 */
 	@Override
+	public EReference getcomparison_Generator() {
+		return (EReference) comparisonEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getbinaryExpression() {
 		return binaryExpressionEClass;
 	}
@@ -758,6 +769,16 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 	 * @generated
 	 */
 	@Override
+	public EReference getevent_Condition() {
+		return (EReference) eventEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getcomparisonOperator() {
 		return comparisonOperatorEEnum;
 	}
@@ -856,6 +877,7 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 		createEReference(comparisonEClass, COMPARISON__RESOURCE);
 		createEAttribute(comparisonEClass, COMPARISON__OPERATOR);
 		createEAttribute(comparisonEClass, COMPARISON__VALUE);
+		createEReference(comparisonEClass, COMPARISON__GENERATOR);
 
 		binaryExpressionEClass = createEClass(BINARY_EXPRESSION);
 		createEAttribute(binaryExpressionEClass, BINARY_EXPRESSION__OPERATOR);
@@ -869,6 +891,7 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 		createEAttribute(eventEClass, EVENT__DURATION_SECONDS);
 		createEReference(eventEClass, EVENT__EFFECTS);
 		createEAttribute(eventEClass, EVENT__ICON);
+		createEReference(eventEClass, EVENT__CONDITION);
 
 		// Create enums
 		comparisonOperatorEEnum = createEEnum(COMPARISON_OPERATOR);
@@ -1017,13 +1040,16 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 
 		initEClass(comparisonEClass, comparison.class, "comparison", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getcomparison_Resource(), this.getresource(), null, "resource", null, 1, 1, comparison.class,
+		initEReference(getcomparison_Resource(), this.getresource(), null, "resource", null, 0, 1, comparison.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getcomparison_Operator(), this.getcomparisonOperator(), "operator", null, 0, 1, comparison.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getcomparison_Value(), ecorePackage.getEDouble(), "value", null, 0, 1, comparison.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getcomparison_Generator(), this.getgenerator(), null, "generator", null, 0, 1, comparison.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(binaryExpressionEClass, binaryExpression.class, "binaryExpression", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1053,6 +1079,9 @@ public class Clicker_GeneratorPackageImpl extends EPackageImpl implements Clicke
 				IS_ORDERED);
 		initEAttribute(getevent_Icon(), ecorePackage.getEString(), "icon", null, 0, 1, event.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getevent_Condition(), this.getexpression(), null, "condition", null, 0, 1, event.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(comparisonOperatorEEnum, comparisonOperator.class, "comparisonOperator");

@@ -155,6 +155,7 @@ public class eventItemProvider extends ItemProviderAdapter implements IEditingDo
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(Clicker_GeneratorPackage.Literals.EVENT__EFFECTS);
+			childrenFeatures.add(Clicker_GeneratorPackage.Literals.EVENT__CONDITION);
 		}
 		return childrenFeatures;
 	}
@@ -226,6 +227,7 @@ public class eventItemProvider extends ItemProviderAdapter implements IEditingDo
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case Clicker_GeneratorPackage.EVENT__EFFECTS:
+		case Clicker_GeneratorPackage.EVENT__CONDITION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -254,6 +256,12 @@ public class eventItemProvider extends ItemProviderAdapter implements IEditingDo
 
 		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.EVENT__EFFECTS,
 				Clicker_GeneratorFactory.eINSTANCE.creategrantAmountEffect()));
+
+		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.EVENT__CONDITION,
+				Clicker_GeneratorFactory.eINSTANCE.createcomparison()));
+
+		newChildDescriptors.add(createChildParameter(Clicker_GeneratorPackage.Literals.EVENT__CONDITION,
+				Clicker_GeneratorFactory.eINSTANCE.createbinaryExpression()));
 	}
 
 	/**

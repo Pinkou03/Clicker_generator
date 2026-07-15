@@ -2,25 +2,22 @@
  */
 package clicker_Generator.impl;
 
-import clicker_Generator.Clicker_GeneratorPackage;
-import clicker_Generator.effect;
-import clicker_Generator.event;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import clicker_Generator.Clicker_GeneratorPackage;
+import clicker_Generator.effect;
+import clicker_Generator.event;
+import clicker_Generator.expression;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link clicker_Generator.impl.eventImpl#getDurationSeconds <em>Duration Seconds</em>}</li>
  *   <li>{@link clicker_Generator.impl.eventImpl#getEffects <em>Effects</em>}</li>
  *   <li>{@link clicker_Generator.impl.eventImpl#getIcon <em>Icon</em>}</li>
+ *   <li>{@link clicker_Generator.impl.eventImpl#getCondition <em>Condition</em>}</li>
  * </ul>
  *
  * @generated
@@ -150,6 +148,16 @@ public class eventImpl extends MinimalEObjectImpl.Container implements event {
 	 * @ordered
 	 */
 	protected String icon = ICON_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected expression condition;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -307,10 +315,64 @@ public class eventImpl extends MinimalEObjectImpl.Container implements event {
 	 * @generated
 	 */
 	@Override
+	public expression getCondition() {
+		return condition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCondition(expression newCondition, NotificationChain msgs) {
+		expression oldCondition = condition;
+		condition = newCondition;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Clicker_GeneratorPackage.EVENT__CONDITION, oldCondition, newCondition);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCondition(expression newCondition) {
+		if (newCondition != condition) {
+			NotificationChain msgs = null;
+			if (condition != null)
+				msgs = ((InternalEObject) condition).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - Clicker_GeneratorPackage.EVENT__CONDITION, null, msgs);
+			if (newCondition != null)
+				msgs = ((InternalEObject) newCondition).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - Clicker_GeneratorPackage.EVENT__CONDITION, null, msgs);
+			msgs = basicSetCondition(newCondition, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Clicker_GeneratorPackage.EVENT__CONDITION,
+					newCondition, newCondition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Clicker_GeneratorPackage.EVENT__EFFECTS:
 			return ((InternalEList<?>) getEffects()).basicRemove(otherEnd, msgs);
+		case Clicker_GeneratorPackage.EVENT__CONDITION:
+			return basicSetCondition(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -335,6 +397,8 @@ public class eventImpl extends MinimalEObjectImpl.Container implements event {
 			return getEffects();
 		case Clicker_GeneratorPackage.EVENT__ICON:
 			return getIcon();
+		case Clicker_GeneratorPackage.EVENT__CONDITION:
+			return getCondition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -367,6 +431,9 @@ public class eventImpl extends MinimalEObjectImpl.Container implements event {
 		case Clicker_GeneratorPackage.EVENT__ICON:
 			setIcon((String) newValue);
 			return;
+		case Clicker_GeneratorPackage.EVENT__CONDITION:
+			setCondition((expression) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -397,6 +464,9 @@ public class eventImpl extends MinimalEObjectImpl.Container implements event {
 		case Clicker_GeneratorPackage.EVENT__ICON:
 			setIcon(ICON_EDEFAULT);
 			return;
+		case Clicker_GeneratorPackage.EVENT__CONDITION:
+			setCondition((expression) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -421,6 +491,8 @@ public class eventImpl extends MinimalEObjectImpl.Container implements event {
 			return effects != null && !effects.isEmpty();
 		case Clicker_GeneratorPackage.EVENT__ICON:
 			return ICON_EDEFAULT == null ? icon != null : !ICON_EDEFAULT.equals(icon);
+		case Clicker_GeneratorPackage.EVENT__CONDITION:
+			return condition != null;
 		}
 		return super.eIsSet(featureID);
 	}

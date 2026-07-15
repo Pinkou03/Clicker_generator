@@ -2,16 +2,29 @@
  */
 package clicker_Generator.impl;
 
-import clicker_Generator.*;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import clicker_Generator.Clicker_GeneratorFactory;
+import clicker_Generator.Clicker_GeneratorPackage;
+import clicker_Generator.achievement;
+import clicker_Generator.binaryExpression;
+import clicker_Generator.comparison;
+import clicker_Generator.comparisonOperator;
+import clicker_Generator.event;
+import clicker_Generator.game;
+import clicker_Generator.generator;
+import clicker_Generator.grantAmountEffect;
+import clicker_Generator.logicOperator;
+import clicker_Generator.multiplyRateEffect;
+import clicker_Generator.reduceCostEffect;
+import clicker_Generator.resource;
+import clicker_Generator.unlockGeneratorEffect;
+import clicker_Generator.upgrade;
 
 /**
  * <!-- begin-user-doc -->
